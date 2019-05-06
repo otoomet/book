@@ -25,7 +25,7 @@
 <meta name="author" content="Michael Freeman and Joel Ross">
 
 
-<meta name="date" content="2019-05-01">
+<meta name="date" content="2019-05-06">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -399,7 +399,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="D.6" data-path="remote-server.html"><a href="remote-server.html#advanced-usage"><i class="fa fa-check"></i><b>D.6</b> Advanced Usage</a><ul>
 <li class="chapter" data-level="D.6.1" data-path="remote-server.html"><a href="remote-server.html#ssh-keys-.sshconfig"><i class="fa fa-check"></i><b>D.6.1</b> ssh keys, .ssh/config</a></li>
-<li class="chapter" data-level="D.6.2" data-path="remote-server.html"><a href="remote-server.html#running-rscript-in-ssh-session"><i class="fa fa-check"></i><b>D.6.2</b> Running RScript in ssh Session</a></li>
+<li class="chapter" data-level="D.6.2" data-path="remote-server.html"><a href="remote-server.html#more-about-command-line-pipes-and-shell-patterns"><i class="fa fa-check"></i><b>D.6.2</b> More about command line: pipes and shell patterns</a></li>
+<li class="chapter" data-level="D.6.3" data-path="remote-server.html"><a href="remote-server.html#running-rscript-in-ssh-session"><i class="fa fa-check"></i><b>D.6.3</b> Running RScript in ssh Session</a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -465,9 +466,9 @@ Examples in this chapter adapted from <a href="http://r4ds.had.co.nz/"><em>R for
 <pre><code>## # A tibble: 3 x 11
 ##   manufacturer model  displ  year   cyl trans drv     cty   hwy fl    class
 ##   &lt;chr&gt;        &lt;chr&gt;  &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt;
-## 1 ford         f150 …   5.4  1999     8 auto… 4        11    15 r     pick…
-## 2 subaru       impre…   2.5  2008     4 manu… 4        20    27 r     comp…
-## 3 chevrolet    corve…   5.7  1999     8 auto… r        15    23 p     2sea…</code></pre>
+## 1 subaru       fores…   2.5  2008     4 auto… 4        20    26 r     suv  
+## 2 audi         a4 qu…   1.8  1999     4 auto… 4        16    25 p     comp…
+## 3 subaru       fores…   2.5  2008     4 auto… 4        18    23 p     suv</code></pre>
 <p>The most important variables for our purpose are following:</p>
 <ul>
 <li><strong>class</strong>, car class, such as SUV, compact, minivan</li>

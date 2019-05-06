@@ -25,7 +25,7 @@
 <meta name="author" content="Michael Freeman and Joel Ross">
 
 
-<meta name="date" content="2019-05-01">
+<meta name="date" content="2019-05-06">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -399,7 +399,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="D.6" data-path="remote-server.html"><a href="remote-server.html#advanced-usage"><i class="fa fa-check"></i><b>D.6</b> Advanced Usage</a><ul>
 <li class="chapter" data-level="D.6.1" data-path="remote-server.html"><a href="remote-server.html#ssh-keys-.sshconfig"><i class="fa fa-check"></i><b>D.6.1</b> ssh keys, .ssh/config</a></li>
-<li class="chapter" data-level="D.6.2" data-path="remote-server.html"><a href="remote-server.html#running-rscript-in-ssh-session"><i class="fa fa-check"></i><b>D.6.2</b> Running RScript in ssh Session</a></li>
+<li class="chapter" data-level="D.6.2" data-path="remote-server.html"><a href="remote-server.html#more-about-command-line-pipes-and-shell-patterns"><i class="fa fa-check"></i><b>D.6.2</b> More about command line: pipes and shell patterns</a></li>
+<li class="chapter" data-level="D.6.3" data-path="remote-server.html"><a href="remote-server.html#running-rscript-in-ssh-session"><i class="fa fa-check"></i><b>D.6.3</b> Running RScript in ssh Session</a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -532,7 +533,8 @@ Three terminals connecting to a remote server at the same time. The top one has 
 <span class="co"># done plotting</span>
 <span class="kw">dev.off</span>()
     <span class="co"># saves the image to disk and closes the file.</span></code></pre></div>
-<p>Afterwards you will have to copy the image file to your laptop for inspection, or addition in your final project report.</p>
+<p>Afterwards you will have to copy the image file <em>figure1.pdf</em> to your laptop for future use. Note that the file will be saved in the current working directory (unless you specify another folder) for the R session. This is normally the folder where you execute the <code>Rscript</code> command.</p>
+<p>Besides of pdf graphics, R can also output jpg, png, svg and other formats. Check out the corresponding devices <code>jpeg</code>, <code>png</code>, <code>svg</code> and so forth. Additionally, <em>ggplot</em> has it’s own dedicated way of saving plots using <code>ggsave</code> although the base R graphics devices, such as <code>pdf</code> will work too.</p>
 </div>
 </div>
 <div id="life-on-server" class="section level2">
@@ -568,7 +570,7 @@ Three terminals connecting to a remote server at the same time. The top one has 
 <h2><span class="header-section-number">D.6</span> Advanced Usage</h2>
 <div id="ssh-keys-.sshconfig" class="section level3">
 <h3><span class="header-section-number">D.6.1</span> ssh keys, .ssh/config</h3>
-<p>Without further configuration, every time you open a ssh connection, you have to type your password. Instead of re-entering it over and over again (this may not be particularly secure), you can configure your ssh keys and copy it to the server. Next time, you will be automatically authenticated with the key and you don’t have to type the password any more. Note: this is the same ssh key that is used by GitHub if you use ssh connection to GitHub.</p>
+<p>Without further configuration, every time you open a ssh connection, you have to type your password. Instead of re-entering it over and over again—this may not be particularly secure and it is definitely not convenient—you can configure your ssh keys and copy it to the server. Next time, you will be automatically authenticated with the key and you don’t have to type the password any more. Note: this is the same ssh key that is used by GitHub if you use ssh connection to GitHub.</p>
 <p>As the first step, you have to create the key with <code>ssh-keygen</code> (you may choose an empty passphrase) unless you already have created one. Thereafter copy your public key to the server with <code>ssh-copy-id</code>. Next time you log onto the server, no password is needed. A good source for help with creating and managing ssh keys is <a href="https://help.github.com/articles/connecting-to-github-with-ssh/">GitHub help</a>.</p>
 <p>You can also configure your ssh to recognize abbreviated server names and your corresponding user names. This allows you to connect to server with a simple command like <code>ssh info201</code>. This information is stored in the file <code>~/.ssh/config</code>, and should contain lines like</p>
 <pre><code>Host info201
@@ -576,8 +578,39 @@ Three terminals connecting to a remote server at the same time. The top one has 
     Hostname info201.ischool.uw.edu</code></pre>
 <p>The <code>Host</code> keyword is followed by the abbreviated name of the server, the following lines contain your username and the publicly visible hostname for the server. Seek out more information if you are interested.</p>
 </div>
+<div id="more-about-command-line-pipes-and-shell-patterns" class="section level3">
+<h3><span class="header-section-number">D.6.2</span> More about command line: pipes and shell patterns</h3>
+<p><em>bash</em> is a powerful programming language. It is not particularly well suited to peform calculations or produce graphs, but it is excellent in glueing together other programs and their output.</p>
+<p>One very powerful construct are <em>pipes</em>. These are in many ways similar to <em>magrittr</em> pipes in R, or perhaps we should say the other way around as shell pipes were introduced in 1973, a quarter of century before R was created. Pipes connect output of one command into input of another command. For instance, let’s take commands <code>ls -s</code> and <code>head</code>. The former lists the files (in long form) and the latter prints out a few first lines of a text file. But <code>head</code> is not just for printing files, it can print the first few lines of whatever you feed it. Look, for instance, the following command (actually a compound command):</p>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="fu">ls</span> -l <span class="kw">|</span> <span class="fu">head</span></code></pre></div>
+<p><code>ls -l</code> creates the file listing (in long form). But instead of printing it on screen, it will now send it over pipe <code>|</code> to the <code>head</code> utility. That one will extract the first lines and print only those.</p>
+<img src="img/ssh-to-remote-server/shell-pipe.png" alt="example with ls and shell pipes" />
+<p class="caption">
+Example of <code>ls -l</code> command that prints a number of files (above). Below, the same command is piped through <code>head -3</code> that retains only the three first lines (and prints those). Note that the first line is not a file, but a total size of files in this directory (in kilobytes).
+</p>
+<p>Pipes are not limited to two commands only. You can pipe as many commands together as you with. For instance, you may want to see a few first lines in a large compressed csv file that contain the word <em>Zilong</em>. We use the following commands:</p>
+<ul>
+<li><strong>bzcat</strong> prints bzip-compressed data (you normally invoke it like <code>bzcat file.txt</code>). But it just prints and does not do anything else with the output.</li>
+<li><strong>grep</strong> searches for a pattern in text. This can be used as <code>grep pattern file</code>, for instance grep <code>salary business-report.txt</code>. Note that <em>pattern</em> is a regular expression (rather similar as in R <code>gsub</code> and <code>grep</code> functions), so <code>grep</code> can search for a wide range of patterns. However, it cannot open compressed files, and neither can it limit the output to just a few lines.</li>
+<li><strong>head</strong> prints first few lines of text. You can print out the first <em>n</em> lines of a file as <code>head -n file.txt</code>, but again–this does not work with compressed files.</li>
+</ul>
+<p>We pipe the commands together as</p>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="fu">bzcat</span> data.csv.bz2 <span class="kw">|</span> <span class="fu">grep</span> Zilong <span class="kw">|</span> <span class="fu">head</span></code></pre></div>
+<p>and achieve the result we want. So pipes are an excellent way to join small commands, each of which is good at only a single task, into complex compound tasks.</p>
+<p>Another handy (albeit much less powerful) tool in shell is the shell patterns. These are a little bit like regular expressions for file names, just much simpler. There are two special characters in file names:</p>
+<ul>
+<li><strong>*</strong> means any number of any characters. For instance, <code>a.*</code> means all files like <code>a.</code>, <code>a.c</code>, <code>a.txt</code>, <code>a.txt.old</code>, <code>a...</code> and so on. It is just any number of any characters, including none at all, and “any” also means dots. However, the pattern does not cover <code>ba.c</code>.</li>
+<li><strong>?</strong> means a single character, so <code>a.?</code> can stand for <code>a.c</code> and <code>a.R</code> but not for <code>a.txt</code>.</li>
+</ul>
+<p>Shell patterns are useful for file manipulations where you have quicly sort though some sort of fine name patterns. These are handled by shell and not by individual commands, so they may not work if you are not at shell prompt but running another program, such as R or a text editor.</p>
+<p>For instance, let’s list all <em>jpg</em> files in the current directory:</p>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="fu">ls</span> *.jpg</code></pre></div>
+<p>This lists all files of patten <code>*.jpg</code>, i.e. everything that has <em>.jpg</em> at it’s end. Now let us copy all <em>png</em> files from server to the current directory:</p>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="fu">scp</span> user@server.com:*.png .</code></pre></div>
+<p>This copies all files in the form <code>*.png</code> from the server here, i.e. all files that end with <em>.png</em>.</p>
+</div>
 <div id="running-rscript-in-ssh-session" class="section level3">
-<h3><span class="header-section-number">D.6.2</span> Running RScript in ssh Session</h3>
+<h3><span class="header-section-number">D.6.3</span> Running RScript in ssh Session</h3>
 <p>Passwordless ssh connection gives you new wonderful possibilities. First, you don’t even have to log into the server explicitly. You can run a one-command ssh session on the server directly from your laptop. Namely, ssh accepts commands to be run on the remote machine. If invoked as</p>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">ssh</span> myusername@server.ischool.edu <span class="st">&quot;Rscript myscript.R&quot;</span></code></pre></div>
 <p>It does not open a remote shell but runs <code>Rscript script.R</code> instead. Your command sequence for the whole process will accordingly look something like:</p>
