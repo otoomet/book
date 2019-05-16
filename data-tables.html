@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html >
-
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>C Thinking Big: Data Tables | Technical Foundations of Informatics</title>
-  <meta name="description" content="The course reader for INFO 201: Technical Foundations of Informatics.">
-  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+  <meta name="description" content="The course reader for INFO 201: Technical Foundations of Informatics." />
+  <meta name="generator" content="bookdown 0.10 and GitBook 2.6.7" />
 
   <meta property="og:title" content="C Thinking Big: Data Tables | Technical Foundations of Informatics" />
   <meta property="og:type" content="book" />
@@ -22,16 +21,16 @@
   <meta name="twitter:description" content="The course reader for INFO 201: Technical Foundations of Informatics." />
   <meta name="twitter:image" content="https://info201.github.io/img/cover-img.png" />
 
-<meta name="author" content="Michael Freeman and Joel Ross">
+<meta name="author" content="Michael Freeman and Joel Ross" />
 
 
-<meta name="date" content="2019-05-06">
+<meta name="date" content="2019-05-16" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
-  <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
+  <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon" />
 <link rel="prev" href="control-structures.html">
 <link rel="next" href="remote-server.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
@@ -167,7 +166,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="4.3.2" data-path="git-basics.html"><a href="git-basics.html#committing"><i class="fa fa-check"></i><b>4.3.2</b> Committing</a></li>
 <li class="chapter" data-level="4.3.3" data-path="git-basics.html"><a href="git-basics.html#commit-history"><i class="fa fa-check"></i><b>4.3.3</b> Commit History</a></li>
 <li class="chapter" data-level="4.3.4" data-path="git-basics.html"><a href="git-basics.html#reviewing-the-process"><i class="fa fa-check"></i><b>4.3.4</b> Reviewing the Process</a></li>
-<li class="chapter" data-level="4.3.5" data-path="git-basics.html"><a href="git-basics.html#the-.gitignore-file"><i class="fa fa-check"></i><b>4.3.5</b> The <code>.gitignore</code> File</a></li>
+<li class="chapter" data-level="4.3.5" data-path="git-basics.html"><a href="git-basics.html#gitignore"><i class="fa fa-check"></i><b>4.3.5</b> The <code>.gitignore</code> File</a></li>
 </ul></li>
 <li class="chapter" data-level="4.4" data-path="git-basics.html"><a href="git-basics.html#github-and-remotes"><i class="fa fa-check"></i><b>4.4</b> GitHub and Remotes</a><ul>
 <li class="chapter" data-level="4.4.1" data-path="git-basics.html"><a href="git-basics.html#forking-and-cloning"><i class="fa fa-check"></i><b>4.4.1</b> Forking and Cloning</a></li>
@@ -441,32 +440,32 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(data.table)
 dt &lt;-<span class="st"> </span><span class="kw">data.table</span>(<span class="dt">id=</span><span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dt">x=</span><span class="kw">rnorm</span>(<span class="dv">5</span>), <span class="dt">y=</span><span class="kw">runif</span>(<span class="dv">5</span>))
 dt</code></pre></div>
-<pre><code>##    id           x          y
-## 1:  1 -2.44545864 0.74922139
-## 2:  2  0.77767416 0.55181763
-## 3:  3  0.09921782 0.07532866
-## 4:  4 -0.31655036 0.23191774
-## 5:  5 -1.49489360 0.30977826</code></pre>
+<pre><code>##    id          x         y
+## 1:  1 -0.4418792 0.4591970
+## 2:  2 -0.6114299 0.3278598
+## 3:  3 -0.7466098 0.3155555
+## 4:  4 -0.0185502 0.5599456
+## 5:  5 -1.1836989 0.1376128</code></pre>
 <p>The result looks almost identical to a similar data frame (the only difference are the colons after the row numbers). Behind the scenes these objects are almost identical too–both objects are lists of vectors. This structural similarity allows to use data tables as drop-in replacements for dataframes, at least in some circumstances. For instance, we can extract variables with <code>$</code>:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dt<span class="op">$</span>x</code></pre></div>
-<pre><code>## [1] -2.44545864  0.77767416  0.09921782 -0.31655036 -1.49489360</code></pre>
+<pre><code>## [1] -0.4418792 -0.6114299 -0.7466098 -0.0185502 -1.1836989</code></pre>
 <p>or rows with row indices:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dt[<span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">4</span>),]</code></pre></div>
 <pre><code>##    id          x         y
-## 1:  2  0.7776742 0.5518176
-## 2:  4 -0.3165504 0.2319177</code></pre>
+## 1:  2 -0.6114299 0.3278598
+## 2:  4 -0.0185502 0.5599456</code></pre>
 <p>However, data tables use unquoted variables names (like <em>dplyr</em>) by default:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dt[,x]</code></pre></div>
-<pre><code>## [1] -2.44545864  0.77767416  0.09921782 -0.31655036 -1.49489360</code></pre>
+<pre><code>## [1] -0.4418792 -0.6114299 -0.7466098 -0.0185502 -1.1836989</code></pre>
 <p>In case we need to store the variable name into another variable, with have to use the additional argument <code>with</code>:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">var &lt;-<span class="st"> &quot;x&quot;</span>
 dt[, var, with=<span class="ot">FALSE</span>]</code></pre></div>
-<pre><code>##              x
-## 1: -2.44545864
-## 2:  0.77767416
-## 3:  0.09921782
-## 4: -0.31655036
-## 5: -1.49489360</code></pre>
+<pre><code>##             x
+## 1: -0.4418792
+## 2: -0.6114299
+## 3: -0.7466098
+## 4: -0.0185502
+## 5: -1.1836989</code></pre>
 <p>Note also that instead of getting a vector, now we get a data.table with a single column “x” in the first. This behavior is the main culprit that when replacing data frames with data tables one may need to change quite a bit of code.</p>
 </div>
 <div id="fast-reading-and-writing" class="section level3">
@@ -477,12 +476,12 @@ dt[, var, with=<span class="ot">FALSE</span>]</code></pre></div>
 <p>If your computer has enough memory and speed is not an issue, your interest for data tables may end here. You can just transform data table into a data frame with <code>setDF</code> (and the other way around with <code>setDT</code>). Let’s transform our data table to data frame:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">setDF</span>(dt)
 dt</code></pre></div>
-<pre><code>##   id           x          y
-## 1  1 -2.44545864 0.74922139
-## 2  2  0.77767416 0.55181763
-## 3  3  0.09921782 0.07532866
-## 4  4 -0.31655036 0.23191774
-## 5  5 -1.49489360 0.30977826</code></pre>
+<pre><code>##   id          x         y
+## 1  1 -0.4418792 0.4591970
+## 2  2 -0.6114299 0.3278598
+## 3  3 -0.7466098 0.3155555
+## 4  4 -0.0185502 0.5599456
+## 5  5 -1.1836989 0.1376128</code></pre>
 <p>Do you see that the colons after row names are gone? This means <code>dt</code> now is a data frame.</p>
 <p>Note that this function behaves very differently from what we have learned earlier: it modifies the object <em>in place</em> (by reference). We do not have to assign the result into a new variable using a construct like <code>df &lt;- setDF(dt)</code> (but we still can write like this, handy when using magrittr pipes). This is a manifestation of the power of data.tables: the object is not copied but the same object is modified in memory instead. <code>setDF</code> and <code>setDT</code> are very efficient, even huge tables are converted instantly with virtually no need for any additional memory.</p>
 <p>However, big powers come hand-in-hand with big responsibility: it is easy to forget that <code>setDF</code> modifies the function argument.</p>

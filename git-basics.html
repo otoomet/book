@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html >
-
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 4 Git and GitHub | Technical Foundations of Informatics</title>
-  <meta name="description" content="The course reader for INFO 201: Technical Foundations of Informatics.">
-  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+  <meta name="description" content="The course reader for INFO 201: Technical Foundations of Informatics." />
+  <meta name="generator" content="bookdown 0.10 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 4 Git and GitHub | Technical Foundations of Informatics" />
   <meta property="og:type" content="book" />
@@ -22,16 +21,16 @@
   <meta name="twitter:description" content="The course reader for INFO 201: Technical Foundations of Informatics." />
   <meta name="twitter:image" content="https://info201.github.io/img/cover-img.png" />
 
-<meta name="author" content="Michael Freeman and Joel Ross">
+<meta name="author" content="Michael Freeman and Joel Ross" />
 
 
-<meta name="date" content="2019-05-06">
+<meta name="date" content="2019-05-16" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
-  <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
+  <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon" />
 <link rel="prev" href="markdown.html">
 <link rel="next" href="r-intro.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
@@ -167,7 +166,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="4.3.2" data-path="git-basics.html"><a href="git-basics.html#committing"><i class="fa fa-check"></i><b>4.3.2</b> Committing</a></li>
 <li class="chapter" data-level="4.3.3" data-path="git-basics.html"><a href="git-basics.html#commit-history"><i class="fa fa-check"></i><b>4.3.3</b> Commit History</a></li>
 <li class="chapter" data-level="4.3.4" data-path="git-basics.html"><a href="git-basics.html#reviewing-the-process"><i class="fa fa-check"></i><b>4.3.4</b> Reviewing the Process</a></li>
-<li class="chapter" data-level="4.3.5" data-path="git-basics.html"><a href="git-basics.html#the-.gitignore-file"><i class="fa fa-check"></i><b>4.3.5</b> The <code>.gitignore</code> File</a></li>
+<li class="chapter" data-level="4.3.5" data-path="git-basics.html"><a href="git-basics.html#gitignore"><i class="fa fa-check"></i><b>4.3.5</b> The <code>.gitignore</code> File</a></li>
 </ul></li>
 <li class="chapter" data-level="4.4" data-path="git-basics.html"><a href="git-basics.html#github-and-remotes"><i class="fa fa-check"></i><b>4.4</b> GitHub and Remotes</a><ul>
 <li class="chapter" data-level="4.4.1" data-path="git-basics.html"><a href="git-basics.html#forking-and-cloning"><i class="fa fa-check"></i><b>4.4.1</b> Forking and Cloning</a></li>
@@ -495,7 +494,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="checking-status" class="section level3">
 <h3><span class="header-section-number">4.2.2</span> Checking Status</h3>
 <p>Now that you have a repo, the next thing you should do is check its <strong>status</strong>:</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">git</span> status</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="fu">git</span> status</code></pre></div>
 <p>The <code>git status</code> command will give you information about the current “state” of the repo. For example, running this command tells us a few things:</p>
 <ul>
 <li>That you’re actually in a repo (otherwise you’ll get an error)</li>
@@ -508,6 +507,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p class="alert alert-warning">
 <strong>If you are ever stuck, use <code>git status</code> to figure out what to do next!</strong>
 </p>
+<p>If the output of <code>git status</code> seems to verbose to you, you may use <code>git status -s</code>, the “short” version of it instead. It does gives you only the very basic information about what’s going on, but this is exactly what you need if you are an experienced git user.</p>
 <p>This makes <code>git status</code> the most useful command in the entire process. Learn it, use it, love it.</p>
 </div>
 </div>
@@ -520,11 +520,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>The first thing you need to do is to save those changes to the <strong>staging area</strong>. This is like a shopping cart in an online store: you put changes in temporary storage before you commit to recording them in the database (e.g., before hitting “purchase”).</p>
 <p>We add files to the staging area using the <code>git add</code> command:</p>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">git</span> add filename</code></pre></div>
-<p>(Replacing <code>filename</code> with the name/path of the file/folder you want to add). You can also add all the contents of the directory (tracked or untracked) to the staging area with:</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">git</span> add .</code></pre></div>
-<p>(This is what I tend to use, unless I explicitly don’t want to save changes to some files.)</p>
+<p>(Replacing <code>filename</code> with the name/path of the file/folder you want to add). If you are sure you want to add <em>all the contents</em> of the directory (tracked or untracked) to the staging area, you can do it with:</p>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="fu">git</span> add .</code></pre></div>
 <p class="alert alert-danger">
-<strong>WARNING</strong>: This will add <em>everything</em> in your current directory to your git repo, unless ignored through the <code>.gitignore</code> file (see below). This may include your top secret passwords, gigabytes of data, all your illegally ripped dvds, and just files that are unnecessary to upload.
+<strong>WARNING</strong>: This will add <em>everything</em> in your current directory to your git repo, unless ignored through the <code>.gitignore</code> file (<a href="git-basics.html#gitignore">see below</a>). This may include your top secret passwords, gigabytes of data, all your illegally ripped dvds, and just files that are unnecessary to upload.
 </p>
 <p>Add the <code>books.md</code> file to the staging area. And of course, now that you’ve changed the repo (you put something in the staging area), you should run <code>git status</code> to see what it says to do. Notice that it tells you what files are in the staging area, as well as the command to <em>unstage</em> those files (remove them from the “cart”).</p>
 </div>
@@ -536,6 +535,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p class="alert alert-danger">
 <strong>WARNING</strong>: If you forget the <code>-m</code> option, git will put you into a command-line <em>text editor</em> so that you can compose a message (then save and exit to finish the commit). If you haven’t done any other configuration, you might be dropped into the <strong><em>vim</em></strong> editor. Type <strong><code>:q</code></strong> (<strong>colon</strong> then <strong>q</strong>) and hit enter to flee from this horrid place and try again, remembering the <code>-m</code> option! Don’t panic: getting stuck in <em>vim</em> <a href="https://stackoverflow.blog/2017/05/23/stack-overflow-helping-one-million-developers-exit-vim/">happens to everyone</a>.
 </p>
+<p>If you do not add any new files to git control, you can also use the shorthand form</p>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="fu">git</span> commit -am <span class="st">&quot;message&quot;</span></code></pre></div>
+<p>instead of <code>git add</code> and <code>git commit</code> separately. the <code>-a</code> option tells git to include <em>all modified files</em> into this commit.</p>
 <div id="commit-message-etiquette" class="section level4">
 <h4><span class="header-section-number">4.3.2.1</span> Commit Message Etiquette</h4>
 <p>Your commit messages should <a href="https://xkcd.com/1296/">be informative</a> about what changes the commit is making to the repo. <code>&quot;stuff&quot;</code> is not a good commit message. <code>&quot;Fix critical authorization error&quot;</code> is a good commit message.</p>
@@ -573,11 +575,11 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ol>
 <p>Be sure and check the status at each step to make sure everything works!</p>
 <p>You can also add more files besides <code>books.md</code>, such as <code>movies.md</code> or <code>restaurants.md</code>. When your repository grows, you can check which files are tracked by <em>git</em>, both already committed and in the staging area, by</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">git</span> ls-files</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="fu">git</span> ls-files</code></pre></div>
 <p>(Note that <code>git status</code> does not mention tracked files that are not changed.)</p>
 </div>
 </div>
-<div id="the-.gitignore-file" class="section level3">
+<div id="gitignore" class="section level3">
 <h3><span class="header-section-number">4.3.5</span> The <code>.gitignore</code> File</h3>
 <p>Sometimes you want git to always ignore particular directories or files in your project. For example, if you use a Mac and you tend to organize your files in the Finder, the operating system will create a hidden file in that folder named <code>.DS_Store</code> (the leading dot makes it “hidden”) to track the positions of icons, which folders have been “expanded”, etc. This file will likely be different from machine to machine. If it is added to your repository and you work from multiple machines (or as part of a team), it could lead to a lot of merge conflicts (not to mention cluttering up the folders for Windows users).</p>
 <p>You can tell git to ignore files like these by creating a special <em>hidden</em> file in your project directory called <code>.gitignore</code> (note the leading dot). This file contains a <em>list</em> of files or folders that git should “ignore” and pretend don’t exist. The file uses a very simple format: each line contains the path to a directory or file to ignore; multiple files are placed on multiple lines. For example:</p>
@@ -591,8 +593,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
 <span class="co"># example: don&#39;t include large files or libraries</span>
 <span class="ex">movies/my_four_hour_epic.mov</span></code></pre></div>
-<p>Note that the easiest way to create the <code>.gitignore</code> file is to use your preferred text editor (e.g., Atom); select <code>File &gt; New</code> from the menu and choose to make the <code>.gitignore</code> file <em>directly inside</em> your repo.</p>
-<p>If you are on a Mac, we <strong>strongly suggest</strong> <em>globally ignoring</em> your <code>.DS_Store</code> file. There’s no need to ever share or track this file. To always ignore this file on your machine, simply run these lines of code:</p>
+<p>Note that the easiest way to create the <code>.gitignore</code> file is to use your preferred text editor (e.g., Atom); select <code>File &gt; New</code> from the menu and choose to make the <code>.gitignore</code> file <em>directly inside</em> your repo. <code>.gitgnore</code> should be added and committed to the repo to make the ignore-rules common across the project. There are also ways to ignore files on a single computer only, see <a href="https://help.github.com/en/articles/ignoring-files">documentation on github</a> for details.</p>
+<p>You may want to ignore certain files in <em>all your repositories</em>. For instance, if you are on a Mac, we <strong>strongly suggest</strong> <em>globally ignoring</em> your <code>.DS_Store</code> file. There’s no need to ever share or track this file. To always ignore this file on your machine, simply run these lines of code:</p>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="co"># Run these lines on your terminal to configure git to ignore .DS_Store</span>
 <span class="fu">git</span> config --global core.excludesfile ~/.gitignore
 <span class="bu">echo</span> .DS_Store <span class="op">&gt;&gt;</span> ~/.gitignore</code></pre></div>
@@ -607,7 +609,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul>
 <p>Repositories stored on GitHub are examples of <strong>remotes</strong>: other repos that are linked to your local one. Each repo can have multiple remotes, and you can synchronize commits between them.</p>
 <p>Each remote has a URL associated with it (where on the internet the remote copy of the repo can be found), but they are given “alias” names (like browser bookmarks). By convention, the remote repo stored on GitHub’s servers is named <strong><code>origin</code></strong>, since it tends to be the “origin” of any code you’ve started working on.</p>
-<p>Remotes don’t need to be stored on GitHub’s computers, but it’s one of the most popular places to put repos.</p>
+<p>Remotes don’t need to be stored on GitHub’s computers, but it’s one of the most popular places to put repos. One repo can also have more than one remote, for instance <code>origin</code> for the github-version of your repo, and <code>upstream</code> for the repo you initially forked you code from.</p>
 <div id="forking-and-cloning" class="section level3">
 <h3><span class="header-section-number">4.4.1</span> Forking and Cloning</h3>
 <p>In order to use GitHub, you’ll need to <a href="https://github.com/join"><strong>create a free GitHub account</strong></a>, which you should have done as part of setting up your machine.</p>
