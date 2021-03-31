@@ -10,15 +10,33 @@ In short, you'll need to install the following programs: see below for more info
 
     - **GitHub**: A web service for hosting code online. You don't actually need to _install_ anything (GitHub uses `git`), but you'll need to sign up for the service.
 
-- **Bash**: A _command-line interface_ for controlling your computer. `git` is a command-line program so you'll need a command shell to use it. Macs already have a Bash program called _Terminal_. On Windows, installing `git` will also install a Bash shell called _Git Bash_, or you can try the Linux subsystem for Windows 10.
+- **shell**: A _command-line interface_ for controlling your
+  computer. `git` is a command-line program so you'll need a command
+  shell to use it.  Macs already have a Bash (or more recently, _zsh_) program called
+  _Terminal_. On Windows, installing `git` will also install a Bash
+  shell called _Git Bash_, or you can try the Linux subsystem for
+  Windows 10.
+  
+  Note that Windows has two additional command shells, _Windows
+  Powershell_ and _command prompt_ (aka _DOS prompt_ or _CMD_).  These
+  are not bash-compatible and we do not discuss these shells in this
+  book. 
 
-- **Atom**: A lightweight text editor that supports programming in lots of different languages.
+- **R**: a programming language commonly used for working with
+  data. This is the primary programming language used throughout this
+  book. "Installing R" actually means installing tools that will let
+  your computer understand and run R code.
 
-    - You are welcome to use another text editor if you wish; some further suggestions are included.
+- **RStudio**: An graphical editor (IDE or _Integrated Development
+  Environmnet_) for writing and running R
+  code. This will soon become our primary development application. 
 
-- **R**: a programming language commonly used for working with data. This is the primary programming language used throughout this book. "Installing R" actually means installing tools that will let your computer understand and run R code.
+- **Atom**: If you want another text editor that is better suited for
+  markdown than RStudio, you can install _Atom_, a lightweight text
+  editor that supports programming in lots of different languages.
 
-- **RStudio**: An graphical editor for writing and running R code. This will soon become our primary development application.
+- You are welcome to use other text editors if you wish; some further
+  suggestions are included.
 
 The following sections have additional information about the purpose of each component, how to install it, and alternative configurations.
 
@@ -26,7 +44,10 @@ The following sections have additional information about the purpose of each com
 ## Git
 **`git`** is a version control system that provides a set of commands that allow you to manage changes to written code, particularly when collaborating with other programmers (much more on this in [Chapter 4](#git-basics)). To start, you'll need to [download](https://git-scm.com/downloads) and install the software. If you are on a Mac, `git` should already be installed.
 
-If you are using a Windows machine, this will also install a program called _Git Bash_, which provides a text-based interface for executing commands on your computer. For alternative/additional Windows command-line tools, see below.
+If you are using a Windows machine, this will also install a program
+called _Git Bash_, which provides a text-based interface for executing
+commands on your computer. For alternative/additional Windows
+command-line tools, see below.
 
 ### GitHub
 GitHub is a website that is used to store copies of computer code that are being managed with `git` (think "Imgur for code"). Students in the INFO 201 course will use GitHub to turn in programming assignments.
@@ -49,13 +70,23 @@ On Windows, we recommend using [**Git Bash**](https://git-scm.com/downloads), wh
 
 - Note that Windows does come with its own command-prompt, called the _DOS Prompt_, but it has a different set of commands and features. _Powershell_ is a more powerful version of the DOS prompt if you really want to get into the Windows Management Framework. But Bash is more common in open-source programming like we'll be doing, and so we will be focusing on that set of commands.
 
-Alternatively, the latest updates to Windows 10 (August 2016 or later) _does_ includes a version of an integrated Bash shell. You can access this by [enabling the subsystem for Linux](https://msdn.microsoft.com/en-us/commandline/wsl/install_guide) and then running `bash` in the command prompt.
+Alternatively, you can use bash shell in the linux subsystem.  You can
+access this by [enabling the subsystem for
+Linux](https://msdn.microsoft.com/en-us/commandline/wsl/install_guide)
+and then running `bash` in the command prompt.
 
 
 ## Text Editors
 In order to produce computer code, you need somewhere to write it (and we don't want to write it in MS Word!) There are a variety of available programs that provide an interface for editing code. A major advantage of these programs is that they provide automatic formatting/coloring for easier interpretation of the code, along with cool features like auto-completion and integration with version control.
 
-While we will primarily use RStudio (below) which has a great built-in text editor, you'll sometimes want to use another text editor which is lighter weight (e.g., runs faster), more robust, or supports a different programming language. There are lots of different coding text editors out there, all of which have slightly different appearances and features. You only need to download and use one of the following programs (we recommend **Atom** as a default), but feel free to try out different ones to find something you like (and then evangelize about it to your friends!)
+While we will primarily use RStudio (below) which has a great built-in
+text editor, you'll sometimes want to use another text editor which is
+lighter weight (e.g., runs faster), more robust, or supports a
+different programming language. There are lots of different coding
+text editors out there, all of which have slightly different
+appearances and features. You can get by by using only RStudio, but if
+you are interested, download and use any of the following programs (we
+recommend **Atom** as a default).  Fee free to try out different ones to find something you like (and then evangelize about it to your friends!)
 
 <p class="alert alert-info">Programming involves working with many different file types, each detailed by their extension. It is useful to specify that your computer should show these extensions in the File Explorer or Finder; see instructions [for Windows](https://support.microsoft.com/en-us/help/865219/how-to-show-or-hide-file-name-extensions-in-windows-explorer) or [for Mac](https://support.apple.com/kb/PH25381?locale=en_US) to enable this.</p>
 

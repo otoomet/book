@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html >
-
+<html lang="" xml:lang="">
 <head>
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>D Using Remote Server | Technical Foundations of Informatics</title>
-  <meta name="description" content="The course reader for INFO 201: Technical Foundations of Informatics.">
-  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+  <meta name="description" content="The course reader for INFO 201: Technical Foundations of Informatics." />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
   <meta property="og:title" content="D Using Remote Server | Technical Foundations of Informatics" />
   <meta property="og:type" content="book" />
@@ -22,17 +21,17 @@
   <meta name="twitter:description" content="The course reader for INFO 201: Technical Foundations of Informatics." />
   <meta name="twitter:image" content="https://info201.github.io/img/cover-img.png" />
 
-<meta name="author" content="Michael Freeman and Joel Ross">
+<meta name="author" content="Michael Freeman and Joel Ross" />
 
 
-<meta name="date" content="2019-05-16">
+<meta name="date" content="2021-03-30" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
-  <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
-<link rel="prev" href="data-tables.html">
+  <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon" />
+<link rel="prev" href="data-tables.html"/>
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -41,6 +40,9 @@
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
 
 
 
@@ -66,7 +68,6 @@ a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
 a.sourceLine:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
-div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
@@ -161,15 +162,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2" data-path="command-line.html"><a href="command-line.html"><i class="fa fa-check"></i><b>2</b> The Command Line</a><ul>
 <li class="chapter" data-level="2.1" data-path="command-line.html"><a href="command-line.html#accessing-the-command-line"><i class="fa fa-check"></i><b>2.1</b> Accessing the Command-Line</a></li>
 <li class="chapter" data-level="2.2" data-path="command-line.html"><a href="command-line.html#navigating-the-command-line"><i class="fa fa-check"></i><b>2.2</b> Navigating the Command Line</a><ul>
-<li class="chapter" data-level="2.2.1" data-path="command-line.html"><a href="command-line.html#changing-directories"><i class="fa fa-check"></i><b>2.2.1</b> Changing Directories</a></li>
-<li class="chapter" data-level="2.2.2" data-path="command-line.html"><a href="command-line.html#listing-files"><i class="fa fa-check"></i><b>2.2.2</b> Listing Files</a></li>
-<li class="chapter" data-level="2.2.3" data-path="command-line.html"><a href="command-line.html#paths"><i class="fa fa-check"></i><b>2.2.3</b> Paths</a></li>
+<li class="chapter" data-level="2.2.1" data-path="command-line.html"><a href="command-line.html#file-system-tree"><i class="fa fa-check"></i><b>2.2.1</b> File System Tree</a></li>
+<li class="chapter" data-level="2.2.2" data-path="command-line.html"><a href="command-line.html#working-directory"><i class="fa fa-check"></i><b>2.2.2</b> Working Directory</a></li>
+<li class="chapter" data-level="2.2.3" data-path="command-line.html"><a href="command-line.html#changing-directories"><i class="fa fa-check"></i><b>2.2.3</b> Changing Directories</a></li>
+<li class="chapter" data-level="2.2.4" data-path="command-line.html"><a href="command-line.html#listing-files"><i class="fa fa-check"></i><b>2.2.4</b> Listing Files</a></li>
+<li class="chapter" data-level="2.2.5" data-path="command-line.html"><a href="command-line.html#paths"><i class="fa fa-check"></i><b>2.2.5</b> Paths</a></li>
 </ul></li>
 <li class="chapter" data-level="2.3" data-path="command-line.html"><a href="command-line.html#file-commands"><i class="fa fa-check"></i><b>2.3</b> File Commands</a><ul>
 <li class="chapter" data-level="2.3.1" data-path="command-line.html"><a href="command-line.html#learning-new-commands"><i class="fa fa-check"></i><b>2.3.1</b> Learning New Commands</a></li>
 </ul></li>
 <li class="chapter" data-level="2.4" data-path="command-line.html"><a href="command-line.html#dealing-with-errors"><i class="fa fa-check"></i><b>2.4</b> Dealing With Errors</a></li>
-<li class="chapter" data-level="" data-path="command-line.html"><a href="command-line.html#resources-1"><i class="fa fa-check"></i>Resources</a></li>
+<li class="chapter" data-level="" data-path="setup-machine.html"><a href="setup-machine.html#resources"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="markdown.html"><a href="markdown.html"><i class="fa fa-check"></i><b>3</b> Markdown</a><ul>
 <li class="chapter" data-level="3.1" data-path="markdown.html"><a href="markdown.html#writing-markdown"><i class="fa fa-check"></i><b>3.1</b> Writing Markdown</a><ul>
@@ -177,7 +180,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.1.2" data-path="markdown.html"><a href="markdown.html#text-blocks"><i class="fa fa-check"></i><b>3.1.2</b> Text Blocks</a></li>
 </ul></li>
 <li class="chapter" data-level="3.2" data-path="markdown.html"><a href="markdown.html#rendering-markdown"><i class="fa fa-check"></i><b>3.2</b> Rendering Markdown</a></li>
-<li class="chapter" data-level="" data-path="markdown.html"><a href="markdown.html#resources-2"><i class="fa fa-check"></i>Resources</a></li>
+<li class="chapter" data-level="" data-path="setup-machine.html"><a href="setup-machine.html#resources"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="git-basics.html"><a href="git-basics.html"><i class="fa fa-check"></i><b>4</b> Git and GitHub</a><ul>
 <li class="chapter" data-level="4.1" data-path="git-basics.html"><a href="git-basics.html#what-is-this-git-thing-anyway"><i class="fa fa-check"></i><b>4.1</b> What is this <em>git</em> thing anyway?</a><ul>
@@ -202,7 +205,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="4.5" data-path="git-basics.html"><a href="git-basics.html#course-assignments-on-github"><i class="fa fa-check"></i><b>4.5</b> Course Assignments on GitHub</a></li>
 <li class="chapter" data-level="4.6" data-path="git-basics.html"><a href="git-basics.html#command-summary"><i class="fa fa-check"></i><b>4.6</b> Command Summary</a></li>
-<li class="chapter" data-level="" data-path="git-basics.html"><a href="git-basics.html#resources-3"><i class="fa fa-check"></i>Resources</a></li>
+<li class="chapter" data-level="" data-path="setup-machine.html"><a href="setup-machine.html#resources"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="r-intro.html"><a href="r-intro.html"><i class="fa fa-check"></i><b>5</b> Introduction to R</a><ul>
 <li class="chapter" data-level="5.1" data-path="r-intro.html"><a href="r-intro.html#programming-with-r"><i class="fa fa-check"></i><b>5.1</b> Programming with R</a></li>
@@ -215,7 +218,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.4.1" data-path="r-intro.html"><a href="r-intro.html#basic-data-types"><i class="fa fa-check"></i><b>5.4.1</b> Basic Data Types</a></li>
 </ul></li>
 <li class="chapter" data-level="5.5" data-path="r-intro.html"><a href="r-intro.html#gettinghelp"><i class="fa fa-check"></i><b>5.5</b> Getting Help</a></li>
-<li class="chapter" data-level="" data-path="r-intro.html"><a href="r-intro.html#resources-4"><i class="fa fa-check"></i>Resources</a></li>
+<li class="chapter" data-level="" data-path="setup-machine.html"><a href="setup-machine.html#resources"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>6</b> Functions</a><ul>
 <li class="chapter" data-level="6.1" data-path="functions.html"><a href="functions.html#what-are-functions"><i class="fa fa-check"></i><b>6.1</b> What are Functions?</a></li>
@@ -224,7 +227,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.4" data-path="functions.html"><a href="functions.html#loading-functions"><i class="fa fa-check"></i><b>6.4</b> Loading Functions</a></li>
 <li class="chapter" data-level="6.5" data-path="functions.html"><a href="functions.html#writing-functions"><i class="fa fa-check"></i><b>6.5</b> Writing Functions</a></li>
 <li class="chapter" data-level="6.6" data-path="functions.html"><a href="functions.html#conditional-statements"><i class="fa fa-check"></i><b>6.6</b> Conditional Statements</a></li>
-<li class="chapter" data-level="" data-path="functions.html"><a href="functions.html#resources-5"><i class="fa fa-check"></i>Resources</a></li>
+<li class="chapter" data-level="" data-path="setup-machine.html"><a href="setup-machine.html#resources"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="vectors.html"><a href="vectors.html"><i class="fa fa-check"></i><b>7</b> Vectors</a><ul>
 <li class="chapter" data-level="7.1" data-path="vectors.html"><a href="vectors.html#what-is-a-vector"><i class="fa fa-check"></i><b>7.1</b> What is a Vector?</a></li>
@@ -242,7 +245,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.5.3" data-path="vectors.html"><a href="vectors.html#recycling"><i class="fa fa-check"></i><b>7.5.3</b> Recycling</a></li>
 <li class="chapter" data-level="7.5.4" data-path="vectors.html"><a href="vectors.html#r-is-a-vectorized-world"><i class="fa fa-check"></i><b>7.5.4</b> R Is a Vectorized World</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="vectors.html"><a href="vectors.html#resources-6"><i class="fa fa-check"></i>Resources</a></li>
+<li class="chapter" data-level="" data-path="setup-machine.html"><a href="setup-machine.html#resources"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="lists.html"><a href="lists.html"><i class="fa fa-check"></i><b>8</b> Lists</a><ul>
 <li class="chapter" data-level="8.1" data-path="lists.html"><a href="lists.html#what-is-a-list"><i class="fa fa-check"></i><b>8.1</b> What is a List?</a></li>
@@ -256,7 +259,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="8.4" data-path="lists.html"><a href="lists.html#modifying-lists"><i class="fa fa-check"></i><b>8.4</b> Modifying Lists</a></li>
 <li class="chapter" data-level="8.5" data-path="lists.html"><a href="lists.html#the-lapply-function"><i class="fa fa-check"></i><b>8.5</b> The <code>lapply()</code> Function</a></li>
-<li class="chapter" data-level="" data-path="lists.html"><a href="lists.html#resources-7"><i class="fa fa-check"></i>Resources</a></li>
+<li class="chapter" data-level="" data-path="setup-machine.html"><a href="setup-machine.html#resources"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="data-frames.html"><a href="data-frames.html"><i class="fa fa-check"></i><b>9</b> Data Frames</a><ul>
 <li class="chapter" data-level="9.1" data-path="data-frames.html"><a href="data-frames.html#what-is-a-data-frame"><i class="fa fa-check"></i><b>9.1</b> What is a Data Frame?</a><ul>
@@ -265,10 +268,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.1.3" data-path="data-frames.html"><a href="data-frames.html#accessing-data-in-data-frames"><i class="fa fa-check"></i><b>9.1.3</b> Accessing Data in Data Frames</a></li>
 </ul></li>
 <li class="chapter" data-level="9.2" data-path="data-frames.html"><a href="data-frames.html#csv-files"><i class="fa fa-check"></i><b>9.2</b> Working with CSV Data</a><ul>
-<li class="chapter" data-level="9.2.1" data-path="data-frames.html"><a href="data-frames.html#working-directory"><i class="fa fa-check"></i><b>9.2.1</b> Working Directory</a></li>
+<li class="chapter" data-level="9.2.1" data-path="command-line.html"><a href="command-line.html#working-directory"><i class="fa fa-check"></i><b>9.2.1</b> Working Directory</a></li>
 </ul></li>
 <li class="chapter" data-level="9.3" data-path="data-frames.html"><a href="data-frames.html#factors"><i class="fa fa-check"></i><b>9.3</b> Factor Variables</a></li>
-<li class="chapter" data-level="" data-path="data-frames.html"><a href="data-frames.html#resources-8"><i class="fa fa-check"></i>Resources</a></li>
+<li class="chapter" data-level="" data-path="setup-machine.html"><a href="setup-machine.html#resources"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="dplyr.html"><a href="dplyr.html"><i class="fa fa-check"></i><b>10</b> The <code>dplyr</code> Library</a><ul>
 <li class="chapter" data-level="10.1" data-path="dplyr.html"><a href="dplyr.html#a-grammar-of-data-manipulation"><i class="fa fa-check"></i><b>10.1</b> A Grammar of Data Manipulation</a></li>
@@ -288,7 +291,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.6" data-path="dplyr.html"><a href="dplyr.html#non-standard-evaluation-vs.-standard-evaluation"><i class="fa fa-check"></i><b>10.6</b> Non-Standard Evaluation vs. Standard Evaluation</a><ul>
 <li class="chapter" data-level="10.6.1" data-path="dplyr.html"><a href="dplyr.html#explicit-standard-evaluation"><i class="fa fa-check"></i><b>10.6.1</b> Explicit Standard Evaluation</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="dplyr.html"><a href="dplyr.html#resources-9"><i class="fa fa-check"></i>Resources</a></li>
+<li class="chapter" data-level="" data-path="setup-machine.html"><a href="setup-machine.html#resources"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="apis.html"><a href="apis.html"><i class="fa fa-check"></i><b>11</b> Accessing Web APIs</a><ul>
 <li class="chapter" data-level="11.1" data-path="apis.html"><a href="apis.html#what-is-a-web-api"><i class="fa fa-check"></i><b>11.1</b> What is a Web API?</a></li>
@@ -301,7 +304,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.4.1" data-path="apis.html"><a href="apis.html#parsing-json"><i class="fa fa-check"></i><b>11.4.1</b> Parsing JSON</a></li>
 <li class="chapter" data-level="11.4.2" data-path="apis.html"><a href="apis.html#flattening-data"><i class="fa fa-check"></i><b>11.4.2</b> Flattening Data</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="apis.html"><a href="apis.html#resources-10"><i class="fa fa-check"></i>Resources</a></li>
+<li class="chapter" data-level="" data-path="setup-machine.html"><a href="setup-machine.html#resources"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
 <li class="chapter" data-level="12" data-path="r-markdown.html"><a href="r-markdown.html"><i class="fa fa-check"></i><b>12</b> R Markdown</a><ul>
 <li class="chapter" data-level="12.1" data-path="r-markdown.html"><a href="r-markdown.html#r-markdown-and-rstudio"><i class="fa fa-check"></i><b>12.1</b> R Markdown and RStudio</a><ul>
@@ -319,7 +322,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="12.3.2" data-path="r-markdown.html"><a href="r-markdown.html#rendering-lists"><i class="fa fa-check"></i><b>12.3.2</b> Rendering Lists</a></li>
 <li class="chapter" data-level="12.3.3" data-path="r-markdown.html"><a href="r-markdown.html#rendering-tables"><i class="fa fa-check"></i><b>12.3.3</b> Rendering Tables</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="r-markdown.html"><a href="r-markdown.html#resources-11"><i class="fa fa-check"></i>Resources</a></li>
+<li class="chapter" data-level="" data-path="setup-machine.html"><a href="setup-machine.html#resources"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
 <li class="chapter" data-level="13" data-path="ggplot2.html"><a href="ggplot2.html"><i class="fa fa-check"></i><b>13</b> The <code>gglot2</code> Library</a><ul>
 <li class="chapter" data-level="13.1" data-path="ggplot2.html"><a href="ggplot2.html#a-grammar-of-graphics"><i class="fa fa-check"></i><b>13.1</b> A Grammar of Graphics</a></li>
@@ -338,7 +341,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="13.4" data-path="ggplot2.html"><a href="ggplot2.html#plotting-in-scripts"><i class="fa fa-check"></i><b>13.4</b> Plotting in Scripts</a></li>
 <li class="chapter" data-level="13.5" data-path="ggplot2.html"><a href="ggplot2.html#other-visualization-libraries"><i class="fa fa-check"></i><b>13.5</b> Other Visualization Libraries</a></li>
-<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#resources-12"><i class="fa fa-check"></i>Resources</a></li>
+<li class="chapter" data-level="" data-path="setup-machine.html"><a href="setup-machine.html#resources"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
 <li class="chapter" data-level="14" data-path="git-branches.html"><a href="git-branches.html"><i class="fa fa-check"></i><b>14</b> Git Branches</a><ul>
 <li class="chapter" data-level="14.1" data-path="git-branches.html"><a href="git-branches.html#git-branches-1"><i class="fa fa-check"></i><b>14.1</b> Git Branches</a></li>
@@ -349,7 +352,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="14.4" data-path="git-branches.html"><a href="git-branches.html#github-and-branches"><i class="fa fa-check"></i><b>14.4</b> GitHub and Branches</a><ul>
 <li class="chapter" data-level="14.4.1" data-path="git-branches.html"><a href="git-branches.html#github-pages"><i class="fa fa-check"></i><b>14.4.1</b> GitHub Pages</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="git-branches.html"><a href="git-branches.html#resources-13"><i class="fa fa-check"></i>Resources</a></li>
+<li class="chapter" data-level="" data-path="setup-machine.html"><a href="setup-machine.html#resources"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
 <li class="chapter" data-level="15" data-path="git-collaboration.html"><a href="git-collaboration.html"><i class="fa fa-check"></i><b>15</b> Git Collaboration</a><ul>
 <li class="chapter" data-level="15.1" data-path="git-collaboration.html"><a href="git-collaboration.html#centralized-workflow"><i class="fa fa-check"></i><b>15.1</b> Centralized Workflow</a></li>
@@ -357,7 +360,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="15.3" data-path="git-collaboration.html"><a href="git-collaboration.html#forking-workflow"><i class="fa fa-check"></i><b>15.3</b> Forking Workflow</a><ul>
 <li class="chapter" data-level="15.3.1" data-path="git-collaboration.html"><a href="git-collaboration.html#pull-requests"><i class="fa fa-check"></i><b>15.3.1</b> Pull Requests</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="git-collaboration.html"><a href="git-collaboration.html#resources-14"><i class="fa fa-check"></i>Resources</a></li>
+<li class="chapter" data-level="" data-path="setup-machine.html"><a href="setup-machine.html#resources"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
 <li class="chapter" data-level="16" data-path="shiny.html"><a href="shiny.html"><i class="fa fa-check"></i><b>16</b> The <code>shiny</code> Framework</a><ul>
 <li class="chapter" data-level="16.1" data-path="shiny.html"><a href="shiny.html#creating-shiny-apps"><i class="fa fa-check"></i><b>16.1</b> Creating Shiny Apps</a><ul>
@@ -366,7 +369,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="16.1.3" data-path="shiny.html"><a href="shiny.html#the-server"><i class="fa fa-check"></i><b>16.1.3</b> The Server</a></li>
 </ul></li>
 <li class="chapter" data-level="16.2" data-path="shiny.html"><a href="shiny.html#publishing-shiny-apps"><i class="fa fa-check"></i><b>16.2</b> Publishing Shiny Apps</a></li>
-<li class="chapter" data-level="" data-path="shiny.html"><a href="shiny.html#resources-15"><i class="fa fa-check"></i>Resources</a></li>
+<li class="chapter" data-level="" data-path="setup-machine.html"><a href="setup-machine.html#resources"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
 <li class="appendix"><span><b>Special Topics</b></span></li>
 <li class="chapter" data-level="A" data-path="plotly.html"><a href="plotly.html"><i class="fa fa-check"></i><b>A</b> Plotly</a><ul>
@@ -374,7 +377,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="A.2" data-path="plotly.html"><a href="plotly.html#basic-charts"><i class="fa fa-check"></i><b>A.2</b> Basic Charts</a></li>
 <li class="chapter" data-level="A.3" data-path="plotly.html"><a href="plotly.html#layout"><i class="fa fa-check"></i><b>A.3</b> Layout</a></li>
 <li class="chapter" data-level="A.4" data-path="plotly.html"><a href="plotly.html#hovers"><i class="fa fa-check"></i><b>A.4</b> Hovers</a></li>
-<li class="chapter" data-level="" data-path="plotly.html"><a href="plotly.html#resources-16"><i class="fa fa-check"></i>Resources</a></li>
+<li class="chapter" data-level="" data-path="setup-machine.html"><a href="setup-machine.html#resources"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
 <li class="chapter" data-level="B" data-path="control-structures.html"><a href="control-structures.html"><i class="fa fa-check"></i><b>B</b> R Language Control Structures</a><ul>
 <li class="chapter" data-level="B.1" data-path="control-structures.html"><a href="control-structures.html#loops"><i class="fa fa-check"></i><b>B.1</b> Loops</a><ul>
@@ -403,7 +406,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="C.4" data-path="data-tables.html"><a href="data-tables.html#create-variables-by-reference"><i class="fa fa-check"></i><b>C.4</b> <code>:=</code>–Create variables by reference</a></li>
 <li class="chapter" data-level="C.5" data-path="data-tables.html"><a href="data-tables.html#keys"><i class="fa fa-check"></i><b>C.5</b> keys</a></li>
-<li class="chapter" data-level="C.6" data-path="data-tables.html"><a href="data-tables.html#resources-17"><i class="fa fa-check"></i><b>C.6</b> Resources</a></li>
+<li class="chapter" data-level="C.6" data-path="setup-machine.html"><a href="setup-machine.html#resources"><i class="fa fa-check"></i><b>C.6</b> Resources</a></li>
 </ul></li>
 <li class="chapter" data-level="D" data-path="remote-server.html"><a href="remote-server.html"><i class="fa fa-check"></i><b>D</b> Using Remote Server</a><ul>
 <li class="chapter" data-level="D.1" data-path="remote-server.html"><a href="remote-server.html#server-setup"><i class="fa fa-check"></i><b>D.1</b> Server Setup</a></li>
@@ -482,7 +485,7 @@ actually run on the server.</p>
 stands for “secure shell” and means that all
 communication between you and the remote computer is encrypted. You connect to the server
 as</p>
-<pre class="sourceCode sh"><code class="sourceCode bash"><span class="fu">ssh</span> myserver.somewhere.com</code></pre>
+<div class="sourceCode" id="cb354"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb354-1" title="1"><span class="fu">ssh</span> myserver.somewhere.com</a></code></pre></div>
 <p><em>ssh</em> is nowadays pretty much the industry standard for such connections, it comes pre-installed on macs and it is included with <em>gitbash</em> too.</p>
 <p>When you ssh to the remote server, it asks for your password and opens remote shell
 connection. If this is your first time to connect from this particular laptop, you may also be asked to accept it’s fingerprint. This is an additional security measure to ensure that you are actually talking to the computer you think you are talking to.</p>
@@ -502,7 +505,7 @@ keyboard is not working. But it is working, and when you finish and press enter,
 </p>
 <p>By default, ssh attempts to login with your local username. If your
 username on the server differs from that on your laptop, you want to add it to the ssh command:</p>
-<pre class="sourceCode sh"><code class="sourceCode bash"><span class="fu">ssh</span> username@myserver.somewhere.com</code></pre>
+<div class="sourceCode" id="cb355"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb355-1" title="1"><span class="fu">ssh</span> username@myserver.somewhere.com</a></code></pre></div>
 <div class="figure">
 <img src="img/ssh-to-remote-server/ssh-windows.png" alt="Local and remote shell window" />
 <p class="caption">Local and remote shell window</p>
@@ -513,7 +516,7 @@ The screenshot above shows two command line windows, the upper one connecting re
 <p>Finally, when done, you want to get out. The polite way to close the
 connection is with
 command</p>
-<pre class="sourceCode sh"><code class="sourceCode bash"><span class="bu">exit</span></code></pre>
+<div class="sourceCode" id="cb356"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb356-1" title="1"><span class="bu">exit</span></a></code></pre></div>
 <p>that waits until all open connections are safely closed. But usually you
 can as well just close the terminal.</p>
 </div>
@@ -526,7 +529,7 @@ can as well just close the terminal.</p>
 files between your machine and a remote computer. Under the hood it uses ssh
 connection, just like <code>ssh</code> command itself, so the bad guys out there cannot easily see what you are doing. It syntax is rather
 similar to that of <code>cp</code>:</p>
-<pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">scp</span> user1@host1:file1 user2@host2:file2</code></pre>
+<div class="sourceCode" id="cb357"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb357-1" title="1"><span class="fu">scp</span> user1@host1:file1 user2@host2:file2</a></code></pre></div>
 <p>This copies “file1” from the server “host1” under username “user1” to
 the other server. Passwords are asked for as needed. The “host” part
 of the file must be understood as the full hostname including dots,
@@ -536,7 +539,7 @@ When accessing local files, you may omit the “<a href="mailto:user@host" class
 for instance, in order to copy your <code>myscript.R</code> from folder
 <code>info201</code> on your laptop’s Desktop to the folder <code>scripts</code> in
 your home folder on the server, you may issue</p>
-<pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">scp</span> Desktop/info201/myscript.R myusername@server.ischool.edu:scripts/</code></pre>
+<div class="sourceCode" id="cb358"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb358-1" title="1"><span class="fu">scp</span> Desktop/info201/myscript.R myusername@server.ischool.edu:scripts/</a></code></pre></div>
 <p>(here we assume that the working directory of your laptop is the one above
 <code>Desktop</code>.)
 Note that exactly as with <code>cp</code>, you may omit the destination file name
@@ -549,7 +552,7 @@ directory while preserving its name.</p>
 <p>After running your script, you may want to copy your results back to
 your laptop. For instance, if you need to get the file
 <code>figure.png</code> out of the server, you can do</p>
-<pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">scp</span> myusername@server.ischool.edu:scripts/figure.png Desktop/info201/</code></pre>
+<div class="sourceCode" id="cb359"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb359-1" title="1"><span class="fu">scp</span> myusername@server.ischool.edu:scripts/figure.png Desktop/info201/</a></code></pre></div>
 <p>As above, this copies a file from the given directory, and drops it
 into the <code>info201</code> folder on your Desktop.</p>
 <p class="alert alert-warning">
@@ -572,16 +575,16 @@ current working directory):</p>
 explore some of its many options, for instance <code>-v</code> (verbose) reports
 what it’s doing.
 The example above with your code and figure might now look like that:</p>
-<pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">rsync</span> -v Desktop/info201/myscript.R myusername@server.ischool.edu:scripts/
-<span class="co"># now run the script on the remote machine</span>
-<span class="fu">rsync</span> -v myusername@server.ischool.edu:scripts/figure.pdf Desktop/info201/</code></pre>
+<div class="sourceCode" id="cb362"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb362-1" title="1"><span class="fu">rsync</span> -v Desktop/info201/myscript.R myusername@server.ischool.edu:scripts/</a>
+<a class="sourceLine" id="cb362-2" title="2"><span class="co"># now run the script on the remote machine</span></a>
+<a class="sourceLine" id="cb362-3" title="3"><span class="fu">rsync</span> -v myusername@server.ischool.edu:scripts/figure.pdf Desktop/info201/</a></code></pre></div>
 <p>Maybe the easiest way to copy your files is to copy (or rather update) the whole
 directories. For instance, instead of the code above, you can do</p>
-<pre class="sourceCode bash"><code class="sourceCode bash"><span class="co"># copy all files to server:</span>
-<span class="fu">rsync</span> -v Desktop/info201/* myusername@server.ischool.edu:scripts/
-<span class="co"># now run the script on the remote machine</span>
-<span class="co"># ... and copy the results back:</span>
-<span class="fu">rsync</span> -v myusername@server.ischool.edu:scripts/* Desktop/info201/</code></pre>
+<div class="sourceCode" id="cb363"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb363-1" title="1"><span class="co"># copy all files to server:</span></a>
+<a class="sourceLine" id="cb363-2" title="2"><span class="fu">rsync</span> -v Desktop/info201/* myusername@server.ischool.edu:scripts/</a>
+<a class="sourceLine" id="cb363-3" title="3"><span class="co"># now run the script on the remote machine</span></a>
+<a class="sourceLine" id="cb363-4" title="4"><span class="co"># ... and copy the results back:</span></a>
+<a class="sourceLine" id="cb363-5" title="5"><span class="fu">rsync</span> -v myusername@server.ischool.edu:scripts/* Desktop/info201/</a></code></pre></div>
 <p>Here <code>*</code> means <em>all files in this directory</em>. Hence, instead of
 copying the files individually between the computers, we just copy
 all
@@ -617,7 +620,7 @@ more information if you are interested.</p>
 run it. But before you can do it, you may want to install the
 packages you need. For instance, you may want to install the <em>ggplot2</em> and <em>dplyr</em>. This must be done from R console using
 <code>install.packages()</code>. You start R interactively by the command</p>
-<pre class="sourceCode sh"><code class="sourceCode bash"><span class="ex">R</span></code></pre>
+<div class="sourceCode" id="cb364"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb364-1" title="1"><span class="ex">R</span></a></code></pre></div>
 <p>It opens an R session, not unlike what you see inside of RStudio, just
 here you have no RStudio to handrail you through the session. Now all loading,
 saving, inspecting files, etc must be done through R commands.</p>
@@ -631,7 +634,7 @@ from the directory where you intend to run the project before starting
 R (<code>cd scripts</code> if you follow the example directory setup above). There are two options: either start R
 interactively, or run it as a script.
 If you do it from an interactive R session, you have to <em>source</em> your script:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">source</span>(<span class="st">&quot;myscript.R&quot;</span>)</code></pre>
+<div class="sourceCode" id="cb365"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb365-1" title="1"><span class="kw">source</span>(<span class="st">&quot;myscript.R&quot;</span>)</a></code></pre></div>
 <p>The script will run, and the first attempt most likely ends with an error message. You have
 to correct the error either on your laptop and copy the file over to
 the server again, or directly on the server, and
@@ -647,9 +650,9 @@ Three terminals connecting to a remote server at the same time. The top one has 
 <p>Opening a separate R session may be useful for installing packages.
 For running your scripts, I recommend you to run it entirely from
 command line, either as</p>
-<pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">R</span> CMD BATCH myscript.R</code></pre>
+<div class="sourceCode" id="cb366"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb366-1" title="1"><span class="ex">R</span> CMD BATCH myscript.R</a></code></pre></div>
 <p>or</p>
-<pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">Rscript</span> myscript.R</code></pre>
+<div class="sourceCode" id="cb367"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb367-1" title="1"><span class="ex">Rscript</span> myscript.R</a></code></pre></div>
 <p>The first version produces a little more informative error messages,
 the other one handles the environment in a little more consistent and
 efficient manner.</p>
@@ -658,14 +661,14 @@ efficient manner.</p>
 <p>If the server does not have any graphics capabilities, you have to
 save your figures as files. For instance, to save the image in a pdf
 file, you may use the following code in your R program:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pdf</span>(<span class="dt">file=</span><span class="st">&quot;figure1.pdf&quot;</span>, <span class="dt">width=</span><span class="dv">12</span>, <span class="dt">height=</span><span class="dv">8</span>)
-    <span class="co"># width and height in inches</span>
-    <span class="co"># check also out jpeg() and png() devices.</span>
-<span class="co"># do your plotting here</span>
-<span class="kw">plot</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, <span class="kw">rnorm</span>(<span class="dv">10</span>))
-<span class="co"># done plotting</span>
-<span class="kw">dev.off</span>()
-    <span class="co"># saves the image to disk and closes the file.</span></code></pre>
+<div class="sourceCode" id="cb368"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb368-1" title="1"><span class="kw">pdf</span>(<span class="dt">file=</span><span class="st">&quot;figure1.pdf&quot;</span>, <span class="dt">width=</span><span class="dv">12</span>, <span class="dt">height=</span><span class="dv">8</span>)</a>
+<a class="sourceLine" id="cb368-2" title="2">    <span class="co"># width and height in inches</span></a>
+<a class="sourceLine" id="cb368-3" title="3">	<span class="co"># check also out jpeg() and png() devices.</span></a>
+<a class="sourceLine" id="cb368-4" title="4"><span class="co"># do your plotting here</span></a>
+<a class="sourceLine" id="cb368-5" title="5"><span class="kw">plot</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, <span class="kw">rnorm</span>(<span class="dv">10</span>))</a>
+<a class="sourceLine" id="cb368-6" title="6"><span class="co"># done plotting</span></a>
+<a class="sourceLine" id="cb368-7" title="7"><span class="kw">dev.off</span>()</a>
+<a class="sourceLine" id="cb368-8" title="8">    <span class="co"># saves the image to disk and closes the file.</span></a></code></pre></div>
 <p>Afterwards you will have to copy the image file <em>figure1.pdf</em> to your laptop for future use. Note that the file will be saved in the current working directory (unless you specify another folder) for the R session. This is normally the folder where you execute the <code>Rscript</code> command.</p>
 <p>Besides of pdf graphics, R can also output jpg, png, svg and other formats. Check out the corresponding devices <code>jpeg</code>, <code>png</code>, <code>svg</code> and so forth. Additionally, <em>ggplot</em> has it’s own dedicated way of saving plots using <code>ggsave</code> although the base R graphics devices, such as <code>pdf</code> will work too.</p>
 </div>
@@ -700,14 +703,14 @@ just killed it. Deal with this.</p>
 <h3><span class="header-section-number">D.5.2</span> Useful Things to Do</h3>
 <p>There are several useful commands you can experiment with while on the
 server.</p>
-<pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">htop</span></code></pre>
+<div class="sourceCode" id="cb369"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb369-1" title="1"><span class="ex">htop</span></a></code></pre></div>
 <p>(press <code>q</code> to quit) tells you which programs run on the server, how much memory and cpu do
 these take, and who are their owners (the corresponding users). It
 also permits you to kill your misbehaving processes (press <code>k</code> and
 select <code>SIGKILL</code>). Read more with <code>man htop</code>.</p>
-<pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">w</span></code></pre>
+<div class="sourceCode" id="cb370"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb370-1" title="1"><span class="fu">w</span></a></code></pre></div>
 <p>(<strong>w</strong>ho) prints the current logged-in users of the server.</p>
-<pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">df</span> -h</code></pre>
+<div class="sourceCode" id="cb371"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb371-1" title="1"><span class="fu">df</span> -h</a></code></pre></div>
 <p>(<strong>d</strong>isplay <strong>f</strong>ree in <strong>h</strong>uman-readable units) shows the free and
 occupied disk space. You are mainly influenced by what is going on in the file system
 <code>/home</code>.</p>
@@ -759,8 +762,8 @@ connect to server with a simple command like <code>ssh info201</code>. This
 information is stored in the file
 <code>~/.ssh/config</code>, and should contain lines like</p>
 <pre><code>Host info201
-    User &lt;your username&gt;
-    Hostname info201.ischool.uw.edu</code></pre>
+	User &lt;your username&gt;
+	Hostname info201.ischool.uw.edu</code></pre>
 <p>The <code>Host</code> keyword is followed by the abbreviated name of the server,
 the following lines contain your username and the publicly visible
 hostname for the server. Seek out more information if you are interested.</p>
@@ -769,7 +772,7 @@ hostname for the server. Seek out more information if you are interested.</p>
 <h3><span class="header-section-number">D.6.2</span> More about command line: pipes and shell patterns</h3>
 <p><em>bash</em> is a powerful programming language. It is not particularly well suited to peform calculations or produce graphs, but it is excellent in glueing together other programs and their output.</p>
 <p>One very powerful construct are <em>pipes</em>. These are in many ways similar to <em>magrittr</em> pipes in R, or perhaps we should say the other way around as shell pipes were introduced in 1973, a quarter of century before R was created. Pipes connect output of one command into input of another command. For instance, let’s take commands <code>ls -s</code> and <code>head</code>. The former lists the files (in long form) and the latter prints out a few first lines of a text file. But <code>head</code> is not just for printing files, it can print the first few lines of whatever you feed it. Look, for instance, the following command (actually a compound command):</p>
-<pre class="sourceCode sh"><code class="sourceCode bash"><span class="fu">ls</span> -l <span class="kw">|</span> <span class="fu">head</span></code></pre>
+<div class="sourceCode" id="cb373"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb373-1" title="1"><span class="fu">ls</span> -l <span class="kw">|</span> <span class="fu">head</span></a></code></pre></div>
 <p><code>ls -l</code> creates the file listing (in long form). But instead of printing it on screen, it will now send it over pipe <code>|</code> to the <code>head</code> utility. That one will extract the first lines and print only those.</p>
 <img src="img/ssh-to-remote-server/shell-pipe.png" alt="example with ls and shell pipes" />
 <p class="caption">
@@ -782,7 +785,7 @@ Example of <code>ls -l</code> command that prints a number of files (above). Bel
 <li><strong>head</strong> prints first few lines of text. You can print out the first <em>n</em> lines of a file as <code>head -n file.txt</code>, but again–this does not work with compressed files.</li>
 </ul>
 <p>We pipe the commands together as</p>
-<pre class="sourceCode sh"><code class="sourceCode bash"><span class="fu">bzcat</span> data.csv.bz2 <span class="kw">|</span> <span class="fu">grep</span> Zilong <span class="kw">|</span> <span class="fu">head</span></code></pre>
+<div class="sourceCode" id="cb374"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb374-1" title="1"><span class="fu">bzcat</span> data.csv.bz2 <span class="kw">|</span> <span class="fu">grep</span> Zilong <span class="kw">|</span> <span class="fu">head</span></a></code></pre></div>
 <p>and achieve the result we want. So pipes are an excellent way to join small commands, each of which is good at only a single task, into complex compound tasks.</p>
 <p>Another handy (albeit much less powerful) tool in shell is the shell patterns. These are a little bit like regular expressions for file names, just much simpler. There are two special characters in file names:</p>
 <ul>
@@ -791,10 +794,10 @@ Example of <code>ls -l</code> command that prints a number of files (above). Bel
 </ul>
 <p>Shell patterns are useful for file manipulations where you have quicly sort though some sort of fine name patterns. These are handled by shell and not by individual commands, so they may not work if you are not at shell prompt but running another program, such as R or a text editor.</p>
 <p>For instance, let’s list all <em>jpg</em> files in the current directory:</p>
-<pre class="sourceCode sh"><code class="sourceCode bash"><span class="fu">ls</span> *.jpg</code></pre>
+<div class="sourceCode" id="cb375"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb375-1" title="1"><span class="fu">ls</span> *.jpg</a></code></pre></div>
 <p>This lists all files of patten <code>*.jpg</code>, i.e. everything that has <em>.jpg</em> at it’s end.
 Now let us copy all <em>png</em> files from server to the current directory:</p>
-<pre class="sourceCode sh"><code class="sourceCode bash"><span class="fu">scp</span> user@server.com:*.png .</code></pre>
+<div class="sourceCode" id="cb376"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb376-1" title="1"><span class="fu">scp</span> user@server.com:*.png .</a></code></pre></div>
 <p>This copies all files in the form <code>*.png</code> from the server here, i.e. all files that end with <em>.png</em>.</p>
 </div>
 <div id="running-rscript-in-ssh-session" class="section level3">
@@ -804,12 +807,12 @@ First, you don’t even have to log into the server explicitly. You can
 run a one-command ssh session on the server directly from your
 laptop. Namely, ssh accepts commands to be run on the remote
 machine. If invoked as</p>
-<pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">ssh</span> myusername@server.ischool.edu <span class="st">&quot;Rscript myscript.R&quot;</span></code></pre>
+<div class="sourceCode" id="cb377"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb377-1" title="1"><span class="fu">ssh</span> myusername@server.ischool.edu <span class="st">&quot;Rscript myscript.R&quot;</span></a></code></pre></div>
 <p>It does not open a remote shell but runs <code>Rscript script.R</code> instead.
 Your command sequence for the whole process will accordingly look something like:</p>
-<pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">rsync</span> -v Desktop/info201/* myusername@server.ischool.edu:scripts/
-<span class="fu">ssh</span> myusername@server.ischool.edu <span class="st">&quot;Rscript scripts/myscript.R&quot;</span>
-<span class="fu">rsync</span> -v myusername@server.ischool.edu:scripts/* Desktop/info201/</code></pre>
+<div class="sourceCode" id="cb378"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb378-1" title="1"><span class="fu">rsync</span> -v Desktop/info201/* myusername@server.ischool.edu:scripts/</a>
+<a class="sourceLine" id="cb378-2" title="2"><span class="fu">ssh</span> myusername@server.ischool.edu <span class="st">&quot;Rscript scripts/myscript.R&quot;</span></a>
+<a class="sourceLine" id="cb378-3" title="3"><span class="fu">rsync</span> -v myusername@server.ischool.edu:scripts/* Desktop/info201/</a></code></pre></div>
 <p>All these command are issued on your laptop. You can also save these
 to a text file and run all three together as a single <strong>shell
 script</strong>!</p>
@@ -845,11 +848,13 @@ package.</p>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
@@ -857,12 +862,12 @@ gitbook.start({
 "github": true,
 "facebook": false,
 "twitter": false,
-"google": false,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"all": ["github", "facebook", "twitter", "google"]
+"all": ["github", "facebook", "twitter", "google"],
+"google": false
 },
 "fontsettings": {
 "theme": "white",
@@ -874,6 +879,10 @@ gitbook.start({
 "text": "Edit"
 },
 "history": {
+"link": null,
+"text": null
+},
+"view": {
 "link": null,
 "text": null
 },
