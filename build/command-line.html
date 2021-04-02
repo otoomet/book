@@ -24,7 +24,7 @@
 <meta name="author" content="Michael Freeman and Joel Ross" />
 
 
-<meta name="date" content="2021-03-30" />
+<meta name="date" content="2021-04-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -592,6 +592,38 @@ next to the folder path on top of the window.</p>
 Just because you don’t see any results from your command/typing, doesn’t mean it didn’t work! Trust in yourself, and use basic commands like <code>ls</code> and <code>pwd</code> to confirm any changes if you’re unsure. Take it slow, one step at a time.
 </p>
 </div>
+<div class="example">
+<p>Imagine your have files <code>taxes.doc</code>, <code>dolphins.jpg</code> and <code>resume.doc</code>
+in your <code>Documents</code> folder, and the <code>Documents</code> is located in your
+home <code>~</code>. Now when you open the terminal, you will be in your home
+folder:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb7-1" title="1">$ <span class="bu">pwd</span></a>
+<a class="sourceLine" id="cb7-2" title="2"><span class="ex">/home/otoomet</span></a></code></pre></div>
+<p>If you type <code>ls</code>, you see files and folders that are in your home
+directory:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb8-1" title="1">$ <span class="fu">ls</span></a>
+<a class="sourceLine" id="cb8-2" title="2"><span class="ex">Desktop</span>   Documents   Downloads   ...</a></code></pre></div>
+<p>But if you just want to “peek” into the Documents, you can do</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb9-1" title="1">$ <span class="fu">ls</span> Documents</a>
+<a class="sourceLine" id="cb9-2" title="2"><span class="ex">dolhins.jpg</span>   resume.doc  taxes.doc</a></code></pre></div>
+</div>
+<p><code>ls</code> can also used to show only files of certain type using <em>shell
+patterns</em>. Patterns is a way to describe the file names that follow
+certain patterns. For instance, <code>*.jpg</code> means <em>all files that end
+with <code>.jpg</code></em>. This may include <code>image.jpg</code>, <code>CANON123456.jpg</code> and <code>a very long picture file with spaces.jpg</code>. In a similar fashion
+<code>CV*.doc</code> means _all files that start with <code>CV</code> and end with <code>.doc</code>.
+This is a very handy way to list only files of certain type. For
+instance, in order to see only files with <code>.doc</code>-extension inside the
+<code>Documents</code> folder, we can do</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb10-1" title="1"><span class="fu">ls</span> Documents/*.doc</a>
+<a class="sourceLine" id="cb10-2" title="2"><span class="ex">resume.doc</span>  taxes.doc</a></code></pre></div>
+<p>Indeed, the doc-files are here but the jpg is not.</p>
+<div class="alert-danger">
+<p>Note that patterns (and file names) are case sensitive. For instance,
+<code>ls *.DOC</code> in the example above will fail to find any doc files. This
+is also true on Windows <em>gitbash</em> despite the windows file system
+normally using case-insensitive file names.</p>
+</div>
 </div>
 <div id="paths" class="section level3">
 <h3><span class="header-section-number">2.2.5</span> Paths</h3>
@@ -607,7 +639,7 @@ You should <strong>always</strong> use relative paths, particularly when program
 </p>
 <p>The special name <code>..</code> refers to the parent folder. In a similar
 fashion, a single dot <code>.</code> refers to the “current folder”. So the command</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb9-1" title="1"><span class="fu">ls</span> .</a></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb13-1" title="1"><span class="fu">ls</span> .</a></code></pre></div>
 <p>means “list the contents of the current folder” (the same thing you get if you leave off the argument).</p>
 <p>Note that <strong><code>.</code></strong> and <strong><code>..</code></strong> act just like folder names, so you can include them anywhere in paths: <code>../../my_folder</code> says to go up two directories, and then into <code>my_folder</code>.</p>
 <p class="alert alert-info">
@@ -671,7 +703,7 @@ fashion, a single dot <code>.</code> refers to the “current folder”. So the 
 <div id="learning-new-commands" class="section level3">
 <h3><span class="header-section-number">2.3.1</span> Learning New Commands</h3>
 <p>How can you figure out what kind of arguments these commands take? You can look it up! This information is available online, but many command shells (though <em>not</em> Git Bash, unfortunately) also include their own manual you can use to look up commands!</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb10-1" title="1"><span class="fu">man</span> mkdir</a></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb14-1" title="1"><span class="fu">man</span> mkdir</a></code></pre></div>
 <p>Will show the <strong>man</strong>ual for the <strong><code>mkdir</code></strong> program/command.</p>
 <p class="alert alert-info">
 Because manuals are often long, they are opened up in a command-line viewer called <a href="https://en.wikipedia.org/wiki/Less_(Unix)"><code>less</code></a>. You can “scroll” up and down by using the arrow keys. Hit the <code>q</code> key to <strong>q</strong>uit and return to the command-prompt.
@@ -697,7 +729,7 @@ Because manuals are often long, they are opened up in a command-line viewer call
 <h2><span class="header-section-number">2.4</span> Dealing With Errors</h2>
 <p>Note that the syntax of these commands (how you write them out) is very important. Computers aren’t good at figuring out what you meant if you aren’t really specific; forgetting a space may result in an entirely different action.</p>
 <p>Try another command: <strong><code>echo</code></strong> lets you “echo” (print out) some text. Try echoing <code>"Hello World"</code> (which is the traditional first computer program):</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb11-1" title="1"><span class="bu">echo</span> <span class="st">&quot;Hello world&quot;</span></a></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb15-1" title="1"><span class="bu">echo</span> <span class="st">&quot;Hello world&quot;</span></a></code></pre></div>
 <p>What happens if you forget the closing quote? You keep hitting “enter” but you just get that <code>&gt;</code> over and over again! What’s going on?</p>
 <ul>
 <li>Because you didn’t “close” the quote, the shell thinks you are still typing the message you want to echo! When you hit “enter” it adds a <em>line break</em> instead of ending the command, and the <code>&gt;</code> marks that you’re still going. If you finally close the quote, you’ll see your multi-line message printed!</li>
@@ -711,11 +743,11 @@ Because manuals are often long, they are opened up in a command-line viewer call
 </p>
 </div>
 <p>Throughout this book, we’ll discuss a variety of approaches to handling errors in computer programs. While it’s tempting to disregard dense error messages, many programs do provide <strong>error messages</strong> that explain what went wrong. If you enter an unrecognized command, the terminal will inform you of your mistake:</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb12-1" title="1"><span class="ex">lx</span></a>
-<a class="sourceLine" id="cb12-2" title="2"><span class="op">&gt;</span> <span class="ex">-bash</span>: lx: command not found</a></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb16-1" title="1"><span class="ex">lx</span></a>
+<a class="sourceLine" id="cb16-2" title="2"><span class="op">&gt;</span> <span class="ex">-bash</span>: lx: command not found</a></code></pre></div>
 <p>However, forgetting arguments yields different results. In some cases, there will be a default behavior (see what happens if you enter <code>cd</code> without any arguments). If more information is <em>required</em> to run a command, your terminal will provide you with a brief summary of the command’s usage:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb13-1" title="1"><span class="fu">mkdir</span></a>
-<a class="sourceLine" id="cb13-2" title="2"><span class="op">&gt;</span> <span class="ex">usage</span>: mkdir [-pv] [-m mode] directory ...</a></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb17-1" title="1"><span class="fu">mkdir</span></a>
+<a class="sourceLine" id="cb17-2" title="2"><span class="op">&gt;</span> <span class="ex">usage</span>: mkdir [-pv] [-m mode] directory ...</a></code></pre></div>
 <p>Take the time to read the error message and think about what the problem might be before you try again.</p>
 </div>
 <div id="resources" class="section level2 unnumbered">

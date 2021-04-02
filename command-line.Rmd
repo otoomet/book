@@ -163,6 +163,51 @@ This command says to **l**i**s**t the folder contents. Note that the _argument_ 
 <p>**Warning**: The command-line can be not great about giving **feedback** for your actions. For example, if there are no files in the folder, then `ls` will simply show nothing, potentially looking like it "didn't work". Or when typing a **password**, the letters you type won't show (not even as `*`) as a security measure.</p>
 <p>Just because you don't see any results from your command/typing, doesn't mean it didn't work! Trust in yourself, and use basic commands like `ls` and `pwd` to confirm any changes if you're unsure. Take it slow, one step at a time.</p></div>
 
+<div class="example">
+Imagine your have files `taxes.doc`, `dolphins.jpg` and `resume.doc`
+in your `Documents` folder, and the `Documents` is located in your
+home `~`.  Now when you open the terminal, you will be in your home
+folder:
+```bash
+$ pwd
+/home/otoomet
+```
+If you type `ls`, you see files and folders that are in your home
+directory:
+```bash
+$ ls
+Desktop   Documents   Downloads   ...
+```
+But if you just want to "peek" into the Documents, you can do
+```bash
+$ ls Documents
+dolhins.jpg   resume.doc  taxes.doc
+```
+</div>
+
+`ls` can also used to show only files of certain type using _shell
+patterns_.  Patterns is a way to describe the file names that follow
+certain patterns.  For instance, `*.jpg` means _all files that end
+with `.jpg`_.  This may include `image.jpg`, `CANON123456.jpg` and `a
+very long picture file with spaces.jpg`.  In a similar fashion
+`CV*.doc` means _all files that start with `CV` and end with `.doc`.
+This is a very handy way to list only files of certain type.  For
+instance, in order to see only files with `.doc`-extension inside the
+`Documents` folder, we can do
+```sh
+ls Documents/*.doc
+resume.doc  taxes.doc
+```
+Indeed, the doc-files are here but the jpg is not.
+
+<div class="alert-danger">
+Note that patterns (and file names) are case sensitive.  For instance,
+`ls *.DOC` in the example above will fail to find any doc files.  This
+is also true on Windows _gitbash_ despite the windows file system
+normally using case-insensitive file names.
+</div>
+
+
 ### Paths
 Note that both the **`cd`** and **`ls`** commands work even for folders that are not "immediately inside" the current directory! You can refer to _any_ file or folder on the computer by specifying its **path**. A file's path is "how you get to that file": the list of folders you'd need to click through to get to the file, with each folder separated by a `/`:
 

@@ -2,6 +2,17 @@
 /* https://raw.githubusercontent.com/rstudio/bookdown/master/inst/examples/css/style.css */
 
 /* Can do custom css here */
+
+/* example: code examples and such */
+.example {
+    background-color: #aed1a7;
+}
+
+.example:before {
+    content: "Example:";
+    font-size: 120%;
+}
+
 #header .title {
   font-size:2.25em;
   margin-bottom:.5em;

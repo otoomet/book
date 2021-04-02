@@ -24,7 +24,7 @@
 <meta name="author" content="Michael Freeman and Joel Ross" />
 
 
-<meta name="date" content="2021-03-30" />
+<meta name="date" content="2021-04-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -477,12 +477,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="rmd-content" class="section level3">
 <h3><span class="header-section-number">12.1.2</span> <code>.Rmd</code> Content</h3>
 <p>At the top of the file is some text that has the format:</p>
-<div class="sourceCode" id="cb162"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb162-1" title="1"><span class="ot">---</span></a>
-<a class="sourceLine" id="cb162-2" title="2"><span class="fu">title:</span><span class="at"> </span><span class="st">&quot;Example&quot;</span></a>
-<a class="sourceLine" id="cb162-3" title="3"><span class="fu">author:</span><span class="at"> </span><span class="st">&quot;YOUR NAME HERE&quot;</span></a>
-<a class="sourceLine" id="cb162-4" title="4"><span class="fu">date:</span><span class="at"> </span><span class="st">&quot;1/30/2017&quot;</span></a>
-<a class="sourceLine" id="cb162-5" title="5"><span class="fu">output:</span><span class="at"> html_document</span></a>
-<a class="sourceLine" id="cb162-6" title="6"><span class="ot">---</span></a></code></pre></div>
+<div class="sourceCode" id="cb166"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb166-1" title="1"><span class="ot">---</span></a>
+<a class="sourceLine" id="cb166-2" title="2"><span class="fu">title:</span><span class="at"> </span><span class="st">&quot;Example&quot;</span></a>
+<a class="sourceLine" id="cb166-3" title="3"><span class="fu">author:</span><span class="at"> </span><span class="st">&quot;YOUR NAME HERE&quot;</span></a>
+<a class="sourceLine" id="cb166-4" title="4"><span class="fu">date:</span><span class="at"> </span><span class="st">&quot;1/30/2017&quot;</span></a>
+<a class="sourceLine" id="cb166-5" title="5"><span class="fu">output:</span><span class="at"> html_document</span></a>
+<a class="sourceLine" id="cb166-6" title="6"><span class="ot">---</span></a></code></pre></div>
 <p>This is the document “header” information, which tells R Markdown details about the file and how the file should be processed. For example, the <code>title</code>, <code>author</code>, and <code>date</code> will automatically be added to the top of your document. You can include additional information as well, such as <a href="http://rmarkdown.rstudio.com/html_document_format.html">whether there should be a table of contents</a> or even <a href="http://rmarkdown.rstudio.com/developer_parameterized_reports.html">variable defaults</a>.</p>
 <ul>
 <li>The header is written in <a href="https://en.wikipedia.org/wiki/YAML">YAML</a> format, which is yet another way of formatting structured data similar to <code>.csv</code> or JSON (in fact, YAML is a superset of JSON and can represent the same data structure, just using indentation and dashes instead of braces and commas).</li>
@@ -557,7 +557,7 @@ Back to writing _markdown_ out here.</code></pre>
 <p>As with code blocks, you’ll follow the Markdown convention of using single backticks (<strong><code>`</code></strong>), but put the letter <strong><code>r</code></strong> immediately after the first backtick. For example:</p>
 <!-- RMarkdown doesn't provide built-in escaping. See https://stackoverflow.com/q/20409172 for
      details on the workaround. -->
-<div class="sourceCode" id="cb165"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb165-1" title="1">To calculate 3 + 4 inside some text, we can use <span class="bn">`r 3 + 4`</span> right in the _middle_.</a></code></pre></div>
+<div class="sourceCode" id="cb169"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb169-1" title="1">To calculate 3 + 4 inside some text, we can use <span class="bn">`r 3 + 4`</span> right in the _middle_.</a></code></pre></div>
 <p>When you knit the text above, the <code>`r 3 + 4`</code> would be replaced with the number <code>7</code>.</p>
 <p class="alert alert-info">
 Note you can also reference values computed in the code blocks preceding your inline code; it is <strong>best practice</strong> to do your calculations in a code block (with <code>echo=FALSE</code>), save the result in a variable, and then simply inline that variable with e.g., <code>`r my.variable`</code>.

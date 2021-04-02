@@ -24,7 +24,7 @@
 <meta name="author" content="Michael Freeman and Joel Ross" />
 
 
-<meta name="date" content="2021-03-30" />
+<meta name="date" content="2021-04-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -490,21 +490,21 @@ consistent way. This is one of the primary uses of lists.</p>
 <p>However, if your list contains heterogenous elements, it is usually a
 good idea to specify the <strong>names</strong> (or <strong>tags</strong>) for each element in the list in the same
 way you can give names to vector elements in <code>c()</code>—by putting the name tag (which is like a variable name), followed by an equal symbol (<strong><code>=</code></strong>), followed by the value you want to go in the list and be associated with that tag. For example:</p>
-<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb85-1" title="1">person &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">first_name =</span> <span class="st">&quot;Ada&quot;</span>, <span class="dt">job =</span> <span class="st">&quot;Programmer&quot;</span>, <span class="dt">salary =</span> <span class="dv">78000</span>,</a>
-<a class="sourceLine" id="cb85-2" title="2">               <span class="dt">in_union =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb85-3" title="3">person</a>
-<a class="sourceLine" id="cb85-4" title="4"><span class="co">## person</span></a>
-<a class="sourceLine" id="cb85-5" title="5"><span class="co">## $first_name</span></a>
-<a class="sourceLine" id="cb85-6" title="6"><span class="co">## [1] &quot;Ada&quot;</span></a>
-<a class="sourceLine" id="cb85-7" title="7"><span class="co">## </span></a>
-<a class="sourceLine" id="cb85-8" title="8"><span class="co">## $job</span></a>
-<a class="sourceLine" id="cb85-9" title="9"><span class="co">## [1] &quot;Programmer&quot;</span></a>
-<a class="sourceLine" id="cb85-10" title="10"><span class="co">## </span></a>
-<a class="sourceLine" id="cb85-11" title="11"><span class="co">## $salary</span></a>
-<a class="sourceLine" id="cb85-12" title="12"><span class="co">## [1] 78000</span></a>
-<a class="sourceLine" id="cb85-13" title="13"><span class="co">## </span></a>
-<a class="sourceLine" id="cb85-14" title="14"><span class="co">## $in_union</span></a>
-<a class="sourceLine" id="cb85-15" title="15"><span class="co">## [1] TRUE</span></a></code></pre></div>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb89-1" title="1">person &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">first_name =</span> <span class="st">&quot;Ada&quot;</span>, <span class="dt">job =</span> <span class="st">&quot;Programmer&quot;</span>, <span class="dt">salary =</span> <span class="dv">78000</span>,</a>
+<a class="sourceLine" id="cb89-2" title="2">               <span class="dt">in_union =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb89-3" title="3">person</a>
+<a class="sourceLine" id="cb89-4" title="4"><span class="co">## person</span></a>
+<a class="sourceLine" id="cb89-5" title="5"><span class="co">## $first_name</span></a>
+<a class="sourceLine" id="cb89-6" title="6"><span class="co">## [1] &quot;Ada&quot;</span></a>
+<a class="sourceLine" id="cb89-7" title="7"><span class="co">## </span></a>
+<a class="sourceLine" id="cb89-8" title="8"><span class="co">## $job</span></a>
+<a class="sourceLine" id="cb89-9" title="9"><span class="co">## [1] &quot;Programmer&quot;</span></a>
+<a class="sourceLine" id="cb89-10" title="10"><span class="co">## </span></a>
+<a class="sourceLine" id="cb89-11" title="11"><span class="co">## $salary</span></a>
+<a class="sourceLine" id="cb89-12" title="12"><span class="co">## [1] 78000</span></a>
+<a class="sourceLine" id="cb89-13" title="13"><span class="co">## </span></a>
+<a class="sourceLine" id="cb89-14" title="14"><span class="co">## $in_union</span></a>
+<a class="sourceLine" id="cb89-15" title="15"><span class="co">## [1] TRUE</span></a></code></pre></div>
 <p>This creates a list of 4 elements: <code>"Ada"</code> which is tagged with
 <code>first_name</code>, <code>"Programmer"</code> which is tagged with <code>job</code>, <code>78000</code> which
 is tagged with <code>salary</code>, and <code>TRUE</code> which is tagged with <code>in_union</code>.
@@ -517,34 +517,34 @@ by <code>[1]</code> preceeding their values!</p></li>
 <li><p>The use of the <code>=</code> symbol here is an example of assigning a value to a specific named argument. You can actually use this syntax for <em>any</em> function (e.g., rather than listing arguments in order, you can explicit “assign” a value to each argument), but it is more common to just use the normal order of the arguments if there aren’t very many.</p></li>
 </ul>
 <p>Note that if you need to, you can get a <em>vector</em> of element tags using the <code>names()</code> function:</p>
-<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb86-1" title="1">person &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">first_name =</span> <span class="st">&quot;Ada&quot;</span>, <span class="dt">job =</span> <span class="st">&quot;Programmer&quot;</span>, <span class="dt">salary =</span> <span class="dv">78000</span>, <span class="dt">in_union =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb86-2" title="2"><span class="kw">names</span>(person)  <span class="co"># [1] &quot;first_name&quot; &quot;job&quot;  &quot;salary&quot;  &quot;in_union&quot;</span></a></code></pre></div>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb90-1" title="1">person &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">first_name =</span> <span class="st">&quot;Ada&quot;</span>, <span class="dt">job =</span> <span class="st">&quot;Programmer&quot;</span>, <span class="dt">salary =</span> <span class="dv">78000</span>, <span class="dt">in_union =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb90-2" title="2"><span class="kw">names</span>(person)  <span class="co"># [1] &quot;first_name&quot; &quot;job&quot;  &quot;salary&quot;  &quot;in_union&quot;</span></a></code></pre></div>
 <p>This is useful for understanding the structure of variables that may have come from other data sources.</p>
 <p>It is possible to create a list without tagging the elements, and assign
 names later if you wish:</p>
-<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb87-1" title="1">person_alt &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="st">&quot;Ada&quot;</span>, <span class="dv">78000</span>, <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb87-2" title="2">person_alt</a>
-<a class="sourceLine" id="cb87-3" title="3"></a>
-<a class="sourceLine" id="cb87-4" title="4"><span class="co">## [[1]]</span></a>
-<a class="sourceLine" id="cb87-5" title="5"><span class="co">## [1] &quot;Ada&quot;</span></a>
-<a class="sourceLine" id="cb87-6" title="6"><span class="co">## </span></a>
-<a class="sourceLine" id="cb87-7" title="7"><span class="co">## [[3]]</span></a>
-<a class="sourceLine" id="cb87-8" title="8"><span class="co">## [1] 78000</span></a>
-<a class="sourceLine" id="cb87-9" title="9"><span class="co">## </span></a>
-<a class="sourceLine" id="cb87-10" title="10"><span class="co">## [[4]]</span></a>
-<a class="sourceLine" id="cb87-11" title="11"><span class="co">## [1] TRUE</span></a>
-<a class="sourceLine" id="cb87-12" title="12"></a>
-<a class="sourceLine" id="cb87-13" title="13"><span class="kw">names</span>(person_alt) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;name&quot;</span>, <span class="st">&quot;income&quot;</span>, <span class="st">&quot;memebership&quot;</span>)</a>
-<a class="sourceLine" id="cb87-14" title="14">person_alt</a>
-<a class="sourceLine" id="cb87-15" title="15"></a>
-<a class="sourceLine" id="cb87-16" title="16"><span class="co">## $name</span></a>
-<a class="sourceLine" id="cb87-17" title="17"><span class="co">## [1] &quot;Ada&quot;</span></a>
-<a class="sourceLine" id="cb87-18" title="18"><span class="co">## </span></a>
-<a class="sourceLine" id="cb87-19" title="19"><span class="co">## $income</span></a>
-<a class="sourceLine" id="cb87-20" title="20"><span class="co">## [1] 78000</span></a>
-<a class="sourceLine" id="cb87-21" title="21"><span class="co">## </span></a>
-<a class="sourceLine" id="cb87-22" title="22"><span class="co">## $memebership</span></a>
-<a class="sourceLine" id="cb87-23" title="23"><span class="co">## [1] TRUE</span></a></code></pre></div>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb91-1" title="1">person_alt &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="st">&quot;Ada&quot;</span>, <span class="dv">78000</span>, <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb91-2" title="2">person_alt</a>
+<a class="sourceLine" id="cb91-3" title="3"></a>
+<a class="sourceLine" id="cb91-4" title="4"><span class="co">## [[1]]</span></a>
+<a class="sourceLine" id="cb91-5" title="5"><span class="co">## [1] &quot;Ada&quot;</span></a>
+<a class="sourceLine" id="cb91-6" title="6"><span class="co">## </span></a>
+<a class="sourceLine" id="cb91-7" title="7"><span class="co">## [[3]]</span></a>
+<a class="sourceLine" id="cb91-8" title="8"><span class="co">## [1] 78000</span></a>
+<a class="sourceLine" id="cb91-9" title="9"><span class="co">## </span></a>
+<a class="sourceLine" id="cb91-10" title="10"><span class="co">## [[4]]</span></a>
+<a class="sourceLine" id="cb91-11" title="11"><span class="co">## [1] TRUE</span></a>
+<a class="sourceLine" id="cb91-12" title="12"></a>
+<a class="sourceLine" id="cb91-13" title="13"><span class="kw">names</span>(person_alt) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;name&quot;</span>, <span class="st">&quot;income&quot;</span>, <span class="st">&quot;memebership&quot;</span>)</a>
+<a class="sourceLine" id="cb91-14" title="14">person_alt</a>
+<a class="sourceLine" id="cb91-15" title="15"></a>
+<a class="sourceLine" id="cb91-16" title="16"><span class="co">## $name</span></a>
+<a class="sourceLine" id="cb91-17" title="17"><span class="co">## [1] &quot;Ada&quot;</span></a>
+<a class="sourceLine" id="cb91-18" title="18"><span class="co">## </span></a>
+<a class="sourceLine" id="cb91-19" title="19"><span class="co">## $income</span></a>
+<a class="sourceLine" id="cb91-20" title="20"><span class="co">## [1] 78000</span></a>
+<a class="sourceLine" id="cb91-21" title="21"><span class="co">## </span></a>
+<a class="sourceLine" id="cb91-22" title="22"><span class="co">## $memebership</span></a>
+<a class="sourceLine" id="cb91-23" title="23"><span class="co">## [1] TRUE</span></a></code></pre></div>
 <p>Note that the name tags are missing before we assign names, instead of
 names we see the position of the components in double brackets like
 <code>[[1]]</code> (more about it <a href="lists.html#lists-indexing-by-position">below</a>).</p>
@@ -565,15 +565,15 @@ are important differences.</p>
 ways similar to that of atomic vectors with one major caveat:
 indexing with single brackets will extract not the components but a <em>sublist</em> that
 contains just those components:</p>
-<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb88-1" title="1"><span class="co"># note: this list is not not an atomic vector, even though elements have the same types</span></a>
-<a class="sourceLine" id="cb88-2" title="2">animals &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="st">&quot;Aardvark&quot;</span>, <span class="st">&quot;Baboon&quot;</span>, <span class="st">&quot;Camel&quot;</span>)</a>
-<a class="sourceLine" id="cb88-3" title="3">animals[<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">3</span>)]</a>
-<a class="sourceLine" id="cb88-4" title="4"></a>
-<a class="sourceLine" id="cb88-5" title="5"><span class="co">## [[1]]</span></a>
-<a class="sourceLine" id="cb88-6" title="6"><span class="co">## [1] &quot;Aardvark&quot;</span></a>
-<a class="sourceLine" id="cb88-7" title="7"><span class="co">## </span></a>
-<a class="sourceLine" id="cb88-8" title="8"><span class="co">## [[2]]</span></a>
-<a class="sourceLine" id="cb88-9" title="9"><span class="co">## [1] &quot;Camel&quot;</span></a></code></pre></div>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb92-1" title="1"><span class="co"># note: this list is not not an atomic vector, even though elements have the same types</span></a>
+<a class="sourceLine" id="cb92-2" title="2">animals &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="st">&quot;Aardvark&quot;</span>, <span class="st">&quot;Baboon&quot;</span>, <span class="st">&quot;Camel&quot;</span>)</a>
+<a class="sourceLine" id="cb92-3" title="3">animals[<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">3</span>)]</a>
+<a class="sourceLine" id="cb92-4" title="4"></a>
+<a class="sourceLine" id="cb92-5" title="5"><span class="co">## [[1]]</span></a>
+<a class="sourceLine" id="cb92-6" title="6"><span class="co">## [1] &quot;Aardvark&quot;</span></a>
+<a class="sourceLine" id="cb92-7" title="7"><span class="co">## </span></a>
+<a class="sourceLine" id="cb92-8" title="8"><span class="co">## [[2]]</span></a>
+<a class="sourceLine" id="cb92-9" title="9"><span class="co">## [1] &quot;Camel&quot;</span></a></code></pre></div>
 <p>You can see that the result is a list with two components, “Aardvark”
 and “Camel”, picked from the the positions 1 and 3 in the original list.</p>
 <p>The fact that single brackets return a list in case of vector is
@@ -588,9 +588,9 @@ should be a vector is in fact a vector and not a list.</p>
 <p>The good news is that there is an easy way to extract components. A
 single element, and not just a length-one-sublist, is extracted by
 double brackets. For instance,</p>
-<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb89-1" title="1">animals[[<span class="dv">2</span>]]</a>
-<a class="sourceLine" id="cb89-2" title="2"></a>
-<a class="sourceLine" id="cb89-3" title="3"><span class="co">## [1] &quot;Baboon&quot;</span></a></code></pre></div>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb93-1" title="1">animals[[<span class="dv">2</span>]]</a>
+<a class="sourceLine" id="cb93-2" title="2"></a>
+<a class="sourceLine" id="cb93-3" title="3"><span class="co">## [1] &quot;Baboon&quot;</span></a></code></pre></div>
 <p>returns a length-1 character vector.</p>
 <p>Unfortunately, the good news end here. You can extract individual
 elements in this way, but you cannot get a vector of individual list
@@ -608,18 +608,18 @@ into a vector of suitable type. Ditto with <code>as.character(animals)</code>.
 <p>If the list is named, one can use a character vector to extract it’s
 components, exacly in the same way as we used the numeric positions
 above. For instance</p>
-<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb90-1" title="1">person &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">first_name =</span> <span class="st">&quot;Bob&quot;</span>, <span class="dt">last_name =</span> <span class="st">&quot;Wong&quot;</span>, <span class="dt">salary =</span> <span class="dv">77000</span>, <span class="dt">in_union =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb90-2" title="2"></a>
-<a class="sourceLine" id="cb90-3" title="3">person[<span class="kw">c</span>(<span class="st">&quot;first_name&quot;</span>, <span class="st">&quot;salary&quot;</span>)]</a>
-<a class="sourceLine" id="cb90-4" title="4"></a>
-<a class="sourceLine" id="cb90-5" title="5"><span class="co">## $first_name</span></a>
-<a class="sourceLine" id="cb90-6" title="6"><span class="co">## [1] &quot;Bob&quot;</span></a>
-<a class="sourceLine" id="cb90-7" title="7"><span class="co">## </span></a>
-<a class="sourceLine" id="cb90-8" title="8"><span class="co">## $salary</span></a>
-<a class="sourceLine" id="cb90-9" title="9"><span class="co">## [1] 77000</span></a>
-<a class="sourceLine" id="cb90-10" title="10"></a>
-<a class="sourceLine" id="cb90-11" title="11">person[[<span class="st">&quot;first_name&quot;</span>]]  <span class="co"># [1] &quot;Bob&quot;</span></a>
-<a class="sourceLine" id="cb90-12" title="12">person[[<span class="st">&quot;salary&quot;</span>]]  <span class="co"># [1] 77000</span></a></code></pre></div>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb94-1" title="1">person &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">first_name =</span> <span class="st">&quot;Bob&quot;</span>, <span class="dt">last_name =</span> <span class="st">&quot;Wong&quot;</span>, <span class="dt">salary =</span> <span class="dv">77000</span>, <span class="dt">in_union =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb94-2" title="2"></a>
+<a class="sourceLine" id="cb94-3" title="3">person[<span class="kw">c</span>(<span class="st">&quot;first_name&quot;</span>, <span class="st">&quot;salary&quot;</span>)]</a>
+<a class="sourceLine" id="cb94-4" title="4"></a>
+<a class="sourceLine" id="cb94-5" title="5"><span class="co">## $first_name</span></a>
+<a class="sourceLine" id="cb94-6" title="6"><span class="co">## [1] &quot;Bob&quot;</span></a>
+<a class="sourceLine" id="cb94-7" title="7"><span class="co">## </span></a>
+<a class="sourceLine" id="cb94-8" title="8"><span class="co">## $salary</span></a>
+<a class="sourceLine" id="cb94-9" title="9"><span class="co">## [1] 77000</span></a>
+<a class="sourceLine" id="cb94-10" title="10"></a>
+<a class="sourceLine" id="cb94-11" title="11">person[[<span class="st">&quot;first_name&quot;</span>]]  <span class="co"># [1] &quot;Bob&quot;</span></a>
+<a class="sourceLine" id="cb94-12" title="12">person[[<span class="st">&quot;salary&quot;</span>]]  <span class="co"># [1] 77000</span></a></code></pre></div>
 <p>As in case of positional indexing, single brackets return a sublist
 while double brackets return the corresponding component itself.</p>
 </div>
@@ -640,19 +640,19 @@ logical indexing.</li>
 </ul>
 <p>For instance, we can extract all components of certain name from the
 list:</p>
-<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb91-1" title="1">planes &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="st">&quot;Airbus 380&quot;</span>=<span class="kw">c</span>(<span class="dt">seats=</span><span class="dv">575</span>, <span class="dt">speed=</span><span class="fl">0.85</span>),</a>
-<a class="sourceLine" id="cb91-2" title="2">               <span class="st">&quot;Boeing 787&quot;</span>=<span class="kw">c</span>(<span class="dt">seats=</span><span class="dv">290</span>, <span class="dt">speed=</span><span class="fl">0.85</span>),</a>
-<a class="sourceLine" id="cb91-3" title="3">               <span class="st">&quot;Airbus 350&quot;</span>=<span class="kw">c</span>(<span class="dt">seats=</span><span class="dv">325</span>, <span class="dt">speed=</span><span class="fl">0.85</span>))</a>
-<a class="sourceLine" id="cb91-4" title="4">                           <span class="co"># cruise speed, Mach</span></a>
-<a class="sourceLine" id="cb91-5" title="5">planes[<span class="kw">startsWith</span>(<span class="kw">names</span>(planes), <span class="st">&quot;Airbus&quot;</span>)]  <span class="co"># extract components, names</span></a>
-<a class="sourceLine" id="cb91-6" title="6">                           <span class="co"># of which starting with &quot;Airbus&quot;</span></a>
-<a class="sourceLine" id="cb91-7" title="7"><span class="co">## $`Airbus 380`</span></a>
-<a class="sourceLine" id="cb91-8" title="8"><span class="co">##  seats  speed </span></a>
-<a class="sourceLine" id="cb91-9" title="9"><span class="co">## 575.00   0.85 </span></a>
-<a class="sourceLine" id="cb91-10" title="10"><span class="co">## </span></a>
-<a class="sourceLine" id="cb91-11" title="11"><span class="co">## $`Airbus 350`</span></a>
-<a class="sourceLine" id="cb91-12" title="12"><span class="co">##  seats  speed </span></a>
-<a class="sourceLine" id="cb91-13" title="13"><span class="co">## 325.00   0.85 </span></a></code></pre></div>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb95-1" title="1">planes &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="st">&quot;Airbus 380&quot;</span>=<span class="kw">c</span>(<span class="dt">seats=</span><span class="dv">575</span>, <span class="dt">speed=</span><span class="fl">0.85</span>),</a>
+<a class="sourceLine" id="cb95-2" title="2">               <span class="st">&quot;Boeing 787&quot;</span>=<span class="kw">c</span>(<span class="dt">seats=</span><span class="dv">290</span>, <span class="dt">speed=</span><span class="fl">0.85</span>),</a>
+<a class="sourceLine" id="cb95-3" title="3">               <span class="st">&quot;Airbus 350&quot;</span>=<span class="kw">c</span>(<span class="dt">seats=</span><span class="dv">325</span>, <span class="dt">speed=</span><span class="fl">0.85</span>))</a>
+<a class="sourceLine" id="cb95-4" title="4">                           <span class="co"># cruise speed, Mach</span></a>
+<a class="sourceLine" id="cb95-5" title="5">planes[<span class="kw">startsWith</span>(<span class="kw">names</span>(planes), <span class="st">&quot;Airbus&quot;</span>)]  <span class="co"># extract components, names</span></a>
+<a class="sourceLine" id="cb95-6" title="6">                           <span class="co"># of which starting with &quot;Airbus&quot;</span></a>
+<a class="sourceLine" id="cb95-7" title="7"><span class="co">## $`Airbus 380`</span></a>
+<a class="sourceLine" id="cb95-8" title="8"><span class="co">##  seats  speed </span></a>
+<a class="sourceLine" id="cb95-9" title="9"><span class="co">## 575.00   0.85 </span></a>
+<a class="sourceLine" id="cb95-10" title="10"><span class="co">## </span></a>
+<a class="sourceLine" id="cb95-11" title="11"><span class="co">## $`Airbus 350`</span></a>
+<a class="sourceLine" id="cb95-12" title="12"><span class="co">##  seats  speed </span></a>
+<a class="sourceLine" id="cb95-13" title="13"><span class="co">## 325.00   0.85 </span></a></code></pre></div>
 <p class="alert alert-info">
 However, certain vectorized operations, such as <code>&gt;</code> or <code>==</code> also work with lists
 that contain single numeric values as their elements. It seems to be
@@ -665,38 +665,38 @@ behaviour in code.
 <p>Finally, there is a very convenient <code>$</code>-shortcut alternative for
 extracting individual components.
 If you printed out one of the named lists above, for instance <code>person</code>, you would see the following:</p>
-<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb92-1" title="1">person &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">name =</span> <span class="st">&quot;Ada&quot;</span>, <span class="dt">job =</span> <span class="st">&quot;Programmer&quot;</span>)</a>
-<a class="sourceLine" id="cb92-2" title="2"><span class="kw">print</span>(person)</a>
-<a class="sourceLine" id="cb92-3" title="3"><span class="co">## $first_name</span></a>
-<a class="sourceLine" id="cb92-4" title="4"><span class="co">## [1] &quot;Ada&quot;</span></a>
-<a class="sourceLine" id="cb92-5" title="5"><span class="co">## </span></a>
-<a class="sourceLine" id="cb92-6" title="6"><span class="co">## $job</span></a>
-<a class="sourceLine" id="cb92-7" title="7"><span class="co">## [1] &quot;Programmer&quot;</span></a></code></pre></div>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb96-1" title="1">person &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">name =</span> <span class="st">&quot;Ada&quot;</span>, <span class="dt">job =</span> <span class="st">&quot;Programmer&quot;</span>)</a>
+<a class="sourceLine" id="cb96-2" title="2"><span class="kw">print</span>(person)</a>
+<a class="sourceLine" id="cb96-3" title="3"><span class="co">## $first_name</span></a>
+<a class="sourceLine" id="cb96-4" title="4"><span class="co">## [1] &quot;Ada&quot;</span></a>
+<a class="sourceLine" id="cb96-5" title="5"><span class="co">## </span></a>
+<a class="sourceLine" id="cb96-6" title="6"><span class="co">## $job</span></a>
+<a class="sourceLine" id="cb96-7" title="7"><span class="co">## [1] &quot;Programmer&quot;</span></a></code></pre></div>
 <p>Notice that the output lists each name tag prepended with a dollar sign
 (<strong><code>$</code></strong>) symbol, and then on the following line the vector that is the
 element itself. You can retrieve individual components in a similar
 fashion, the <strong>dollar notation</strong> is one of the easiest ways of accessing
 list elements. You refer to the particular element in the list with its
 tag by writing the name of the list, followed by a <code>$</code>, followed by the element’s tag:</p>
-<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb93-1" title="1">person<span class="op">$</span>name  <span class="co"># [1] &quot;Ada&quot;</span></a>
-<a class="sourceLine" id="cb93-2" title="2">person<span class="op">$</span>job  <span class="co"># [1] &quot;Programmer&quot;</span></a></code></pre></div>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb97-1" title="1">person<span class="op">$</span>name  <span class="co"># [1] &quot;Ada&quot;</span></a>
+<a class="sourceLine" id="cb97-2" title="2">person<span class="op">$</span>job  <span class="co"># [1] &quot;Programmer&quot;</span></a></code></pre></div>
 <p>Obviously, this only works for named lists. There are no dollar notation analogue for atomic vectors, even for named
 vectors. <code>$</code> extractor only exists for lists (and such data structures
 that are derived from lists, like data frames).</p>
 <p>You can almost read the dollar sign as like an “apostrophe s” (possessive) in English: so <code>person$salary</code> would mean “the <code>person</code> list<strong>’s</strong> <code>salary</code> value”.</p>
 <p>Dollar notation allows list elements to almost be treated as variables in their own right—for example, you specify that you’re talking about the <code>salary</code> variable in the <code>person</code> list, rather than the <code>salary</code> variable in some other list (or not in a list at all).</p>
-<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb94-1" title="1">person &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">first_name =</span> <span class="st">&quot;Ada&quot;</span>, <span class="dt">job =</span> <span class="st">&quot;Programmer&quot;</span>, <span class="dt">salary =</span> <span class="dv">78000</span>, <span class="dt">in_union =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb94-2" title="2"></a>
-<a class="sourceLine" id="cb94-3" title="3"><span class="co"># use elements as function or operation arguments</span></a>
-<a class="sourceLine" id="cb94-4" title="4"><span class="kw">paste</span>(person<span class="op">$</span>job, person<span class="op">$</span>first_name)   <span class="co"># [1] &quot;Programmer Ada&quot;</span></a>
-<a class="sourceLine" id="cb94-5" title="5"></a>
-<a class="sourceLine" id="cb94-6" title="6"><span class="co"># assign values to list element</span></a>
-<a class="sourceLine" id="cb94-7" title="7">person<span class="op">$</span>job &lt;-<span class="st"> &quot;Senior Programmer&quot;</span>  <span class="co"># a promotion!</span></a>
-<a class="sourceLine" id="cb94-8" title="8"><span class="kw">print</span>(person<span class="op">$</span>job)  <span class="co"># [1] &quot;Senior Programmer&quot;</span></a>
-<a class="sourceLine" id="cb94-9" title="9"></a>
-<a class="sourceLine" id="cb94-10" title="10"><span class="co"># assign value to list element from itself</span></a>
-<a class="sourceLine" id="cb94-11" title="11">person<span class="op">$</span>salary &lt;-<span class="st"> </span>person<span class="op">$</span>salary <span class="op">*</span><span class="st"> </span><span class="fl">1.15</span>  <span class="co"># a 15% raise!</span></a>
-<a class="sourceLine" id="cb94-12" title="12"><span class="kw">print</span>(person<span class="op">$</span>salary)  <span class="co"># [1] 89700</span></a></code></pre></div>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb98-1" title="1">person &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">first_name =</span> <span class="st">&quot;Ada&quot;</span>, <span class="dt">job =</span> <span class="st">&quot;Programmer&quot;</span>, <span class="dt">salary =</span> <span class="dv">78000</span>, <span class="dt">in_union =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb98-2" title="2"></a>
+<a class="sourceLine" id="cb98-3" title="3"><span class="co"># use elements as function or operation arguments</span></a>
+<a class="sourceLine" id="cb98-4" title="4"><span class="kw">paste</span>(person<span class="op">$</span>job, person<span class="op">$</span>first_name)   <span class="co"># [1] &quot;Programmer Ada&quot;</span></a>
+<a class="sourceLine" id="cb98-5" title="5"></a>
+<a class="sourceLine" id="cb98-6" title="6"><span class="co"># assign values to list element</span></a>
+<a class="sourceLine" id="cb98-7" title="7">person<span class="op">$</span>job &lt;-<span class="st"> &quot;Senior Programmer&quot;</span>  <span class="co"># a promotion!</span></a>
+<a class="sourceLine" id="cb98-8" title="8"><span class="kw">print</span>(person<span class="op">$</span>job)  <span class="co"># [1] &quot;Senior Programmer&quot;</span></a>
+<a class="sourceLine" id="cb98-9" title="9"></a>
+<a class="sourceLine" id="cb98-10" title="10"><span class="co"># assign value to list element from itself</span></a>
+<a class="sourceLine" id="cb98-11" title="11">person<span class="op">$</span>salary &lt;-<span class="st"> </span>person<span class="op">$</span>salary <span class="op">*</span><span class="st"> </span><span class="fl">1.15</span>  <span class="co"># a 15% raise!</span></a>
+<a class="sourceLine" id="cb98-12" title="12"><span class="kw">print</span>(person<span class="op">$</span>salary)  <span class="co"># [1] 89700</span></a></code></pre></div>
 <p>Dollar-notation is a drop-in replacement to double-brackets extraction
 given you know the name of the component. If you do not—as is
 often the case when programming—you have to rely on double bracket approach.</p>
@@ -712,12 +712,12 @@ named component in case you know it’s name.</p></li>
 <li><p><strong>Double brackets</strong> is very much a more verbose alternative to the dollar notation. It returns a single component exactly as the dollar notation. However, it also allows one to decide later which components to extract. (This is terribly useful in programs!) For instance,
 we can decide if we want to use someones first or last name:</p></li>
 </ul>
-<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb95-1" title="1">person &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">first_name =</span> <span class="st">&quot;Bob&quot;</span>, <span class="dt">last_name =</span> <span class="st">&quot;Wong&quot;</span>, <span class="dt">salary =</span> <span class="dv">77000</span>)</a>
-<a class="sourceLine" id="cb95-2" title="2">name_to_use &lt;-<span class="st"> &quot;last_name&quot;</span>  <span class="co"># choose name (i.e., based on formality)</span></a>
-<a class="sourceLine" id="cb95-3" title="3">person[[name_to_use]]  <span class="co"># [1] &quot;Wong&quot;</span></a>
-<a class="sourceLine" id="cb95-4" title="4"></a>
-<a class="sourceLine" id="cb95-5" title="5">name_to_use &lt;-<span class="st"> &quot;first_name&quot;</span>  <span class="co"># change name to use</span></a>
-<a class="sourceLine" id="cb95-6" title="6">person[[name_to_use]]  <span class="co"># [1] &quot;Bob&quot;</span></a></code></pre></div>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb99-1" title="1">person &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">first_name =</span> <span class="st">&quot;Bob&quot;</span>, <span class="dt">last_name =</span> <span class="st">&quot;Wong&quot;</span>, <span class="dt">salary =</span> <span class="dv">77000</span>)</a>
+<a class="sourceLine" id="cb99-2" title="2">name_to_use &lt;-<span class="st"> &quot;last_name&quot;</span>  <span class="co"># choose name (i.e., based on formality)</span></a>
+<a class="sourceLine" id="cb99-3" title="3">person[[name_to_use]]  <span class="co"># [1] &quot;Wong&quot;</span></a>
+<a class="sourceLine" id="cb99-4" title="4"></a>
+<a class="sourceLine" id="cb99-5" title="5">name_to_use &lt;-<span class="st"> &quot;first_name&quot;</span>  <span class="co"># change name to use</span></a>
+<a class="sourceLine" id="cb99-6" title="6">person[[name_to_use]]  <span class="co"># [1] &quot;Bob&quot;</span></a></code></pre></div>
 <p class="alert alert-info">
 Note: you can often hear that double brackets return a vector. This is only true if the corresponding element is a vector. But they always return the element!
 </p>
@@ -729,26 +729,26 @@ In some sense it is <strong>filtering</strong> by whatever vector is inside the 
 <strong>Watch out</strong>: In vectors, single-bracket notation returns a vector, in lists single-bracket notation returns a list!
 </p>
 <p>We recap this section by an example:</p>
-<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb96-1" title="1">animal &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">class=</span><span class="st">&#39;A&#39;</span>, <span class="dt">count=</span><span class="dv">201</span>, <span class="dt">endangered=</span><span class="ot">TRUE</span>, <span class="dt">species=</span><span class="st">&#39;rhinoceros&#39;</span>)</a>
-<a class="sourceLine" id="cb96-2" title="2"></a>
-<a class="sourceLine" id="cb96-3" title="3"><span class="co">## SINGLE brackets returns a list</span></a>
-<a class="sourceLine" id="cb96-4" title="4">animal[<span class="dv">1</span>]</a>
-<a class="sourceLine" id="cb96-5" title="5"><span class="co">## $class</span></a>
-<a class="sourceLine" id="cb96-6" title="6"><span class="co">## [1] &quot;A&quot;</span></a>
-<a class="sourceLine" id="cb96-7" title="7"></a>
-<a class="sourceLine" id="cb96-8" title="8"><span class="co">## can use any vector as the argument to single brackets, just like with vectors</span></a>
-<a class="sourceLine" id="cb96-9" title="9">animal[<span class="kw">c</span>(<span class="st">&quot;species&quot;</span>, <span class="st">&quot;endangered&quot;</span>)]</a>
-<a class="sourceLine" id="cb96-10" title="10"><span class="co">## $species</span></a>
-<a class="sourceLine" id="cb96-11" title="11"><span class="co">## [1] &quot;rhinoceros&quot;</span></a>
-<a class="sourceLine" id="cb96-12" title="12"><span class="co">## </span></a>
-<a class="sourceLine" id="cb96-13" title="13"><span class="co">## $endangered</span></a>
-<a class="sourceLine" id="cb96-14" title="14"><span class="co">## [1] TRUE</span></a>
-<a class="sourceLine" id="cb96-15" title="15"></a>
-<a class="sourceLine" id="cb96-16" title="16"><span class="co">## DOUBLE brackets returns the element (here its a vector)!</span></a>
-<a class="sourceLine" id="cb96-17" title="17">animal[[<span class="dv">1</span>]]  <span class="co"># [1] &quot;A&quot;</span></a>
-<a class="sourceLine" id="cb96-18" title="18"></a>
-<a class="sourceLine" id="cb96-19" title="19"><span class="co">## Dollar notation is equivalent to the double brackets</span></a>
-<a class="sourceLine" id="cb96-20" title="20">animal<span class="op">$</span>class  <span class="co"># [1] &quot;A&quot;</span></a></code></pre></div>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb100-1" title="1">animal &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">class=</span><span class="st">&#39;A&#39;</span>, <span class="dt">count=</span><span class="dv">201</span>, <span class="dt">endangered=</span><span class="ot">TRUE</span>, <span class="dt">species=</span><span class="st">&#39;rhinoceros&#39;</span>)</a>
+<a class="sourceLine" id="cb100-2" title="2"></a>
+<a class="sourceLine" id="cb100-3" title="3"><span class="co">## SINGLE brackets returns a list</span></a>
+<a class="sourceLine" id="cb100-4" title="4">animal[<span class="dv">1</span>]</a>
+<a class="sourceLine" id="cb100-5" title="5"><span class="co">## $class</span></a>
+<a class="sourceLine" id="cb100-6" title="6"><span class="co">## [1] &quot;A&quot;</span></a>
+<a class="sourceLine" id="cb100-7" title="7"></a>
+<a class="sourceLine" id="cb100-8" title="8"><span class="co">## can use any vector as the argument to single brackets, just like with vectors</span></a>
+<a class="sourceLine" id="cb100-9" title="9">animal[<span class="kw">c</span>(<span class="st">&quot;species&quot;</span>, <span class="st">&quot;endangered&quot;</span>)]</a>
+<a class="sourceLine" id="cb100-10" title="10"><span class="co">## $species</span></a>
+<a class="sourceLine" id="cb100-11" title="11"><span class="co">## [1] &quot;rhinoceros&quot;</span></a>
+<a class="sourceLine" id="cb100-12" title="12"><span class="co">## </span></a>
+<a class="sourceLine" id="cb100-13" title="13"><span class="co">## $endangered</span></a>
+<a class="sourceLine" id="cb100-14" title="14"><span class="co">## [1] TRUE</span></a>
+<a class="sourceLine" id="cb100-15" title="15"></a>
+<a class="sourceLine" id="cb100-16" title="16"><span class="co">## DOUBLE brackets returns the element (here its a vector)!</span></a>
+<a class="sourceLine" id="cb100-17" title="17">animal[[<span class="dv">1</span>]]  <span class="co"># [1] &quot;A&quot;</span></a>
+<a class="sourceLine" id="cb100-18" title="18"></a>
+<a class="sourceLine" id="cb100-19" title="19"><span class="co">## Dollar notation is equivalent to the double brackets</span></a>
+<a class="sourceLine" id="cb100-20" title="20">animal<span class="op">$</span>class  <span class="co"># [1] &quot;A&quot;</span></a></code></pre></div>
 <p>Finally, all these methods can also be used for assignment. Just put any of these construct on the left side of the assignment operator <code>&lt;-</code>.</p>
 </div>
 </div>
@@ -756,28 +756,28 @@ In some sense it is <strong>filtering</strong> by whatever vector is inside the 
 <h2><span class="header-section-number">8.4</span> Modifying Lists</h2>
 <p>As in the case with atomic vectors, you can assign new values to existing elements. However, lists also enable dedicated syntax to <em>remove</em> elements. (Remember, you can always “unselect” an element in a vector, including list, by using negative positional index.)</p>
 <p>You can add elements to a list simply by assigning a value to a tag (or index) in the list that doesn’t yet exist:</p>
-<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb97-1" title="1">person &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">first_name =</span> <span class="st">&quot;Ada&quot;</span>, <span class="dt">job =</span> <span class="st">&quot;Programmer&quot;</span>, <span class="dt">salary =</span> <span class="dv">78000</span>, <span class="dt">in_union =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb97-2" title="2"></a>
-<a class="sourceLine" id="cb97-3" title="3"><span class="co"># has no `age` element</span></a>
-<a class="sourceLine" id="cb97-4" title="4">person<span class="op">$</span>age  <span class="co"># NULL</span></a>
-<a class="sourceLine" id="cb97-5" title="5"></a>
-<a class="sourceLine" id="cb97-6" title="6"><span class="co"># assign a value to the `age` tag to add it</span></a>
-<a class="sourceLine" id="cb97-7" title="7">person<span class="op">$</span>age &lt;-<span class="st"> </span><span class="dv">40</span></a>
-<a class="sourceLine" id="cb97-8" title="8">person<span class="op">$</span>age  <span class="co"># [1] 40</span></a>
-<a class="sourceLine" id="cb97-9" title="9"></a>
-<a class="sourceLine" id="cb97-10" title="10"><span class="co"># assign using index</span></a>
-<a class="sourceLine" id="cb97-11" title="11">person[[<span class="dv">10</span>]] &lt;-<span class="st"> &quot;Tenth field&quot;</span></a>
-<a class="sourceLine" id="cb97-12" title="12"><span class="co"># elements 6-9 will be NULL</span></a></code></pre></div>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb101-1" title="1">person &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">first_name =</span> <span class="st">&quot;Ada&quot;</span>, <span class="dt">job =</span> <span class="st">&quot;Programmer&quot;</span>, <span class="dt">salary =</span> <span class="dv">78000</span>, <span class="dt">in_union =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb101-2" title="2"></a>
+<a class="sourceLine" id="cb101-3" title="3"><span class="co"># has no `age` element</span></a>
+<a class="sourceLine" id="cb101-4" title="4">person<span class="op">$</span>age  <span class="co"># NULL</span></a>
+<a class="sourceLine" id="cb101-5" title="5"></a>
+<a class="sourceLine" id="cb101-6" title="6"><span class="co"># assign a value to the `age` tag to add it</span></a>
+<a class="sourceLine" id="cb101-7" title="7">person<span class="op">$</span>age &lt;-<span class="st"> </span><span class="dv">40</span></a>
+<a class="sourceLine" id="cb101-8" title="8">person<span class="op">$</span>age  <span class="co"># [1] 40</span></a>
+<a class="sourceLine" id="cb101-9" title="9"></a>
+<a class="sourceLine" id="cb101-10" title="10"><span class="co"># assign using index</span></a>
+<a class="sourceLine" id="cb101-11" title="11">person[[<span class="dv">10</span>]] &lt;-<span class="st"> &quot;Tenth field&quot;</span></a>
+<a class="sourceLine" id="cb101-12" title="12"><span class="co"># elements 6-9 will be NULL</span></a></code></pre></div>
 <p>This parallel fairly closely with atomic vectors.</p>
 <p>You can remove elements by assiging the special value <code>NULL</code> to their tag or index:</p>
-<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb98-1" title="1">a_list &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="st">&#39;A&#39;</span>, <span class="dv">201</span>, True)</a>
-<a class="sourceLine" id="cb98-2" title="2">a_list[[<span class="dv">2</span>]] &lt;-<span class="st"> </span><span class="ot">NULL</span>  <span class="co"># remove element #2</span></a>
-<a class="sourceLine" id="cb98-3" title="3"><span class="kw">print</span>(a_list)</a>
-<a class="sourceLine" id="cb98-4" title="4">            <span class="co"># [[1]]</span></a>
-<a class="sourceLine" id="cb98-5" title="5">            <span class="co"># [1] &quot;A&quot;</span></a>
-<a class="sourceLine" id="cb98-6" title="6">            <span class="co">#</span></a>
-<a class="sourceLine" id="cb98-7" title="7">            <span class="co"># [[2]]</span></a>
-<a class="sourceLine" id="cb98-8" title="8">            <span class="co"># [1] TRUE</span></a></code></pre></div>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb102-1" title="1">a_list &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="st">&#39;A&#39;</span>, <span class="dv">201</span>, True)</a>
+<a class="sourceLine" id="cb102-2" title="2">a_list[[<span class="dv">2</span>]] &lt;-<span class="st"> </span><span class="ot">NULL</span>  <span class="co"># remove element #2</span></a>
+<a class="sourceLine" id="cb102-3" title="3"><span class="kw">print</span>(a_list)</a>
+<a class="sourceLine" id="cb102-4" title="4">            <span class="co"># [[1]]</span></a>
+<a class="sourceLine" id="cb102-5" title="5">            <span class="co"># [1] &quot;A&quot;</span></a>
+<a class="sourceLine" id="cb102-6" title="6">            <span class="co">#</span></a>
+<a class="sourceLine" id="cb102-7" title="7">            <span class="co"># [[2]]</span></a>
+<a class="sourceLine" id="cb102-8" title="8">            <span class="co"># [1] TRUE</span></a></code></pre></div>
 <p>There is no analogue here to atomic vectors.</p>
 </div>
 <div id="the-lapply-function" class="section level2">
@@ -786,31 +786,31 @@ In some sense it is <strong>filtering</strong> by whatever vector is inside the 
 function to each item in a list.
 The effort involves either an explicit loop, or an implicit loop through a function called <strong><code>lapply()</code></strong> (for <em><strong>l</strong>ist apply</em>). We will discuss the latter approach here.</p>
 <p><code>lapply()</code> takes two arguments: the first is a list (or a vector, vectors will do as well) you want to work with, and the second is the function you want to “apply” to each item in that list. For example:</p>
-<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb99-1" title="1"><span class="co"># list, not a vector</span></a>
-<a class="sourceLine" id="cb99-2" title="2">people &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="st">&quot;Sarah&quot;</span>, <span class="st">&quot;Amit&quot;</span>, <span class="st">&quot;Zhang&quot;</span>)</a>
-<a class="sourceLine" id="cb99-3" title="3"></a>
-<a class="sourceLine" id="cb99-4" title="4"><span class="co"># apply the `toupper()` function to each element in `people`</span></a>
-<a class="sourceLine" id="cb99-5" title="5"><span class="kw">lapply</span>(people, toupper)</a>
-<a class="sourceLine" id="cb99-6" title="6"><span class="co">## [[1]]</span></a>
-<a class="sourceLine" id="cb99-7" title="7"><span class="co">## [1] &quot;SARAH&quot;</span></a>
-<a class="sourceLine" id="cb99-8" title="8"><span class="co">##</span></a>
-<a class="sourceLine" id="cb99-9" title="9"><span class="co">## [[2]]</span></a>
-<a class="sourceLine" id="cb99-10" title="10"><span class="co">## [1] &quot;AMIT&quot;</span></a>
-<a class="sourceLine" id="cb99-11" title="11"><span class="co">##</span></a>
-<a class="sourceLine" id="cb99-12" title="12"><span class="co">## [[3]]</span></a>
-<a class="sourceLine" id="cb99-13" title="13"><span class="co">## [1] &quot;ZHANG&quot;</span></a></code></pre></div>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb103-1" title="1"><span class="co"># list, not a vector</span></a>
+<a class="sourceLine" id="cb103-2" title="2">people &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="st">&quot;Sarah&quot;</span>, <span class="st">&quot;Amit&quot;</span>, <span class="st">&quot;Zhang&quot;</span>)</a>
+<a class="sourceLine" id="cb103-3" title="3"></a>
+<a class="sourceLine" id="cb103-4" title="4"><span class="co"># apply the `toupper()` function to each element in `people`</span></a>
+<a class="sourceLine" id="cb103-5" title="5"><span class="kw">lapply</span>(people, toupper)</a>
+<a class="sourceLine" id="cb103-6" title="6"><span class="co">## [[1]]</span></a>
+<a class="sourceLine" id="cb103-7" title="7"><span class="co">## [1] &quot;SARAH&quot;</span></a>
+<a class="sourceLine" id="cb103-8" title="8"><span class="co">##</span></a>
+<a class="sourceLine" id="cb103-9" title="9"><span class="co">## [[2]]</span></a>
+<a class="sourceLine" id="cb103-10" title="10"><span class="co">## [1] &quot;AMIT&quot;</span></a>
+<a class="sourceLine" id="cb103-11" title="11"><span class="co">##</span></a>
+<a class="sourceLine" id="cb103-12" title="12"><span class="co">## [[3]]</span></a>
+<a class="sourceLine" id="cb103-13" title="13"><span class="co">## [1] &quot;ZHANG&quot;</span></a></code></pre></div>
 <p>You can add even more arguments to <code>lapply()</code>, those will be assumed to belong to the function you are applying:</p>
-<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb100-1" title="1"><span class="co"># apply the `paste()` function to each element in `people`,</span></a>
-<a class="sourceLine" id="cb100-2" title="2"><span class="co"># with an addition argument `&quot;dances!&quot;` to each call</span></a>
-<a class="sourceLine" id="cb100-3" title="3"><span class="kw">lapply</span>(people, paste, <span class="st">&quot;dances!&quot;</span>)</a>
-<a class="sourceLine" id="cb100-4" title="4"><span class="co">## [[1]]</span></a>
-<a class="sourceLine" id="cb100-5" title="5"><span class="co">## [1] &quot;Sarah dances!&quot;</span></a>
-<a class="sourceLine" id="cb100-6" title="6"><span class="co">## </span></a>
-<a class="sourceLine" id="cb100-7" title="7"><span class="co">## [[2]]</span></a>
-<a class="sourceLine" id="cb100-8" title="8"><span class="co">## [1] &quot;Amit dances!&quot;</span></a>
-<a class="sourceLine" id="cb100-9" title="9"><span class="co">## </span></a>
-<a class="sourceLine" id="cb100-10" title="10"><span class="co">## [[3]]</span></a>
-<a class="sourceLine" id="cb100-11" title="11"><span class="co">## [1] &quot;Zhang dances!&quot;</span></a></code></pre></div>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb104-1" title="1"><span class="co"># apply the `paste()` function to each element in `people`,</span></a>
+<a class="sourceLine" id="cb104-2" title="2"><span class="co"># with an addition argument `&quot;dances!&quot;` to each call</span></a>
+<a class="sourceLine" id="cb104-3" title="3"><span class="kw">lapply</span>(people, paste, <span class="st">&quot;dances!&quot;</span>)</a>
+<a class="sourceLine" id="cb104-4" title="4"><span class="co">## [[1]]</span></a>
+<a class="sourceLine" id="cb104-5" title="5"><span class="co">## [1] &quot;Sarah dances!&quot;</span></a>
+<a class="sourceLine" id="cb104-6" title="6"><span class="co">## </span></a>
+<a class="sourceLine" id="cb104-7" title="7"><span class="co">## [[2]]</span></a>
+<a class="sourceLine" id="cb104-8" title="8"><span class="co">## [1] &quot;Amit dances!&quot;</span></a>
+<a class="sourceLine" id="cb104-9" title="9"><span class="co">## </span></a>
+<a class="sourceLine" id="cb104-10" title="10"><span class="co">## [[3]]</span></a>
+<a class="sourceLine" id="cb104-11" title="11"><span class="co">## [1] &quot;Zhang dances!&quot;</span></a></code></pre></div>
 <p>The last unnamed argument, <code>"dances"</code>, are taken as the second argument to <code>paste</code>. So behind the scenes, <code>lapply()</code> runs a loop over <code>paste("Sarah", "dances!")</code>, <code>paste("Amit", "dances!")</code> and so on.</p>
 <ul>
 <li>Notice that the second argument to <code>lapply()</code> is just the function: not the name of the functions as character string (it’s not quoted in <code>""</code>). You’re also not actually <em>calling</em> that function when you write it’s name in <code>lapply()</code> (you don’t put the parenthesis <code>()</code> after its name). See more in <a href="functions.html#how-to-use-functions">section <em>How to Use Functions</em></a>.
@@ -818,24 +818,24 @@ After the function, you can put any additional arguments you want the applied fu
 </ul>
 <p>Note that the <code>lapply()</code> function returns a <em>new</em> list; the original one is unmodified. This makes it a <a href="https://en.wikipedia.org/wiki/Map_(parallel_pattern)"><strong>mapping</strong></a> operation. It is an operation, and not the same thing as <em>map</em> data structure. In mapping operation the code applies the same <strong>elemental function</strong> to the all elements in a list.</p>
 <p>You commonly use <code>lapply()</code> with your own custom functions which define what you want to do to a single element in that list:</p>
-<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb101-1" title="1"><span class="co"># A function that prepends &quot;Hello&quot; to any item</span></a>
-<a class="sourceLine" id="cb101-2" title="2">greet &lt;-<span class="st"> </span><span class="cf">function</span>(item) {</a>
-<a class="sourceLine" id="cb101-3" title="3">  <span class="kw">return</span>(<span class="kw">paste</span>(<span class="st">&quot;Hello&quot;</span>, item))</a>
-<a class="sourceLine" id="cb101-4" title="4">}</a>
-<a class="sourceLine" id="cb101-5" title="5"></a>
-<a class="sourceLine" id="cb101-6" title="6"><span class="co"># a list of people</span></a>
-<a class="sourceLine" id="cb101-7" title="7">people &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="st">&quot;Sarah&quot;</span>, <span class="st">&quot;Amit&quot;</span>, <span class="st">&quot;Zhang&quot;</span>)</a>
-<a class="sourceLine" id="cb101-8" title="8"></a>
-<a class="sourceLine" id="cb101-9" title="9"><span class="co"># greet each name</span></a>
-<a class="sourceLine" id="cb101-10" title="10">greetings &lt;-<span class="st"> </span><span class="kw">lapply</span>(people, greet)</a>
-<a class="sourceLine" id="cb101-11" title="11"><span class="co">## [[1]]</span></a>
-<a class="sourceLine" id="cb101-12" title="12"><span class="co">## [1] &quot;Hello Sarah&quot;</span></a>
-<a class="sourceLine" id="cb101-13" title="13"><span class="co">##</span></a>
-<a class="sourceLine" id="cb101-14" title="14"><span class="co">## [[2]]</span></a>
-<a class="sourceLine" id="cb101-15" title="15"><span class="co">## [1] &quot;Hello Amit&quot;</span></a>
-<a class="sourceLine" id="cb101-16" title="16"><span class="co">##</span></a>
-<a class="sourceLine" id="cb101-17" title="17"><span class="co">## [[3]]</span></a>
-<a class="sourceLine" id="cb101-18" title="18"><span class="co">## [1] &quot;Hello Zhang&quot;</span></a></code></pre></div>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb105-1" title="1"><span class="co"># A function that prepends &quot;Hello&quot; to any item</span></a>
+<a class="sourceLine" id="cb105-2" title="2">greet &lt;-<span class="st"> </span><span class="cf">function</span>(item) {</a>
+<a class="sourceLine" id="cb105-3" title="3">  <span class="kw">return</span>(<span class="kw">paste</span>(<span class="st">&quot;Hello&quot;</span>, item))</a>
+<a class="sourceLine" id="cb105-4" title="4">}</a>
+<a class="sourceLine" id="cb105-5" title="5"></a>
+<a class="sourceLine" id="cb105-6" title="6"><span class="co"># a list of people</span></a>
+<a class="sourceLine" id="cb105-7" title="7">people &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="st">&quot;Sarah&quot;</span>, <span class="st">&quot;Amit&quot;</span>, <span class="st">&quot;Zhang&quot;</span>)</a>
+<a class="sourceLine" id="cb105-8" title="8"></a>
+<a class="sourceLine" id="cb105-9" title="9"><span class="co"># greet each name</span></a>
+<a class="sourceLine" id="cb105-10" title="10">greetings &lt;-<span class="st"> </span><span class="kw">lapply</span>(people, greet)</a>
+<a class="sourceLine" id="cb105-11" title="11"><span class="co">## [[1]]</span></a>
+<a class="sourceLine" id="cb105-12" title="12"><span class="co">## [1] &quot;Hello Sarah&quot;</span></a>
+<a class="sourceLine" id="cb105-13" title="13"><span class="co">##</span></a>
+<a class="sourceLine" id="cb105-14" title="14"><span class="co">## [[2]]</span></a>
+<a class="sourceLine" id="cb105-15" title="15"><span class="co">## [1] &quot;Hello Amit&quot;</span></a>
+<a class="sourceLine" id="cb105-16" title="16"><span class="co">##</span></a>
+<a class="sourceLine" id="cb105-17" title="17"><span class="co">## [[3]]</span></a>
+<a class="sourceLine" id="cb105-18" title="18"><span class="co">## [1] &quot;Hello Zhang&quot;</span></a></code></pre></div>
 <p>Additionally, <code>lapply()</code> is a member of the “<code>*apply()</code>” family of functions: a set of functions that each start with different letters and may apply to a different data structure, but otherwise all work in a similar fashion. For example, <code>lapply()</code> returns a list, while <code>sapply()</code> (<strong>s</strong>implified apply) simplifies the list into a vector, if possible. If you are interested in parallel programming, we recommend you to check out the function <code>parLapply</code> and it’s friends in the <em>parallel</em> package.</p>
 </div>
 <div id="resources" class="section level2 unnumbered">
