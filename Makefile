@@ -12,8 +12,13 @@ epub:
 
 all: pdf epub book
 
+# publish the built book on ovid: faculty.washington.edu/otoomet/info201-book
+publish:
+	rsync -avuP build ovid:public_html/info201-book
+
 serve:
 	Rscript -e "bookdown::serve_book(dir='.', output_dir='build', preview=TRUE, in_session=TRUE)";
 
+# push to info201.github.io
 deploy: #all
 	git subtree push --prefix build https://github.com/info201/info201.github.io master
