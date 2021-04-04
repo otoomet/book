@@ -13,8 +13,10 @@ epub:
 all: pdf epub book
 
 # publish the built book on ovid: faculty.washington.edu/otoomet/info201-book
+# first copy to $HOME/www/ovid, thereafter the whole ovid to the ovid server
 publish:
-	rsync -avuP build ovid:public_html/info201-book
+	rsync -rlptoDvuK build/ $(HOME)/www/ovid/info201-book && \
+	rsync -rlptoDvuK $(HOME)/www/ovid/ ovid:public_html/
 
 serve:
 	Rscript -e "bookdown::serve_book(dir='.', output_dir='build', preview=TRUE, in_session=TRUE)";

@@ -275,7 +275,14 @@ Once you're comfortable navigating folders in the command-line, you can start to
 Be aware that many of these commands **won't print anything** when you run them. This often means that they worked; they just did so quietly. If it _doesn't_ work, you'll know because you'll see a message telling you so (and why, if you read the message). So just because you didn't get any output doesn't mean you did something wrong&mdash;you can use another command (such as **`ls`**) to confirm that the files or folders changed the way you wanted!
 
 ### Learning New Commands
-How can you figure out what kind of arguments these commands take? You can look it up! This information is available online, but many command shells (though _not_ Git Bash, unfortunately) also include their own manual you can use to look up commands!
+How can you figure out what kind of arguments these commands take? You
+can look it up! This information is available online, but many command
+shells (though _not_ Git Bash, unfortunately) also include their own
+manual you can use to look up commands!  But if you are using a shell
+where built-in manual is not available, there is always the option to
+enter the manual command in google search.  The results are probably
+fairly similar, although you may end up reading manual of a slightly
+different version.
 
 ```bash
 man mkdir
@@ -283,7 +290,10 @@ man mkdir
 
 Will show the **man**ual for the **`mkdir`** program/command.
 
-<p class="alert alert-info">Because manuals are often long, they are opened up in a command-line viewer called <a href="https://en.wikipedia.org/wiki/Less_(Unix)">`less`</a>. You can "scroll" up and down by using the arrow keys. Hit the `q` key to **q**uit and return to the command-prompt.</p>
+<p class="alert alert-info">Because manuals are often long, they are
+opened up in a command-line viewer called <a
+href="https://en.wikipedia.org/wiki/Less_(Unix)">`less`</a>. You can
+"scroll" up and down by using the arrow keys and space bar.  Hit the `q` key to **q**uit and return to the command-prompt.</p>
 
 ![The `mkdir` man page.](img/command-line/mkdir.png "man mkdir")
 
@@ -297,7 +307,11 @@ If you look under "Synopsis" you can see a summary of all the different argument
 
 - Underlined arguments are ones you choose: you don't actually type the word `directory_name`, but instead your own directory name! Contrast this with the options: if you want to use the `-p` option, you need to type `-p` exactly.
 
-Command-line manuals ("man pages") are often very difficult to read and understand: start by looking at just the required arguments (which are usually straightforward), and then search for and use a particular option if you're looking to change a command's behavior.
+Command-line manuals ("man pages") are primarily designed for those
+who are well familiar with the commands and are looking for just some
+additional details, e.g. how exactly do certain options work.  These
+are not good introduction texts for beginners.  If you consult the
+manual then start by looking at just the required arguments (which are usually straightforward), and then search for and use a particular option if you're looking to change a command's behavior.
 
 For practice, try to read the man page for `rm` and figure out how to delete a folder and not just a single file. Note that you'll want to be careful, as this is a good way to [break things](http://www.pcworld.com/article/3057235/data-center-cloud/that-man-who-deleted-his-entire-company-with-a-line-of-code-it-was-a-hoax.html).
 
@@ -334,6 +348,36 @@ mkdir
 ```
 
 Take the time to read the error message and think about what the problem might be before you try again.
+
+
+## Cheatsheet
+
+Here is a quick summary of the most important resources in this
+section.
+
+### Most important commands
+
+* `pwd`: **p**rint **w**orking **d**irectory
+* `cd`: **c**hange **d**irectory
+* `ls`: **l**i**s**t files.  Check out how to list in long form
+  (option `-l`) and how to list in temporal order (options `-t`)
+* `mkdir`: **m**a**k**e a **dir**ectory
+* `cp`: **c**o**p**y a file from one location to another
+* `mv`: **m**o**v**e (rename) a file from one location to another
+
+
+### Shell keyboard shortcuts
+
+* **Tab-completion**: write a few first letters of the file name or
+  command and hit <tab>.  This will complete the file name (without
+  any typos!).  If the letters are ambiguous, e.g. _Do_ may mean both
+  _Documents_ and _Downloads_, then hit tab twice, and it displays the
+  available options.
+* **browsing history**: arrow-up key walks back in shell command
+  history and allows you to select and edit previous commands.
+* **Stopping a command**: `Ctrl-c` (hold `Ctrl` and press `c`) stops
+  the command that takes too long.  (Does not always work).
+
 
 ## Resources {-}
 <div class="list-condensed">
