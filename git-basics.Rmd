@@ -114,15 +114,27 @@ That last point is important. Git status messages are verbose and somewhat awkwa
 
 <p class="alert alert-warning">**If you are ever stuck, use `git status` to figure out what to do next!**</p>
 
-If the output of `git status` seems to verbose to you, you may use `git status -s`, the "short" version of it instead.  It does gives you only the very basic information about what's going on, but this is exactly what you need if you are an experienced git user.
+If the output of `git status` seems too verbose to you, you may use `git status -s`, the "short" version of it instead.  It does gives you only the very basic information about what's going on, but this is exactly what you need if you are an experienced git user.
 
 This makes `git status` the most useful command in the entire process. Learn it, use it, love it.
 
 
 ## Making Changes
-Since `git status` told you to create a file, go ahead and do that. Using your [favorite editor](https://atom.io/), create a new file `books.md` inside the repo directory. This [Markdown](#markdown) file should contain a _list_ of 3 of your favorite books. Make sure you save the changes to your file to disk (to your computer's harddrive)!
+
+Since `git status` told you to create a file, go ahead and do
+that. Using your [favorite editor](https://atom.io/), create a new
+file `books.md` inside the repo directory. This [Markdown](#markdown)
+file should contain a _list_ of 3 of your favorite books. Make sure
+you save the changes to your file to disk (to your computer's
+harddrive)!
+
+You may also want to print to check from command line using `ls` that
+the file is there, and print its content using `cat` just to ensure
+that the correct file is in the correct location.
+
 
 ### Adding Files
+
 Run `git status` again. You should see that git now gives a list of changed and "untracked" files, as well as instructions about what to do next in order to save those changes to the repo's database.
 
 The first thing you need to do is to save those changes to the **staging area**. This is like a shopping cart in an online store: you put changes in temporary storage before you commit to recording them in the database (e.g., before hitting "purchase").
@@ -130,55 +142,48 @@ The first thing you need to do is to save those changes to the **staging area**.
 We add files to the staging area using the `git add` command:
 
 ```bash
-git add filename
+git add <filename>
 ```
 
-(Replacing `filename` with the name/path of the file/folder you want to add). 
-If you are sure you want to add _all the contents_ of the directory (tracked or untracked) to the staging area, you can do it with:
+(Replacing `filename` with the name/path of the file/folder you want
+to add, `books.md` in this case). 
 
-```sh
-git add .
-```
-
-<p class="alert alert-danger">**WARNING**: This will add _everything_ in
-your current directory to your git repo, unless ignored through the
+<p class="alert alert-danger">**WARNING**: Certain sources suggest you
+to use `git add .`.  Do not do this.  This will add _everything_ in
+your current directory (`.` mean "current directory" in shell) 
+to your git repo, unless ignored through the
 `.gitignore` file ([see below](#gitignore)).  This may include your top secret passwords,
 gigabytes of data, all your illegally ripped dvds, and just files that are
 unnecessary to upload.</p>
 
 Add the `books.md` file to the staging area. And of course, now that
-you've changed the repo (you put something in the staging area), you
+you've changed your repo (you put something in the staging area), you
 should run `git status` to see what it says to do. Notice that it tells
 you what files are in the staging area, as well as the command to
 _unstage_ those files (remove them from the "cart").
 
 
 ### Committing
+
 When you're happy with the contents of your staging area (e.g., you're ready to purchase), it's time to **commit** those changes, saving that snapshot of the files in the repository database. We do this with the `git commit` command:
 
 ```bash
-git commit -m "your message here"
+git commit -am "your message here"
 ```
+The `-a` option tells git to include _all modified files_ into this
+commit, and `-m` tells that a message follows.  (On command line you
+can usually combine two options `-a -m` into `-am`.)
 
 The `"your message here"` should be replaced with a short message saying what changes that commit makes to the repo (see below for details).
 
-<p class="alert alert-danger">**WARNING**: If you forget the `-m` option, git will put you into a command-line _text editor_ so that you can compose a message (then save and exit to finish the commit). If you haven't done any other configuration, you might be dropped into the ___vim___ editor. Type **`:q`** (**colon** then **q**) and hit enter to flee from this horrid place and try again, remembering the `-m` option! Don't panic: getting stuck in _vim_ [happens to everyone](https://stackoverflow.blog/2017/05/23/stack-overflow-helping-one-million-developers-exit-vim/).</p>
-
-If you do not add any new files to git control, you can also use the shorthand form
-
-```sh
-git commit -am "message"
-```
-
-instead of `git add` and `git commit` separately.  the `-a` option tells git to include _all modified files_ into this commit.
-
-
-#### Commit Message Etiquette
-Your commit messages should [be informative](https://xkcd.com/1296/) about what changes the commit is making to the repo. `"stuff"` is not a good commit message. `"Fix critical authorization error"` is a good commit message.
-
-Commit messages should use the **imperative mood** (`"Add feature"` not `"added feature"`). They should complete the sentence:
-
-> If applied, this commit will **{your message}**
+Your commit messages should [be informative](https://xkcd.com/1296/)
+about what changes the commit is making to the repo. `"stuff"` is not
+a good commit message. `"Fix critical authorization error"` is a good
+commit message.  The prime reason to add commit messages is to see
+later what was changed when, and possibly walk back individual
+changes, or grab old versions of some files.  Message `"commiting
+today's work"` does not help the reader at all to see if a critical
+bug was introduced here...
 
 Other advice suggests that you limit your message to 50 characters (like an email subject line), at least for the first line&mdash;this helps for going back and looking at previous commits. If you want to include more detail, do so after a blank line.
 
@@ -187,6 +192,8 @@ A specific commit message format may also be required by your company or project
 Finally, be sure to be professional in your commit messages. They will be read by your professors, bosses, coworkers, and other developers on the internet. Don't join [this group](https://twitter.com/gitlost).
 
 After you've committed your changes, be sure and check `git status`, which should now say that there is nothing to commit!
+
+<p class="alert alert-danger">**WARNING**: If you forget the `-m` option, git will put you into a command-line _text editor_ so that you can compose a message (then save and exit to finish the commit). If you haven't done any other configuration, you might be dropped into the ___vim___ editor. Type **`:q`** (**colon** then **q**) and hit enter to flee from this horrid place and try again, remembering the `-m` option! Don't panic: getting stuck in _vim_ [happens to everyone](https://stackoverflow.blog/2017/05/23/stack-overflow-helping-one-million-developers-exit-vim/).</p>
 
 ### Commit History
 You can also view the history of commits you've made:
@@ -310,7 +317,7 @@ Although you've made the changes locally, you have not uploaded them to GitHub y
 In order to get the changes to GitHub, you'll need to `push` (upload) them to GitHub's computers. You can do this with the following command:
 
 ```bash
-git push origin master
+git push
 ```
 
 This will push the current code to the `origin` remote (specifically to its `master` branch of development).
@@ -349,7 +356,7 @@ After `cloning` the assignment repo, you can begin working following the workflo
 1. Make changes to your files
 2. **Add** files with changes to the staging area (`git add .`)
 3. **Commit** these changes to take a repo (`git commit -m "commit message"`)
-4. **Push** changes back to GitHub (`git push origin master`) to turn in your work.
+4. **Push** changes back to GitHub (`git push`) to turn in your work.
 
 Repeat these steps each time you reach a "checkpoint" in your work to save it both locally and in the cloud (in case of computer problems).
 
@@ -360,7 +367,7 @@ Whew! You made it through! This chapter has a lot to take in, but really you jus
 - `git add` Add file to the staging area
 - `git commit -m "message"` Commit changes
 - `git clone` Copy repo to local machine
-- `git push origin master` Upload commits to GitHub
+- `git push` Upload commits to GitHub
 - `git pull` Download commits from GitHub
 
 Using git and GitHub can be challenging, and you'll inevitably run into issues. While it's tempting to ignore version control systems, **they will save you time** in the long-run. For now, do your best to follow these processes, and read any error messages carefully. If you run into trouble, try to understand the issue (Google/StackOverflow), and don't hesitate to ask for help.

@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html >
-
+<html lang="" xml:lang="">
 <head>
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 9 Data Frames | Technical Foundations of Informatics</title>
-  <meta name="description" content="The course reader for INFO 201: Technical Foundations of Informatics.">
-  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+  <meta name="description" content="The course reader for INFO 201: Technical Foundations of Informatics." />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 9 Data Frames | Technical Foundations of Informatics" />
   <meta property="og:type" content="book" />
@@ -22,18 +21,18 @@
   <meta name="twitter:description" content="The course reader for INFO 201: Technical Foundations of Informatics." />
   <meta name="twitter:image" content="https://info201.github.io/img/cover-img.png" />
 
-<meta name="author" content="Michael Freeman and Joel Ross">
+<meta name="author" content="Michael Freeman and Joel Ross" />
 
 
-<meta name="date" content="2019-05-16">
+<meta name="date" content="2021-04-04" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
-  <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
-<link rel="prev" href="lists.html">
-<link rel="next" href="dplyr.html">
+  <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon" />
+<link rel="prev" href="lists.html"/>
+<link rel="next" href="dplyr.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -41,6 +40,9 @@
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
 
 
 
@@ -66,7 +68,6 @@ a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
 a.sourceLine:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
-div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
@@ -169,7 +170,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.3.1" data-path="command-line.html"><a href="command-line.html#learning-new-commands"><i class="fa fa-check"></i><b>2.3.1</b> Learning New Commands</a></li>
 </ul></li>
 <li class="chapter" data-level="2.4" data-path="command-line.html"><a href="command-line.html#dealing-with-errors"><i class="fa fa-check"></i><b>2.4</b> Dealing With Errors</a></li>
-<li class="chapter" data-level="" data-path="command-line.html"><a href="command-line.html#resources-1"><i class="fa fa-check"></i>Resources</a></li>
+<li class="chapter" data-level="" data-path="setup-machine.html"><a href="setup-machine.html#resources"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="markdown.html"><a href="markdown.html"><i class="fa fa-check"></i><b>3</b> Markdown</a><ul>
 <li class="chapter" data-level="3.1" data-path="markdown.html"><a href="markdown.html#writing-markdown"><i class="fa fa-check"></i><b>3.1</b> Writing Markdown</a><ul>
@@ -177,7 +178,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.1.2" data-path="markdown.html"><a href="markdown.html#text-blocks"><i class="fa fa-check"></i><b>3.1.2</b> Text Blocks</a></li>
 </ul></li>
 <li class="chapter" data-level="3.2" data-path="markdown.html"><a href="markdown.html#rendering-markdown"><i class="fa fa-check"></i><b>3.2</b> Rendering Markdown</a></li>
-<li class="chapter" data-level="" data-path="markdown.html"><a href="markdown.html#resources-2"><i class="fa fa-check"></i>Resources</a></li>
+<li class="chapter" data-level="" data-path="setup-machine.html"><a href="setup-machine.html#resources"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="git-basics.html"><a href="git-basics.html"><i class="fa fa-check"></i><b>4</b> Git and GitHub</a><ul>
 <li class="chapter" data-level="4.1" data-path="git-basics.html"><a href="git-basics.html#what-is-this-git-thing-anyway"><i class="fa fa-check"></i><b>4.1</b> What is this <em>git</em> thing anyway?</a><ul>
@@ -202,7 +203,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="4.5" data-path="git-basics.html"><a href="git-basics.html#course-assignments-on-github"><i class="fa fa-check"></i><b>4.5</b> Course Assignments on GitHub</a></li>
 <li class="chapter" data-level="4.6" data-path="git-basics.html"><a href="git-basics.html#command-summary"><i class="fa fa-check"></i><b>4.6</b> Command Summary</a></li>
-<li class="chapter" data-level="" data-path="git-basics.html"><a href="git-basics.html#resources-3"><i class="fa fa-check"></i>Resources</a></li>
+<li class="chapter" data-level="" data-path="setup-machine.html"><a href="setup-machine.html#resources"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="r-intro.html"><a href="r-intro.html"><i class="fa fa-check"></i><b>5</b> Introduction to R</a><ul>
 <li class="chapter" data-level="5.1" data-path="r-intro.html"><a href="r-intro.html#programming-with-r"><i class="fa fa-check"></i><b>5.1</b> Programming with R</a></li>
@@ -215,7 +216,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.4.1" data-path="r-intro.html"><a href="r-intro.html#basic-data-types"><i class="fa fa-check"></i><b>5.4.1</b> Basic Data Types</a></li>
 </ul></li>
 <li class="chapter" data-level="5.5" data-path="r-intro.html"><a href="r-intro.html#gettinghelp"><i class="fa fa-check"></i><b>5.5</b> Getting Help</a></li>
-<li class="chapter" data-level="" data-path="r-intro.html"><a href="r-intro.html#resources-4"><i class="fa fa-check"></i>Resources</a></li>
+<li class="chapter" data-level="" data-path="setup-machine.html"><a href="setup-machine.html#resources"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>6</b> Functions</a><ul>
 <li class="chapter" data-level="6.1" data-path="functions.html"><a href="functions.html#what-are-functions"><i class="fa fa-check"></i><b>6.1</b> What are Functions?</a></li>
@@ -224,7 +225,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.4" data-path="functions.html"><a href="functions.html#loading-functions"><i class="fa fa-check"></i><b>6.4</b> Loading Functions</a></li>
 <li class="chapter" data-level="6.5" data-path="functions.html"><a href="functions.html#writing-functions"><i class="fa fa-check"></i><b>6.5</b> Writing Functions</a></li>
 <li class="chapter" data-level="6.6" data-path="functions.html"><a href="functions.html#conditional-statements"><i class="fa fa-check"></i><b>6.6</b> Conditional Statements</a></li>
-<li class="chapter" data-level="" data-path="functions.html"><a href="functions.html#resources-5"><i class="fa fa-check"></i>Resources</a></li>
+<li class="chapter" data-level="" data-path="setup-machine.html"><a href="setup-machine.html#resources"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="vectors.html"><a href="vectors.html"><i class="fa fa-check"></i><b>7</b> Vectors</a><ul>
 <li class="chapter" data-level="7.1" data-path="vectors.html"><a href="vectors.html#what-is-a-vector"><i class="fa fa-check"></i><b>7.1</b> What is a Vector?</a></li>
@@ -242,7 +243,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.5.3" data-path="vectors.html"><a href="vectors.html#recycling"><i class="fa fa-check"></i><b>7.5.3</b> Recycling</a></li>
 <li class="chapter" data-level="7.5.4" data-path="vectors.html"><a href="vectors.html#r-is-a-vectorized-world"><i class="fa fa-check"></i><b>7.5.4</b> R Is a Vectorized World</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="vectors.html"><a href="vectors.html#resources-6"><i class="fa fa-check"></i>Resources</a></li>
+<li class="chapter" data-level="" data-path="setup-machine.html"><a href="setup-machine.html#resources"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="lists.html"><a href="lists.html"><i class="fa fa-check"></i><b>8</b> Lists</a><ul>
 <li class="chapter" data-level="8.1" data-path="lists.html"><a href="lists.html#what-is-a-list"><i class="fa fa-check"></i><b>8.1</b> What is a List?</a></li>
@@ -256,7 +257,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="8.4" data-path="lists.html"><a href="lists.html#modifying-lists"><i class="fa fa-check"></i><b>8.4</b> Modifying Lists</a></li>
 <li class="chapter" data-level="8.5" data-path="lists.html"><a href="lists.html#the-lapply-function"><i class="fa fa-check"></i><b>8.5</b> The <code>lapply()</code> Function</a></li>
-<li class="chapter" data-level="" data-path="lists.html"><a href="lists.html#resources-7"><i class="fa fa-check"></i>Resources</a></li>
+<li class="chapter" data-level="" data-path="setup-machine.html"><a href="setup-machine.html#resources"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="data-frames.html"><a href="data-frames.html"><i class="fa fa-check"></i><b>9</b> Data Frames</a><ul>
 <li class="chapter" data-level="9.1" data-path="data-frames.html"><a href="data-frames.html#what-is-a-data-frame"><i class="fa fa-check"></i><b>9.1</b> What is a Data Frame?</a><ul>
@@ -268,7 +269,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.2.1" data-path="data-frames.html"><a href="data-frames.html#working-directory"><i class="fa fa-check"></i><b>9.2.1</b> Working Directory</a></li>
 </ul></li>
 <li class="chapter" data-level="9.3" data-path="data-frames.html"><a href="data-frames.html#factors"><i class="fa fa-check"></i><b>9.3</b> Factor Variables</a></li>
-<li class="chapter" data-level="" data-path="data-frames.html"><a href="data-frames.html#resources-8"><i class="fa fa-check"></i>Resources</a></li>
+<li class="chapter" data-level="" data-path="setup-machine.html"><a href="setup-machine.html#resources"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="dplyr.html"><a href="dplyr.html"><i class="fa fa-check"></i><b>10</b> The <code>dplyr</code> Library</a><ul>
 <li class="chapter" data-level="10.1" data-path="dplyr.html"><a href="dplyr.html#a-grammar-of-data-manipulation"><i class="fa fa-check"></i><b>10.1</b> A Grammar of Data Manipulation</a></li>
@@ -288,7 +289,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.6" data-path="dplyr.html"><a href="dplyr.html#non-standard-evaluation-vs.-standard-evaluation"><i class="fa fa-check"></i><b>10.6</b> Non-Standard Evaluation vs. Standard Evaluation</a><ul>
 <li class="chapter" data-level="10.6.1" data-path="dplyr.html"><a href="dplyr.html#explicit-standard-evaluation"><i class="fa fa-check"></i><b>10.6.1</b> Explicit Standard Evaluation</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="dplyr.html"><a href="dplyr.html#resources-9"><i class="fa fa-check"></i>Resources</a></li>
+<li class="chapter" data-level="" data-path="setup-machine.html"><a href="setup-machine.html#resources"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="apis.html"><a href="apis.html"><i class="fa fa-check"></i><b>11</b> Accessing Web APIs</a><ul>
 <li class="chapter" data-level="11.1" data-path="apis.html"><a href="apis.html#what-is-a-web-api"><i class="fa fa-check"></i><b>11.1</b> What is a Web API?</a></li>
@@ -301,7 +302,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.4.1" data-path="apis.html"><a href="apis.html#parsing-json"><i class="fa fa-check"></i><b>11.4.1</b> Parsing JSON</a></li>
 <li class="chapter" data-level="11.4.2" data-path="apis.html"><a href="apis.html#flattening-data"><i class="fa fa-check"></i><b>11.4.2</b> Flattening Data</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="apis.html"><a href="apis.html#resources-10"><i class="fa fa-check"></i>Resources</a></li>
+<li class="chapter" data-level="" data-path="setup-machine.html"><a href="setup-machine.html#resources"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
 <li class="chapter" data-level="12" data-path="r-markdown.html"><a href="r-markdown.html"><i class="fa fa-check"></i><b>12</b> R Markdown</a><ul>
 <li class="chapter" data-level="12.1" data-path="r-markdown.html"><a href="r-markdown.html#r-markdown-and-rstudio"><i class="fa fa-check"></i><b>12.1</b> R Markdown and RStudio</a><ul>
@@ -319,7 +320,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="12.3.2" data-path="r-markdown.html"><a href="r-markdown.html#rendering-lists"><i class="fa fa-check"></i><b>12.3.2</b> Rendering Lists</a></li>
 <li class="chapter" data-level="12.3.3" data-path="r-markdown.html"><a href="r-markdown.html#rendering-tables"><i class="fa fa-check"></i><b>12.3.3</b> Rendering Tables</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="r-markdown.html"><a href="r-markdown.html#resources-11"><i class="fa fa-check"></i>Resources</a></li>
+<li class="chapter" data-level="" data-path="setup-machine.html"><a href="setup-machine.html#resources"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
 <li class="chapter" data-level="13" data-path="ggplot2.html"><a href="ggplot2.html"><i class="fa fa-check"></i><b>13</b> The <code>gglot2</code> Library</a><ul>
 <li class="chapter" data-level="13.1" data-path="ggplot2.html"><a href="ggplot2.html#a-grammar-of-graphics"><i class="fa fa-check"></i><b>13.1</b> A Grammar of Graphics</a></li>
@@ -338,7 +339,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="13.4" data-path="ggplot2.html"><a href="ggplot2.html#plotting-in-scripts"><i class="fa fa-check"></i><b>13.4</b> Plotting in Scripts</a></li>
 <li class="chapter" data-level="13.5" data-path="ggplot2.html"><a href="ggplot2.html#other-visualization-libraries"><i class="fa fa-check"></i><b>13.5</b> Other Visualization Libraries</a></li>
-<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#resources-12"><i class="fa fa-check"></i>Resources</a></li>
+<li class="chapter" data-level="" data-path="setup-machine.html"><a href="setup-machine.html#resources"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
 <li class="chapter" data-level="14" data-path="git-branches.html"><a href="git-branches.html"><i class="fa fa-check"></i><b>14</b> Git Branches</a><ul>
 <li class="chapter" data-level="14.1" data-path="git-branches.html"><a href="git-branches.html#git-branches-1"><i class="fa fa-check"></i><b>14.1</b> Git Branches</a></li>
@@ -349,7 +350,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="14.4" data-path="git-branches.html"><a href="git-branches.html#github-and-branches"><i class="fa fa-check"></i><b>14.4</b> GitHub and Branches</a><ul>
 <li class="chapter" data-level="14.4.1" data-path="git-branches.html"><a href="git-branches.html#github-pages"><i class="fa fa-check"></i><b>14.4.1</b> GitHub Pages</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="git-branches.html"><a href="git-branches.html#resources-13"><i class="fa fa-check"></i>Resources</a></li>
+<li class="chapter" data-level="" data-path="setup-machine.html"><a href="setup-machine.html#resources"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
 <li class="chapter" data-level="15" data-path="git-collaboration.html"><a href="git-collaboration.html"><i class="fa fa-check"></i><b>15</b> Git Collaboration</a><ul>
 <li class="chapter" data-level="15.1" data-path="git-collaboration.html"><a href="git-collaboration.html#centralized-workflow"><i class="fa fa-check"></i><b>15.1</b> Centralized Workflow</a></li>
@@ -357,7 +358,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="15.3" data-path="git-collaboration.html"><a href="git-collaboration.html#forking-workflow"><i class="fa fa-check"></i><b>15.3</b> Forking Workflow</a><ul>
 <li class="chapter" data-level="15.3.1" data-path="git-collaboration.html"><a href="git-collaboration.html#pull-requests"><i class="fa fa-check"></i><b>15.3.1</b> Pull Requests</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="git-collaboration.html"><a href="git-collaboration.html#resources-14"><i class="fa fa-check"></i>Resources</a></li>
+<li class="chapter" data-level="" data-path="setup-machine.html"><a href="setup-machine.html#resources"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
 <li class="chapter" data-level="16" data-path="shiny.html"><a href="shiny.html"><i class="fa fa-check"></i><b>16</b> The <code>shiny</code> Framework</a><ul>
 <li class="chapter" data-level="16.1" data-path="shiny.html"><a href="shiny.html#creating-shiny-apps"><i class="fa fa-check"></i><b>16.1</b> Creating Shiny Apps</a><ul>
@@ -366,7 +367,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="16.1.3" data-path="shiny.html"><a href="shiny.html#the-server"><i class="fa fa-check"></i><b>16.1.3</b> The Server</a></li>
 </ul></li>
 <li class="chapter" data-level="16.2" data-path="shiny.html"><a href="shiny.html#publishing-shiny-apps"><i class="fa fa-check"></i><b>16.2</b> Publishing Shiny Apps</a></li>
-<li class="chapter" data-level="" data-path="shiny.html"><a href="shiny.html#resources-15"><i class="fa fa-check"></i>Resources</a></li>
+<li class="chapter" data-level="" data-path="setup-machine.html"><a href="setup-machine.html#resources"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
 <li class="appendix"><span><b>Special Topics</b></span></li>
 <li class="chapter" data-level="A" data-path="plotly.html"><a href="plotly.html"><i class="fa fa-check"></i><b>A</b> Plotly</a><ul>
@@ -374,7 +375,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="A.2" data-path="plotly.html"><a href="plotly.html#basic-charts"><i class="fa fa-check"></i><b>A.2</b> Basic Charts</a></li>
 <li class="chapter" data-level="A.3" data-path="plotly.html"><a href="plotly.html#layout"><i class="fa fa-check"></i><b>A.3</b> Layout</a></li>
 <li class="chapter" data-level="A.4" data-path="plotly.html"><a href="plotly.html#hovers"><i class="fa fa-check"></i><b>A.4</b> Hovers</a></li>
-<li class="chapter" data-level="" data-path="plotly.html"><a href="plotly.html#resources-16"><i class="fa fa-check"></i>Resources</a></li>
+<li class="chapter" data-level="" data-path="setup-machine.html"><a href="setup-machine.html#resources"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
 <li class="chapter" data-level="B" data-path="control-structures.html"><a href="control-structures.html"><i class="fa fa-check"></i><b>B</b> R Language Control Structures</a><ul>
 <li class="chapter" data-level="B.1" data-path="control-structures.html"><a href="control-structures.html#loops"><i class="fa fa-check"></i><b>B.1</b> Loops</a><ul>
@@ -403,7 +404,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="C.4" data-path="data-tables.html"><a href="data-tables.html#create-variables-by-reference"><i class="fa fa-check"></i><b>C.4</b> <code>:=</code>–Create variables by reference</a></li>
 <li class="chapter" data-level="C.5" data-path="data-tables.html"><a href="data-tables.html#keys"><i class="fa fa-check"></i><b>C.5</b> keys</a></li>
-<li class="chapter" data-level="C.6" data-path="data-tables.html"><a href="data-tables.html#resources-17"><i class="fa fa-check"></i><b>C.6</b> Resources</a></li>
+<li class="chapter" data-level="C.6" data-path="setup-machine.html"><a href="setup-machine.html#resources"><i class="fa fa-check"></i><b>C.6</b> Resources</a></li>
 </ul></li>
 <li class="chapter" data-level="D" data-path="remote-server.html"><a href="remote-server.html"><i class="fa fa-check"></i><b>D</b> Using Remote Server</a><ul>
 <li class="chapter" data-level="D.1" data-path="remote-server.html"><a href="remote-server.html#server-setup"><i class="fa fa-check"></i><b>D.1</b> Server Setup</a></li>
@@ -460,7 +461,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p class="caption">A table of data (people’s weights and heights).</p>
 </div>
 <p>In this table, each <em>row</em> represents a <strong>record</strong> or <strong>observation</strong>: an instance of a single thing being measured (e.g., a person). Each <em>column</em> represents a <strong>feature</strong>: a particular property or aspect of the thing being measured (e.g., the person’s height or weight). This structure is used to organize lots of different <em>related</em> data points for easier analysis.</p>
-<p>In R, you can use <strong>data frames</strong> to represent these kinds of tables. Data frames are really just <strong>lists</strong> (see <a href="lists.html#lists">Lists</a>) in which each element is a <strong>vector of the same length</strong>. Each vector represents a <strong>column, <em>not</em> a row</strong>. The elements at corresponding indices in the vectors are considered part of the same record (row).</p>
+<p>In R, you can use <strong>data frames</strong> to represent these kinds of tables. Data frames are really just <strong>lists</strong> (see [Lists]) in which each element is a <strong>vector of the same length</strong>. Each vector represents a <strong>column, <em>not</em> a row</strong>. The elements at corresponding indices in the vectors are considered part of the same record (row).</p>
 <ul>
 <li>This makes sense because each row may have a different type of data—e.g., a person’s <code>name</code> (string) and <code>height</code> (number)—and vector elements must all be of the same type.</li>
 </ul>
@@ -469,30 +470,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="creating-data-frames" class="section level3">
 <h3><span class="header-section-number">9.1.1</span> Creating Data Frames</h3>
 <p>Typically you will <em>load</em> data sets from some external source (see <a href="data-frames.html#csv-files">below</a>), rather than writing out the data by hand. However, it is important to understand that you can construct a data frame by combining multiple vectors. To accomplish this, you can use the <code>data.frame()</code> function, which accepts <strong>vectors</strong> as <em>arguments</em>, and creates a table with a column for each vector. For example:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># vector of names</span>
-name &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Ada&quot;</span>, <span class="st">&quot;Bob&quot;</span>, <span class="st">&quot;Chris&quot;</span>, <span class="st">&quot;Diya&quot;</span>, <span class="st">&quot;Emma&quot;</span>)
-
-<span class="co"># Vector of heights</span>
-height &lt;-<span class="st"> </span><span class="dv">58</span><span class="op">:</span><span class="dv">62</span>
-
-<span class="co"># Vector of weights</span>
-weight &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">115</span>, <span class="dv">117</span>, <span class="dv">120</span>, <span class="dv">123</span>, <span class="dv">126</span>)
-
-<span class="co"># Combine the vectors into a data.frame</span>
-<span class="co"># Note the names of the variables become the names of the columns!</span>
-my_data &lt;-<span class="st"> </span><span class="kw">data.frame</span>(name, height, weight, <span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span>)</code></pre>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb98-1" title="1"><span class="co"># vector of names</span></a>
+<a class="sourceLine" id="cb98-2" title="2">name &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Ada&quot;</span>, <span class="st">&quot;Bob&quot;</span>, <span class="st">&quot;Chris&quot;</span>, <span class="st">&quot;Diya&quot;</span>, <span class="st">&quot;Emma&quot;</span>)</a>
+<a class="sourceLine" id="cb98-3" title="3"></a>
+<a class="sourceLine" id="cb98-4" title="4"><span class="co"># Vector of heights</span></a>
+<a class="sourceLine" id="cb98-5" title="5">height &lt;-<span class="st"> </span><span class="dv">58</span><span class="op">:</span><span class="dv">62</span></a>
+<a class="sourceLine" id="cb98-6" title="6"></a>
+<a class="sourceLine" id="cb98-7" title="7"><span class="co"># Vector of weights</span></a>
+<a class="sourceLine" id="cb98-8" title="8">weight &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">115</span>, <span class="dv">117</span>, <span class="dv">120</span>, <span class="dv">123</span>, <span class="dv">126</span>)</a>
+<a class="sourceLine" id="cb98-9" title="9"></a>
+<a class="sourceLine" id="cb98-10" title="10"><span class="co"># Combine the vectors into a data.frame</span></a>
+<a class="sourceLine" id="cb98-11" title="11"><span class="co"># Note the names of the variables become the names of the columns!</span></a>
+<a class="sourceLine" id="cb98-12" title="12">my_data &lt;-<span class="st"> </span><span class="kw">data.frame</span>(name, height, weight, <span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
 <ul>
 <li>(The last argument to the <code>data.frame()</code> function is included because one of the vectors contains strings; it tells R to treat that vector as a <em>vector</em> not as a <strong>factor</strong>. This is usually what you’ll want to do. See below for details about <a href="data-frames.html#factors">factors</a>).</li>
 </ul>
 <p>Because data frame elements are lists, you can access the values from <code>my_data</code> using the same <strong>dollar notation</strong> and <strong>double-bracket notation</strong> as lists:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Using the same weights/heights as above:</span>
-my_data &lt;-<span class="st"> </span><span class="kw">data.frame</span>(height, weight)
-
-<span class="co"># Retrieve weights (the `weight` element of the list: a vector!)</span>
-my_weights &lt;-<span class="st"> </span>my_data<span class="op">$</span>weight
-
-<span class="co"># Retrieve heights (the whole column: a vector!)</span>
-my_heights &lt;-<span class="st"> </span>my_data[[<span class="st">&quot;height&quot;</span>]]</code></pre>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb99-1" title="1"><span class="co"># Using the same weights/heights as above:</span></a>
+<a class="sourceLine" id="cb99-2" title="2">my_data &lt;-<span class="st"> </span><span class="kw">data.frame</span>(height, weight)</a>
+<a class="sourceLine" id="cb99-3" title="3"></a>
+<a class="sourceLine" id="cb99-4" title="4"><span class="co"># Retrieve weights (the `weight` element of the list: a vector!)</span></a>
+<a class="sourceLine" id="cb99-5" title="5">my_weights &lt;-<span class="st"> </span>my_data<span class="op">$</span>weight</a>
+<a class="sourceLine" id="cb99-6" title="6"></a>
+<a class="sourceLine" id="cb99-7" title="7"><span class="co"># Retrieve heights (the whole column: a vector!)</span></a>
+<a class="sourceLine" id="cb99-8" title="8">my_heights &lt;-<span class="st"> </span>my_data[[<span class="st">&quot;height&quot;</span>]]</a></code></pre></div>
 </div>
 <div id="describing-structure-of-data-frames" class="section level3">
 <h3><span class="header-section-number">9.1.2</span> Describing Structure of Data Frames</h3>
@@ -544,14 +545,14 @@ my_heights &lt;-<span class="st"> </span>my_data[[<span class="st">&quot;height&
 </tbody>
 </table>
 <p>Note that many of these description functions can also be used to <em>modify</em> the structure of a data frame. For example, you can use the <code>colnames</code> functions to assign a new set of column names to a data frame:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Using the same weights/heights as above:</span>
-my_data &lt;-<span class="st"> </span><span class="kw">data.frame</span>(name, height, weight)
-
-<span class="co"># A vector of new column names</span>
-new_col_names &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;first_name&#39;</span>,<span class="st">&#39;how_tall&#39;</span>,<span class="st">&#39;how_heavy&#39;</span>)
-
-<span class="co"># Assign that vector to be the vector of column names</span>
-<span class="kw">colnames</span>(my_data) &lt;-<span class="st"> </span>new_col_names</code></pre>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb100-1" title="1"><span class="co"># Using the same weights/heights as above:</span></a>
+<a class="sourceLine" id="cb100-2" title="2">my_data &lt;-<span class="st"> </span><span class="kw">data.frame</span>(name, height, weight)</a>
+<a class="sourceLine" id="cb100-3" title="3"></a>
+<a class="sourceLine" id="cb100-4" title="4"><span class="co"># A vector of new column names</span></a>
+<a class="sourceLine" id="cb100-5" title="5">new_col_names &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;first_name&#39;</span>,<span class="st">&#39;how_tall&#39;</span>,<span class="st">&#39;how_heavy&#39;</span>)</a>
+<a class="sourceLine" id="cb100-6" title="6"></a>
+<a class="sourceLine" id="cb100-7" title="7"><span class="co"># Assign that vector to be the vector of column names</span></a>
+<a class="sourceLine" id="cb100-8" title="8"><span class="kw">colnames</span>(my_data) &lt;-<span class="st"> </span>new_col_names</a></code></pre></div>
 </div>
 <div id="accessing-data-in-data-frames" class="section level3">
 <h3><span class="header-section-number">9.1.3</span> Accessing Data in Data Frames</h3>
@@ -598,24 +599,24 @@ new_col_names &lt;-<span class="st"> </span><span class="kw">c</span>(<span clas
 </tbody>
 </table>
 <p>Take special note of the 4th option’s syntax (for retrieving rows): you still include the comma (<code>,</code>), but because you leave <em>which column</em> blank, you get all of the columns!</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Extract the second row</span>
-my_data[<span class="dv">2</span>, ] <span class="co"># comma</span>
-
-<span class="co"># Extract the second column AS A VECTOR</span>
-my_data[, <span class="dv">2</span>] <span class="co"># comma</span>
-
-<span class="co"># Extract the second column AS A DATA FRAME (filtering)</span>
-my_data[<span class="dv">2</span>] <span class="co"># no comma</span></code></pre>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb101-1" title="1"><span class="co"># Extract the second row</span></a>
+<a class="sourceLine" id="cb101-2" title="2">my_data[<span class="dv">2</span>, ] <span class="co"># comma</span></a>
+<a class="sourceLine" id="cb101-3" title="3"></a>
+<a class="sourceLine" id="cb101-4" title="4"><span class="co"># Extract the second column AS A VECTOR</span></a>
+<a class="sourceLine" id="cb101-5" title="5">my_data[, <span class="dv">2</span>] <span class="co"># comma</span></a>
+<a class="sourceLine" id="cb101-6" title="6"></a>
+<a class="sourceLine" id="cb101-7" title="7"><span class="co"># Extract the second column AS A DATA FRAME (filtering)</span></a>
+<a class="sourceLine" id="cb101-8" title="8">my_data[<span class="dv">2</span>] <span class="co"># no comma</span></a></code></pre></div>
 <p>(Extracting from more than one column will produce a <em>sub-data frame</em>; extracting from just one column will produce a vector).</p>
 <p>And of course, because <em>everything is a vector</em>, you’re actually specifying vectors of indices to extract. This allows you to get multiple rows or columns:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Get the second through fourth rows</span>
-my_data[<span class="dv">2</span><span class="op">:</span><span class="dv">4</span>, ]
-
-<span class="co"># Get the `height` and `weight` columns</span>
-my_data[, <span class="kw">c</span>(<span class="st">&quot;height&quot;</span>, <span class="st">&quot;weight&quot;</span>)]
-
-<span class="co"># Perform filtering</span>
-my_data[my_data<span class="op">$</span>height <span class="op">&gt;</span><span class="st"> </span><span class="dv">60</span>, ] <span class="co"># rows for which `height` is greater than 60</span></code></pre>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb102-1" title="1"><span class="co"># Get the second through fourth rows</span></a>
+<a class="sourceLine" id="cb102-2" title="2">my_data[<span class="dv">2</span><span class="op">:</span><span class="dv">4</span>, ]</a>
+<a class="sourceLine" id="cb102-3" title="3"></a>
+<a class="sourceLine" id="cb102-4" title="4"><span class="co"># Get the `height` and `weight` columns</span></a>
+<a class="sourceLine" id="cb102-5" title="5">my_data[, <span class="kw">c</span>(<span class="st">&quot;height&quot;</span>, <span class="st">&quot;weight&quot;</span>)]</a>
+<a class="sourceLine" id="cb102-6" title="6"></a>
+<a class="sourceLine" id="cb102-7" title="7"><span class="co"># Perform filtering</span></a>
+<a class="sourceLine" id="cb102-8" title="8">my_data[my_data<span class="op">$</span>height <span class="op">&gt;</span><span class="st"> </span><span class="dv">60</span>, ] <span class="co"># rows for which `height` is greater than 60</span></a></code></pre></div>
 </div>
 </div>
 <div id="csv-files" class="section level2">
@@ -628,8 +629,8 @@ Diya, 61, 123
 Emma, 62, 126</code></pre>
 <p>Most spreadsheet programs like Microsoft Excel, Numbers, or Google Sheets are simply interfaces for formatting and interacting with data that is saved in this format. These programs easily import and export <code>.csv</code> files; however <code>.csv</code> files are unable to save the formatting done in those programs—the files only store the data!</p>
 <p>You can load the data from a <code>.csv</code> file into R by using the <code>read.csv()</code> function:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Read data from the file `my_file.csv` into a data frame `my_data`</span>
-my_data &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&#39;my_file.csv&#39;</span>, <span class="dt">stringsAsFactors=</span><span class="ot">FALSE</span>)</code></pre>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb104-1" title="1"><span class="co"># Read data from the file `my_file.csv` into a data frame `my_data`</span></a>
+<a class="sourceLine" id="cb104-2" title="2">my_data &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&#39;my_file.csv&#39;</span>, <span class="dt">stringsAsFactors=</span><span class="ot">FALSE</span>)</a></code></pre></div>
 <p>Again, use the <code>stringsAsFactors</code> argument to make sure string data is stored as a <em>vector</em> rather than as a <em>factor</em> (see <a href="data-frames.html#factors">below</a>). This function will return a data frame, just like those described above!</p>
 <p class="alert alert-warning">
 <strong>Important Note</strong>: If for whatever reason an element is missing from a data frame (which is very common with real world data!), R will fill that cell with the logical value <code>NA</code> (distinct from the string <code>"NA"</code>), meaning “<strong>N</strong>ot <strong>A</strong>vailable”. There are multiple ways to handle this in an analysis; see <a href="http://www.statmethods.net/input/missingdata.html">this link</a> among others for details.
@@ -642,12 +643,12 @@ my_data &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span cla
 <li>This makes sense if you think about it: you can run R commands through the console without having a script, and you can have open multiple script files from separate folders that are all interacting with the same execution environment.</li>
 </ul>
 <p>Just as you can view the current working directory when on the command line (using <code>pwd</code>), you can use an R function to view the current working directory when in R:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># get the absolute path to the current working directory</span>
-<span class="kw">getwd</span>()</code></pre>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb105-1" title="1"><span class="co"># get the absolute path to the current working directory</span></a>
+<a class="sourceLine" id="cb105-2" title="2"><span class="kw">getwd</span>()</a></code></pre></div>
 <p>You often will want to change the working directory to be your “project” directory (wherever your scripts and data files happen to be). It is possible to change the current working directory using the <code>setwd()</code> function. However, this function would also take an absolute path, so doesn’t fix the problem. You would not want to include this absolute path in your script (though you could use it from the console).</p>
 <p>One solution is to use the tilde (<code>~</code>) shortcut to specify your directory:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Set working directory on Desktop</span>
-<span class="kw">setwd</span>(<span class="st">&quot;~/Desktop/project-name&quot;</span>)</code></pre>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb106-1" title="1"><span class="co"># Set working directory on Desktop</span></a>
+<a class="sourceLine" id="cb106-2" title="2"><span class="kw">setwd</span>(<span class="st">&quot;~/Desktop/project-name&quot;</span>)</a></code></pre></div>
 <p>This enables you to work across machines, as long as the project is stored in the same location on each machine.</p>
 <p>Another solution is to use R Studio itself to change the working directory. This is reasonable because the working directory is a property of the <em>current running environment</em>, which is what R Studio makes accessible! The easiest way to do this is to use the <strong><code>Session &gt; Set Working Directory</code></strong> menu options: you can either set the working directory <code>To Source File Location</code> (the folder containing whichever <code>.R</code> script you are currently editing; this is usually what you want), or you can browse for a particular directory with <code>Choose Directory</code>.</p>
 <div class="figure">
@@ -662,76 +663,76 @@ my_data &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span cla
 <p><strong>Factors</strong> are a way of <em>optimizing</em> variables that consist of a finite set of categories (i.e., they are <strong>categorical (nominal) variables</strong>).</p>
 <p>For example, imagine that you had a vector of shirt sizes which could only take on the values <code>small</code>, <code>medium</code>, or <code>large</code>. If you were working with a large dataset (thousands of shirts!), it would end up taking up a lot of memory to store the character strings (5+ letters per word at 1 or more bytes per letter) for each one of those variables.</p>
 <p>A <strong>factor</strong> on the other hand would instead store a <em>number</em> (called a <strong>level</strong>) for each of these character strings: for example, <code>1</code> for <code>small</code>, <code>2</code> for <code>medium</code>, or <code>3</code> for <code>large</code> (though the order or specific numbers will vary). R will remember the relationship between the integers and their <strong>labels</strong> (the strings). Since each number only takes 4 bytes (rather than 1 per letter), factors allow R to keep much more information in memory.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Start with a character vector of shirt sizes</span>
-shirt_sizes &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;small&quot;</span>, <span class="st">&quot;medium&quot;</span>, <span class="st">&quot;small&quot;</span>, <span class="st">&quot;large&quot;</span>, <span class="st">&quot;medium&quot;</span>, <span class="st">&quot;large&quot;</span>)
-
-<span class="co"># Convert to a vector of factor data</span>
-shirt_sizes_factor &lt;-<span class="st"> </span><span class="kw">as.factor</span>(shirt_sizes)
-
-<span class="co"># View the factor and its levels</span>
-<span class="kw">print</span>(shirt_sizes_factor)
-
-<span class="co"># The length of the factor is still the length of the vector, not the number of levels</span>
-<span class="kw">length</span>(shirt_sizes_factor) <span class="co"># 6</span></code></pre>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb107-1" title="1"><span class="co"># Start with a character vector of shirt sizes</span></a>
+<a class="sourceLine" id="cb107-2" title="2">shirt_sizes &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;small&quot;</span>, <span class="st">&quot;medium&quot;</span>, <span class="st">&quot;small&quot;</span>, <span class="st">&quot;large&quot;</span>, <span class="st">&quot;medium&quot;</span>, <span class="st">&quot;large&quot;</span>)</a>
+<a class="sourceLine" id="cb107-3" title="3"></a>
+<a class="sourceLine" id="cb107-4" title="4"><span class="co"># Convert to a vector of factor data</span></a>
+<a class="sourceLine" id="cb107-5" title="5">shirt_sizes_factor &lt;-<span class="st"> </span><span class="kw">as.factor</span>(shirt_sizes)</a>
+<a class="sourceLine" id="cb107-6" title="6"></a>
+<a class="sourceLine" id="cb107-7" title="7"><span class="co"># View the factor and its levels</span></a>
+<a class="sourceLine" id="cb107-8" title="8"><span class="kw">print</span>(shirt_sizes_factor)</a>
+<a class="sourceLine" id="cb107-9" title="9"></a>
+<a class="sourceLine" id="cb107-10" title="10"><span class="co"># The length of the factor is still the length of the vector, not the number of levels</span></a>
+<a class="sourceLine" id="cb107-11" title="11"><span class="kw">length</span>(shirt_sizes_factor) <span class="co"># 6</span></a></code></pre></div>
 <p>When you print out the <code>shirt_sizes_factor</code> variable, R still (intelligently) prints out the <strong>labels</strong> that you are presumably interested in. It also indicates the <strong>levels</strong>, which are the <em>only</em> possible values that elements can take on.</p>
 <p>It is worth re-stating: <strong>factors are not vectors</strong>. This means that most all the operations and functions you want to use on vectors <em>will not work</em>:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Create a factor of numbers (factors need not be strings)</span>
-num_factors &lt;-<span class="st"> </span><span class="kw">as.factor</span>(<span class="kw">c</span>(<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">20</span>,<span class="dv">20</span>,<span class="dv">30</span>,<span class="dv">30</span>,<span class="dv">40</span>,<span class="dv">40</span>))
-
-<span class="co"># Print the factor to see its levels</span>
-<span class="kw">print</span>(num_factors)
-
-<span class="co"># Multiply the numbers by 2</span>
-num_factors <span class="op">*</span><span class="st"> </span><span class="dv">2</span>  <span class="co"># Error: * not meaningful</span>
-                 <span class="co"># returns vector of NA instead</span>
-
-<span class="co"># Changing entry to a level is fine</span>
-num_factors[<span class="dv">1</span>] &lt;-<span class="st"> </span><span class="dv">40</span>
-
-<span class="co"># Change entry to a value that ISN&#39;T a level fails</span>
-num_factors[<span class="dv">1</span>] &lt;-<span class="st"> </span><span class="dv">50</span>  <span class="co"># Error: invalid factor level</span>
-                      <span class="co"># num_factors[1] is now NA</span></code></pre>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb108-1" title="1"><span class="co"># Create a factor of numbers (factors need not be strings)</span></a>
+<a class="sourceLine" id="cb108-2" title="2">num_factors &lt;-<span class="st"> </span><span class="kw">as.factor</span>(<span class="kw">c</span>(<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">20</span>,<span class="dv">20</span>,<span class="dv">30</span>,<span class="dv">30</span>,<span class="dv">40</span>,<span class="dv">40</span>))</a>
+<a class="sourceLine" id="cb108-3" title="3"></a>
+<a class="sourceLine" id="cb108-4" title="4"><span class="co"># Print the factor to see its levels</span></a>
+<a class="sourceLine" id="cb108-5" title="5"><span class="kw">print</span>(num_factors)</a>
+<a class="sourceLine" id="cb108-6" title="6"></a>
+<a class="sourceLine" id="cb108-7" title="7"><span class="co"># Multiply the numbers by 2</span></a>
+<a class="sourceLine" id="cb108-8" title="8">num_factors <span class="op">*</span><span class="st"> </span><span class="dv">2</span>  <span class="co"># Error: * not meaningful</span></a>
+<a class="sourceLine" id="cb108-9" title="9">                 <span class="co"># returns vector of NA instead</span></a>
+<a class="sourceLine" id="cb108-10" title="10"></a>
+<a class="sourceLine" id="cb108-11" title="11"><span class="co"># Changing entry to a level is fine</span></a>
+<a class="sourceLine" id="cb108-12" title="12">num_factors[<span class="dv">1</span>] &lt;-<span class="st"> </span><span class="dv">40</span></a>
+<a class="sourceLine" id="cb108-13" title="13"></a>
+<a class="sourceLine" id="cb108-14" title="14"><span class="co"># Change entry to a value that ISN&#39;T a level fails</span></a>
+<a class="sourceLine" id="cb108-15" title="15">num_factors[<span class="dv">1</span>] &lt;-<span class="st"> </span><span class="dv">50</span>  <span class="co"># Error: invalid factor level</span></a>
+<a class="sourceLine" id="cb108-16" title="16">                      <span class="co"># num_factors[1] is now NA</span></a></code></pre></div>
 <p>If you create a data frame with a string vector as a column (as what happens with <code>read.csv()</code>), it will automatically be treated as a factor <em>unless you explicitly tell it not to</em>:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Vector of shirt sizes</span>
-shirt_size &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;small&quot;</span>, <span class="st">&quot;medium&quot;</span>, <span class="st">&quot;small&quot;</span>, <span class="st">&quot;large&quot;</span>, <span class="st">&quot;medium&quot;</span>, <span class="st">&quot;large&quot;</span>)
-
-<span class="co"># Vector of costs (in dollars)</span>
-cost &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">15.5</span>, <span class="dv">17</span>, <span class="dv">17</span>, <span class="dv">14</span>, <span class="dv">12</span>, <span class="dv">23</span>)
-
-<span class="co"># Data frame of inventory (with factors, since didn&#39;t say otherwise)</span>
-shirts_factor &lt;-<span class="st"> </span><span class="kw">data.frame</span>(shirt_size, cost)
-
-<span class="co"># The shirt_size column is a factor</span>
-<span class="kw">is.factor</span>(shirts_factor<span class="op">$</span>shirt_size) <span class="co"># TRUE</span>
-
-<span class="co"># Can treat this as a vector; but better to fix how the data is loaded</span>
-<span class="kw">as.vector</span>(shirts_factor<span class="op">$</span>shirt_size) <span class="co"># a vector</span>
-
-<span class="co"># Data frame of orders (without factoring)</span>
-shirts &lt;-<span class="st"> </span><span class="kw">data.frame</span>(shirt_size, cost, <span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span>)
-
-<span class="co"># The shirt_size column is NOT a factor</span>
-<span class="kw">is.factor</span>(shirts<span class="op">$</span>shirt_size) <span class="co"># FALSE</span></code></pre>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb109-1" title="1"><span class="co"># Vector of shirt sizes</span></a>
+<a class="sourceLine" id="cb109-2" title="2">shirt_size &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;small&quot;</span>, <span class="st">&quot;medium&quot;</span>, <span class="st">&quot;small&quot;</span>, <span class="st">&quot;large&quot;</span>, <span class="st">&quot;medium&quot;</span>, <span class="st">&quot;large&quot;</span>)</a>
+<a class="sourceLine" id="cb109-3" title="3"></a>
+<a class="sourceLine" id="cb109-4" title="4"><span class="co"># Vector of costs (in dollars)</span></a>
+<a class="sourceLine" id="cb109-5" title="5">cost &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">15.5</span>, <span class="dv">17</span>, <span class="dv">17</span>, <span class="dv">14</span>, <span class="dv">12</span>, <span class="dv">23</span>)</a>
+<a class="sourceLine" id="cb109-6" title="6"></a>
+<a class="sourceLine" id="cb109-7" title="7"><span class="co"># Data frame of inventory (with factors, since didn&#39;t say otherwise)</span></a>
+<a class="sourceLine" id="cb109-8" title="8">shirts_factor &lt;-<span class="st"> </span><span class="kw">data.frame</span>(shirt_size, cost)</a>
+<a class="sourceLine" id="cb109-9" title="9"></a>
+<a class="sourceLine" id="cb109-10" title="10"><span class="co"># The shirt_size column is a factor</span></a>
+<a class="sourceLine" id="cb109-11" title="11"><span class="kw">is.factor</span>(shirts_factor<span class="op">$</span>shirt_size) <span class="co"># TRUE</span></a>
+<a class="sourceLine" id="cb109-12" title="12"></a>
+<a class="sourceLine" id="cb109-13" title="13"><span class="co"># Can treat this as a vector; but better to fix how the data is loaded</span></a>
+<a class="sourceLine" id="cb109-14" title="14"><span class="kw">as.vector</span>(shirts_factor<span class="op">$</span>shirt_size) <span class="co"># a vector</span></a>
+<a class="sourceLine" id="cb109-15" title="15"></a>
+<a class="sourceLine" id="cb109-16" title="16"><span class="co"># Data frame of orders (without factoring)</span></a>
+<a class="sourceLine" id="cb109-17" title="17">shirts &lt;-<span class="st"> </span><span class="kw">data.frame</span>(shirt_size, cost, <span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb109-18" title="18"></a>
+<a class="sourceLine" id="cb109-19" title="19"><span class="co"># The shirt_size column is NOT a factor</span></a>
+<a class="sourceLine" id="cb109-20" title="20"><span class="kw">is.factor</span>(shirts<span class="op">$</span>shirt_size) <span class="co"># FALSE</span></a></code></pre></div>
 <p>This is not to say that factors can’t be useful (beyond just saving memory)! They offer easy ways to group and process data using specialized functions:</p>
-<pre class="sourceCode r"><code class="sourceCode r">shirt_size &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;small&quot;</span>, <span class="st">&quot;medium&quot;</span>, <span class="st">&quot;small&quot;</span>, <span class="st">&quot;large&quot;</span>, <span class="st">&quot;medium&quot;</span>, <span class="st">&quot;large&quot;</span>)
-cost &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">15.5</span>, <span class="dv">17</span>, <span class="dv">17</span>, <span class="dv">14</span>, <span class="dv">12</span>, <span class="dv">23</span>)
-
-<span class="co"># Data frame of inventory (with factors)</span>
-shirts_factor &lt;-<span class="st"> </span><span class="kw">data.frame</span>(shirt_size, cost)
-
-<span class="co"># Produce a list of data frames, one for each factor level</span>
-<span class="co"># first argument is the data frame to split, second is the factor to split by</span>
-shirt_size_frames &lt;-<span class="st"> </span><span class="kw">split</span>(shirts_factor, shirts_factor<span class="op">$</span>shirt_size)
-
-
-<span class="co"># Apply a function (mean) to each factor level</span>
-<span class="co">#   first argument is the vector to apply the function to,</span>
-<span class="co">#   second argument is the factor to split by</span>
-<span class="co">#   third argument is the name of the function</span>
-<span class="kw">tapply</span>(shirts_factor<span class="op">$</span>cost, shirts_factor<span class="op">$</span>shirt_size, mean)</code></pre>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb110-1" title="1">shirt_size &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;small&quot;</span>, <span class="st">&quot;medium&quot;</span>, <span class="st">&quot;small&quot;</span>, <span class="st">&quot;large&quot;</span>, <span class="st">&quot;medium&quot;</span>, <span class="st">&quot;large&quot;</span>)</a>
+<a class="sourceLine" id="cb110-2" title="2">cost &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">15.5</span>, <span class="dv">17</span>, <span class="dv">17</span>, <span class="dv">14</span>, <span class="dv">12</span>, <span class="dv">23</span>)</a>
+<a class="sourceLine" id="cb110-3" title="3"></a>
+<a class="sourceLine" id="cb110-4" title="4"><span class="co"># Data frame of inventory (with factors)</span></a>
+<a class="sourceLine" id="cb110-5" title="5">shirts_factor &lt;-<span class="st"> </span><span class="kw">data.frame</span>(shirt_size, cost)</a>
+<a class="sourceLine" id="cb110-6" title="6"></a>
+<a class="sourceLine" id="cb110-7" title="7"><span class="co"># Produce a list of data frames, one for each factor level</span></a>
+<a class="sourceLine" id="cb110-8" title="8"><span class="co"># first argument is the data frame to split, second is the factor to split by</span></a>
+<a class="sourceLine" id="cb110-9" title="9">shirt_size_frames &lt;-<span class="st"> </span><span class="kw">split</span>(shirts_factor, shirts_factor<span class="op">$</span>shirt_size)</a>
+<a class="sourceLine" id="cb110-10" title="10"></a>
+<a class="sourceLine" id="cb110-11" title="11"></a>
+<a class="sourceLine" id="cb110-12" title="12"><span class="co"># Apply a function (mean) to each factor level</span></a>
+<a class="sourceLine" id="cb110-13" title="13"><span class="co">#   first argument is the vector to apply the function to,</span></a>
+<a class="sourceLine" id="cb110-14" title="14"><span class="co">#   second argument is the factor to split by</span></a>
+<a class="sourceLine" id="cb110-15" title="15"><span class="co">#   third argument is the name of the function</span></a>
+<a class="sourceLine" id="cb110-16" title="16"><span class="kw">tapply</span>(shirts_factor<span class="op">$</span>cost, shirts_factor<span class="op">$</span>shirt_size, mean)</a></code></pre></div>
 <p>However, in general this course is more interested in working with data as vectors, thus you should always use <code>stringsAsFactors=FALSE</code> when creating data frames or loading <code>.csv</code> files that include strings.</p>
 </div>
-<div id="resources-8" class="section level2 unnumbered">
+<div id="resources" class="section level2 unnumbered">
 <h2>Resources</h2>
 <ul>
 <li><a href="http://www.r-tutor.com/r-introduction/data-frame">R Tutorial: Data Frames</a></li>
@@ -753,11 +754,13 @@ shirt_size_frames &lt;-<span class="st"> </span><span class="kw">split</span>(sh
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
@@ -765,12 +768,12 @@ gitbook.start({
 "github": true,
 "facebook": false,
 "twitter": false,
-"google": false,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"all": ["github", "facebook", "twitter", "google"]
+"all": ["github", "facebook", "twitter", "google"],
+"google": false
 },
 "fontsettings": {
 "theme": "white",
@@ -782,6 +785,10 @@ gitbook.start({
 "text": "Edit"
 },
 "history": {
+"link": null,
+"text": null
+},
+"view": {
 "link": null,
 "text": null
 },
