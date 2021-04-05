@@ -195,16 +195,104 @@ After you've committed your changes, be sure and check `git status`, which shoul
 
 <p class="alert alert-danger">**WARNING**: If you forget the `-m` option, git will put you into a command-line _text editor_ so that you can compose a message (then save and exit to finish the commit). If you haven't done any other configuration, you might be dropped into the ___vim___ editor. Type **`:q`** (**colon** then **q**) and hit enter to flee from this horrid place and try again, remembering the `-m` option! Don't panic: getting stuck in _vim_ [happens to everyone](https://stackoverflow.blog/2017/05/23/stack-overflow-helping-one-million-developers-exit-vim/).</p>
 
-### Commit History
-You can also view the history of commits you've made:
+
+### Commit History: git as Time Machine
+
+You can view the history of commits you've made:
 
 ```bash
 git log [--oneline]
 ```
 
-This will give you a list of the _sequence_ of commits you've made: you can see who made what changes and when. (The term **HEAD** refers to the most recent commit). The optional `--oneline` option gives you a nice compact version. Note that each commit is listed with its [SHA-1](https://en.wikipedia.org/wiki/SHA-1) hash (the random numbers and letters), which you can use to identify each commit.
+It will give you output along the lines:
+```
+commit bb1539b98fd5fecb7612db2650a1a77f69fc7bfd (HEAD -> git)
+Merge: 1e71d04 8722cc4
+Author: Ott Toomet <otoomet@uw.edu>
+Date:   Sun Apr 4 20:20:58 2021 -0700
+
+    merged the version where build is not under VC
+
+commit 1e71d0498d5edfd1a8092151b9f5df671aeb5081
+Author: Ott Toomet <otoomet@uw.edu>
+Date:   Sun Apr 4 20:19:24 2021 -0700
+
+    fixed git push, git add, commiting
+```
+
+This will give you a list of the _sequence_ of commits you've made:
+you can see who made what changes and when (this is why you need to
+tell your name and email when configuring git).   The first commit is
+also labeled as **HEAD**, this refers to the the place where
+git adds new comments, normally this is the most recent commit.
+The optional `--oneline` option gives you a nice compact version. Note
+that each commit is listed with its
+[SHA-1](https://en.wikipedia.org/wiki/SHA-1) hash (the random numbers
+and letters), which you can use to identify each commit. 
+
+A big plus of keeping your project under version control is the
+ability to walk back in time.  Maybe you found that an earlier version
+of a file from months ago contained some valuable text that is lost
+now.  Maybe you discover that your code does not work in a specific
+case but you know it did for some time ago.  In such cases you can
+"check out" an earlier version of your repo using `git checkout
+<commit hash>` where _commit hash_ is the hash code that corresponds
+to the commit of interest.
+
+For instance, if we suspect that the last merge (see the example
+above) messed up the project, we can undo it with
+```bash
+git checkout 1e71d0498d5edfd1a8092151b9f5df671aeb5081
+```
+Where `1e71...` is the hash for the last commit we want to preserve,
+normally just copy-pasted from commit history.
+When doing this, we essentially "undo" all changes done afterwards.
+Git will respond with
+```
+Note: switching to '1e71d0498d5edfd1a8092151b9f5df671aeb5081'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+HEAD is now at 1e71d04 fixed git push, git add, commiting
+```
+We can confirm that we are "in the past" by looking at the files, and
+also `git log` will now display
+```
+commit 1e71d0498d5edfd1a8092151b9f5df671aeb5081 (HEAD)
+Author: Ott Toomet <otoomet@uw.edu>
+Date:   Sun Apr 4 20:19:24 2021 -0700
+
+    fixed git push, git add, commiting
+```
+Note that the last log message, the one about merging, is gone, and
+the previous message is not the first in the list (and marked _HEAD_).
+
+We may just forget the changes we undid (the one with merge) and
+continue our work from this stage.  We can also copy the content of
+the files and use them later, or we can run tests and see if certain
+problems in our software are here or not.
+
+In order to get "back to the future" we need `git checkout <branch>`
+where `branch` is the development branch we were in.  If you haven't
+changed branches then it is normally _main_.  You can see all branches
+with `git branch`, the currently active branch is highlighted.
+
 
 ### Reviewing the Process
+
 This cycle of "edit files", "add files", "commit changes" is the standard "development loop" when working with git.
 
 ```{r results='asis', echo=FALSE, include=identical(knitr:::pandoc_to(), 'html')}
@@ -364,11 +452,11 @@ Repeat these steps each time you reach a "checkpoint" in your work to save it bo
 Whew! You made it through! This chapter has a lot to take in, but really you just need to understand and use the following half-dozen commands:
 
 - `git status` Check the status of a repo
-- `git add` Add file to the staging area
-- `git commit -m "message"` Commit changes
-- `git clone` Copy repo to local machine
+- `git add <file>` Add file to the staging area
+- `git commit -am "message"` Commit changes
 - `git push` Upload commits to GitHub
 - `git pull` Download commits from GitHub
+- `git clone` Copy repo to local machine
 
 Using git and GitHub can be challenging, and you'll inevitably run into issues. While it's tempting to ignore version control systems, **they will save you time** in the long-run. For now, do your best to follow these processes, and read any error messages carefully. If you run into trouble, try to understand the issue (Google/StackOverflow), and don't hesitate to ask for help.
 
