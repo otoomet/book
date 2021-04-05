@@ -12,45 +12,110 @@ This chapter will give you a brief introduction to basic tasks using the command
 ## Accessing the Command-Line
 In order to use the command-line, you will need to open a **command shell** (a.k.a. a _command prompt_). This is a program that provides the interface to type commands into. You should have installed a command shell (hereafter "the terminal") as part of [setting up your machine](#setup-machine).
 
-Once you open up the shell (Terminal or Git Bash), you should see something like this (red notes are added):
+Once you open up the shell (Terminal or Git Bash), you should see
+something like this (red notes are added for reference):
 
 ![A newly opened command-line.](img/command-line/cli-blank.png "A newly opened command-line")
 
-This is the textual equivalent of having opened up Finder or File Explorer and having it show you the user's "Home" folder. The text shown lets you know:
+This is the textual equivalent of having opened up Finder or File
+Explorer and having it show you the user's "Home" folder. The text you see
+(typically called _command prompt_ or _shell prompt_) tells you:
 
 - What **machine** you're currently interfacing with (you can use the command-line to control different computers across a network or the internet).
 - What **directory** (folder) you are currently looking at (`~` is a shorthand for the "home directory").
 - What **user** you are logged in as.
 
-After that you'll see the **prompt** (typically denoted as the `$` symbol), which is where you will type in your commands.
+After that you'll see the **prompt** (typically denoted as the `$`
+symbol), which is where you will type in your commands.  Note that
+_prompt_ may mean two different things: either only the `$`-symbol, or
+the whole line of response you see in your shell.
+
 
 ## Navigating the Command Line
+
+This section explains how to navigate your files and folders using
+command line.  While this is a useful skill in itself,
+our main motivation of discussing it extensively
+is the fact that programming languages use a very similar
+approach.  Playing with command line is a quick and simple way to
+"see" the file system in a similar way as computer programs "see" it.
+
+
+### File System Tree
+
+Folders on computers are stored in a hierarchy: each folder may have
+more folders inside it, which have more folders inside them.  When
+exploring your files using graphical environment, you are usually
+working inside of a dedicated area for your personal files, called
+**home folder** or **home directory**.  A modern home folder typically
+contains direcories like _Documents_, _Downloads_ and _Pictures_.
+However, you can also navigate "out" of your personal area, there are again
+files and folders, but now belonging either other users or to the
+system.  But there is a limit how far out you can go.  The outermost
+directory
+(or bottom, or top, depending on your point of view) is called **root
+directory** and denoted by `/`.  It has no other name.
+This produces a <a href="https://en.wikipedia.org/wiki/Tree_(data_structure)">tree</a> structure which on a Mac may look like:
+
+![A Directory Tree, from Bradnam and Korf.](img/command-line/dir-tree.png "directory tree")
+
+You can refer to folders by putting a slash `/` between each folder in
+the tree: thus `/Users/nigel` means "the `nigel` folder, which is
+inside the `Users` folder".  On Mac, this is the place where user
+"nigel" can keep their personal files and documents.  And as `/` means
+the root folder, `/Users/nigel` really means "the `nigel` folder,
+which is inside the `Users` folder, which is inside the _root_
+folder".
+
+<p class="alert alert-info">
+**A Note about Windows:** while Mac (and other unix computers) use `/` as the root directory of the while system, Windows normally uses `This PC` on Explorer and similar graphical frontends, followed by the drive letters like `C:\`, followed by folder names separeted by backslashes.  _gitbash_ uses a unix-style filesystem tree approach with `/` replacing `This PC`, backslashes with forward slashes, and drive letters must be used without colon.  So `C:\Users\Xiaotian\Desktop` can be accessed as `/c/Users/Xiaotian/Desktop`.
+</p>
+
+
+### Working Directory
+
+As the first step, in order to get to all your files and folders, is
+to know where you are.  This concept in shell is called **working
+directory**.  All file and folder accessing commands in shell know
+the working directory, and start their work from there.  And
+importantly, this is also true for computer programs--programs,
+including R programs have a very similar idea of their current
+location, current working directory.
+
 Although the command-prompt gives you the name of the folder you're in, you might like more detail about where that folder is. Time to send your first command! At the prompt, type:
 
 ```bash
 pwd
 ```
 
-This stands for **p**rint **w**orking **d**irectory (shell commands are highly abbreviated to make them faster to type), and will tell the computer to print the folder you are currently "in".
+This stands for **p**rint **w**orking **d**irectory (shell commands
+are highly abbreviated to make them faster to type), and will tell the
+computer to print the folder you are currently "in".  It may reply
+```
+/Users/nigel/Documents/
+```
+i.e. you are in the folder _Documents_, in folder _nigel_, in folder
+_Users_ in the root folder.  (This is probably the place where user
+_nigel_ keeps their documents).
+
+The result typically looks somewhat different on windows, for instance
+you may see
+```
+/c/Users/nigel/Documents/
+```
+This means the you are in folder _Documents_, in folder _nigel_, in
+folder _Users_ in `C:` drive on "This PC".  This is a good place to
+keep your documents for user _nigel_.  You can navigate to the
+same place using file explorer.
 
 <p class="alert alert-info">_Fun fact:_ technically, this command usually starts a tiny program (app) that does exactly one thing: prints the working directory. When you run a command, you're actually executing a tiny program! And when you run programs (tiny or large) on the command-line, it looks like you're typing in commands.</p>
 
-Folders on computers are stored in a hierarchy: each folder has more folders inside it, which have more folders inside them. This produces a <a href="https://en.wikipedia.org/wiki/Tree_(data_structure)">tree</a> structure which on a Mac may look like:
-
-![A Directory Tree, from Bradnam and Korf.](img/command-line/dir-tree.png "directory tree")
-
-You describe what folder you are in putting a slash `/` between each folder in the tree: thus `/Users/iguest` means "the `iguest` folder, which is inside the `Users` folder".
-
-At the very top (or bottom, depending on your point of view) is the **root** `/` directory&dash;which has no name, and so is just indicated with that single slash. So `/Users/iguest` really means "the `iguest` folder, which is inside the `Users` folder, which is inside the _root_ folder".
-
-<p class="alert alert-info">
-**A Note about Windows:** while Mac (and other unix computers) use `/` as the root directory of the while system, Windows normally uses `This PC` on Explorer and similar graphical frontends, followed by the drive letters like `C:\`, followed by folder names separeted by backslashes.  _gitbash_ uses a unix-style filesystem tree approach with `/` replacing `This PC`, backslashes with forward slashes, and drive letters must be used without colon.  So `C:\Users\Xiaotian\Desktop` can be accessed as `/c/Users/Xiatioan/Desktop`.
-</p>
-
-
 
 ### Changing Directories
-What if you want to change folders? In a graphical system like Finder, you would just double-click on the folder to open it. But there's no clicking on the command-line.
+
+What if you want to work with files in a different folder?  In a
+graphical system like Finder, you would just double-click on the
+folder to open it.  But there's no clicking on the command-line.
 
 <p class="alert alert-warning">This includes clicking to move the cursor to an earlier part of the command you typed. You'll need to use the left and right arrow keys to move the cursor instead!</p>
 
@@ -62,7 +127,7 @@ Since you can't click on a folder, you'll need to use another command:
 cd folder_name
 ```
 
-The first word is the **command**, or what you want the computer to do. In this case, you're issuing the command that means **c**hange **d**irectory.
+The first word here is the **command**, or what you want the computer to do. In this case, you're issuing the command that means **c**hange **d**irectory.
 
 The second word is an example of an **argument**, which is a programming term that means "more details about what to do". In this case, you're providing a _required_ argument of what folder you want to change to! (You'll of course need to replace `folder_name` with the name of the folder).
 
@@ -72,6 +137,17 @@ The second word is an example of an **argument**, which is a programming term th
 </p>
 
 - After you change folders, try printing your current location. Can you see that it has changed?
+
+If you want to go _up_ a directory (or out of the current directory),
+you use special name of two dots: **`..`** to refer to the **parent** folder (that is, the one that contains this one). So the command
+
+```bash
+cd ..
+```
+
+means "go out of the current folder into the immediate parent
+folder".  On Windows explorer this corresponds to the small up arrow
+next to the folder path on top of the window.
 
 
 ### Listing Files
@@ -86,6 +162,51 @@ This command says to **l**i**s**t the folder contents. Note that the _argument_ 
 <div class="alert alert-danger">
 <p>**Warning**: The command-line can be not great about giving **feedback** for your actions. For example, if there are no files in the folder, then `ls` will simply show nothing, potentially looking like it "didn't work". Or when typing a **password**, the letters you type won't show (not even as `*`) as a security measure.</p>
 <p>Just because you don't see any results from your command/typing, doesn't mean it didn't work! Trust in yourself, and use basic commands like `ls` and `pwd` to confirm any changes if you're unsure. Take it slow, one step at a time.</p></div>
+
+<div class="example">
+Imagine your have files `taxes.doc`, `dolphins.jpg` and `resume.doc`
+in your `Documents` folder, and the `Documents` is located in your
+home `~`.  Now when you open the terminal, you will be in your home
+folder:
+```bash
+$ pwd
+/home/otoomet
+```
+If you type `ls`, you see files and folders that are in your home
+directory:
+```bash
+$ ls
+Desktop   Documents   Downloads   ...
+```
+But if you just want to "peek" into the Documents, you can do
+```bash
+$ ls Documents
+dolhins.jpg   resume.doc  taxes.doc
+```
+</div>
+
+`ls` can also used to show only files of certain type using _shell
+patterns_.  Patterns is a way to describe the file names that follow
+certain patterns.  For instance, `*.jpg` means _all files that end
+with `.jpg`_.  This may include `image.jpg`, `CANON123456.jpg` and `a
+very long picture file with spaces.jpg`.  In a similar fashion
+`CV*.doc` means _all files that start with `CV` and end with `.doc`.
+This is a very handy way to list only files of certain type.  For
+instance, in order to see only files with `.doc`-extension inside the
+`Documents` folder, we can do
+```sh
+ls Documents/*.doc
+resume.doc  taxes.doc
+```
+Indeed, the doc-files are here but the jpg is not.
+
+<div class="alert-danger">
+Note that patterns (and file names) are case sensitive.  For instance,
+`ls *.DOC` in the example above will fail to find any doc files.  This
+is also true on Windows _gitbash_ despite the windows file system
+normally using case-insensitive file names.
+</div>
+
 
 ### Paths
 Note that both the **`cd`** and **`ls`** commands work even for folders that are not "immediately inside" the current directory! You can refer to _any_ file or folder on the computer by specifying its **path**. A file's path is "how you get to that file": the list of folders you'd need to click through to get to the file, with each folder separated by a `/`:
@@ -108,21 +229,14 @@ Because this path doesn't have the leading slash, it just says to "go to the `ig
 
 <p class="alert alert-warning">You should **always** use relative paths, particularly when programming! Because you'll almost always be managing multiples files in a project, you should refer to the files _relatively_ within your project. That way, you program can easily work across computers. For example, if your code refers to `/Users/your-user-name/project-name/data`, it can only run on the `your-user-name` account. However, if you use a _relative path_ within your code (i.e., `project-name/data`), the program will run on multiple computers (crucial for collaborative projects).</p>
 
-You can refer to the "current folder" by using a single dot **`.`**. So the command
+The special name `..` refers to the parent folder.  In a similar
+fashion, a single dot `.` refers to the "current folder".  So the command
 
 ```bash
 ls .
 ```
 
 means "list the contents of the current folder" (the same thing you get if you leave off the argument).
-
-If you want to go _up_ a directory, you use _two_ dots: **`..`** to refer to the **parent** folder (that is, the one that contains this one). So the command
-
-```bash
-ls ..
-```
-
-means "list the contents of the folder that contains the current folder".
 
 Note that **`.`** and **`..`** act just like folder names, so you can include them anywhere in paths: `../../my_folder` says to go up two directories, and then into `my_folder`.
 
@@ -161,7 +275,14 @@ Once you're comfortable navigating folders in the command-line, you can start to
 Be aware that many of these commands **won't print anything** when you run them. This often means that they worked; they just did so quietly. If it _doesn't_ work, you'll know because you'll see a message telling you so (and why, if you read the message). So just because you didn't get any output doesn't mean you did something wrong&mdash;you can use another command (such as **`ls`**) to confirm that the files or folders changed the way you wanted!
 
 ### Learning New Commands
-How can you figure out what kind of arguments these commands take? You can look it up! This information is available online, but many command shells (though _not_ Git Bash, unfortunately) also include their own manual you can use to look up commands!
+How can you figure out what kind of arguments these commands take? You
+can look it up! This information is available online, but many command
+shells (though _not_ Git Bash, unfortunately) also include their own
+manual you can use to look up commands!  But if you are using a shell
+where built-in manual is not available, there is always the option to
+enter the manual command in google search.  The results are probably
+fairly similar, although you may end up reading manual of a slightly
+different version.
 
 ```bash
 man mkdir
@@ -169,7 +290,10 @@ man mkdir
 
 Will show the **man**ual for the **`mkdir`** program/command.
 
-<p class="alert alert-info">Because manuals are often long, they are opened up in a command-line viewer called <a href="https://en.wikipedia.org/wiki/Less_(Unix)">`less`</a>. You can "scroll" up and down by using the arrow keys. Hit the `q` key to **q**uit and return to the command-prompt.</p>
+<p class="alert alert-info">Because manuals are often long, they are
+opened up in a command-line viewer called <a
+href="https://en.wikipedia.org/wiki/Less_(Unix)">`less`</a>. You can
+"scroll" up and down by using the arrow keys and space bar.  Hit the `q` key to **q**uit and return to the command-prompt.</p>
 
 ![The `mkdir` man page.](img/command-line/mkdir.png "man mkdir")
 
@@ -183,7 +307,11 @@ If you look under "Synopsis" you can see a summary of all the different argument
 
 - Underlined arguments are ones you choose: you don't actually type the word `directory_name`, but instead your own directory name! Contrast this with the options: if you want to use the `-p` option, you need to type `-p` exactly.
 
-Command-line manuals ("man pages") are often very difficult to read and understand: start by looking at just the required arguments (which are usually straightforward), and then search for and use a particular option if you're looking to change a command's behavior.
+Command-line manuals ("man pages") are primarily designed for those
+who are well familiar with the commands and are looking for just some
+additional details, e.g. how exactly do certain options work.  These
+are not good introduction texts for beginners.  If you consult the
+manual then start by looking at just the required arguments (which are usually straightforward), and then search for and use a particular option if you're looking to change a command's behavior.
 
 For practice, try to read the man page for `rm` and figure out how to delete a folder and not just a single file. Note that you'll want to be careful, as this is a good way to [break things](http://www.pcworld.com/article/3057235/data-center-cloud/that-man-who-deleted-his-entire-company-with-a-line-of-code-it-was-a-hoax.html).
 
@@ -220,6 +348,36 @@ mkdir
 ```
 
 Take the time to read the error message and think about what the problem might be before you try again.
+
+
+## Cheatsheet
+
+Here is a quick summary of the most important resources in this
+section.
+
+### Most important commands
+
+* `pwd`: **p**rint **w**orking **d**irectory
+* `cd`: **c**hange **d**irectory
+* `ls`: **l**i**s**t files.  Check out how to list in long form
+  (option `-l`) and how to list in temporal order (options `-t`)
+* `mkdir`: **m**a**k**e a **dir**ectory
+* `cp`: **c**o**p**y a file from one location to another
+* `mv`: **m**o**v**e (rename) a file from one location to another
+
+
+### Shell keyboard shortcuts
+
+* **Tab-completion**: write a few first letters of the file name or
+  command and hit <tab>.  This will complete the file name (without
+  any typos!).  If the letters are ambiguous, e.g. _Do_ may mean both
+  _Documents_ and _Downloads_, then hit tab twice, and it displays the
+  available options.
+* **browsing history**: arrow-up key walks back in shell command
+  history and allows you to select and edit previous commands.
+* **Stopping a command**: `Ctrl-c` (hold `Ctrl` and press `c`) stops
+  the command that takes too long.  (Does not always work).
+
 
 ## Resources {-}
 <div class="list-condensed">

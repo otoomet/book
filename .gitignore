@@ -4,7 +4,7 @@ node_modules
 # R build files
 .Rhistory
 # Book build output
-#_book
+build/
 *.aux
 *.log
 *.fdb
