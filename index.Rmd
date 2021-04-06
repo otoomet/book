@@ -1,6 +1,6 @@
 ---
 title: 'Technical Foundations of Informatics'
-author: "[Michael Freeman](http://mfviz.com/#/), [Joel Ross](http://faculty.washington.edu/joelross/) and Ott Toomet"
+author: "[Michael Freeman](http://mfviz.com/#/), [Joel Ross](http://faculty.washington.edu/joelross/) and [Ott Toomet](https://ischool.uw.edu/people/faculty/profile/otoomet)"
 date: "`r format(Sys.Date(), '%B %d, %Y')`"
 description: 'The course reader for INFO 201: Technical Foundations of Informatics.'
 github-repo: info201/book
