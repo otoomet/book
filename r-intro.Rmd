@@ -1,35 +1,60 @@
 # Introduction to R {#r-intro}
 
-R is an extraordinarily powerful open-source software program built for working with data. It is one of the most popular data science tools because of its ability to efficiently perform statistical analysis, implement machine learning algorithms, and create data visualizations. R is the primary programming language used throughout this book, and understanding its foundational operations is key to being able to perform more complex tasks.
+R is an extraordinarily powerful open-source software program built
+for working with data. It is one of the most popular data science
+tools because of its ability to efficiently perform statistical
+analysis, implement machine learning algorithms, and create data
+visualizations. R is the primary programming language used throughout
+this book, and understanding its foundational operations is key to
+being able to perform more complex tasks.
+
+This chapter is primarily designed for readers who have little to no
+experience with programming, and hence we discuss topics like
+variables and data types in a rather thorough way.  If you have
+programming experience, you may quickly skim through this chapter and
+just learn the basic R syntax and how to use RStudio.
+
 
 ## Programming with R
 R is a **statistical programming language** that allows you to write code to work with data. It is an **open-source** programming language, which means that it is free and continually improved upon by the R community. The R language has a number of functionalities that allow you to read, analyze, and visualize datasets.
 
 - _Fun Fact:_ R is called "R" because it was inspired by and comes after the language "S", a language for **S**tatistics developed by AT&amp;T.
 
-So far you've leveraged formal language to give instructions to your computers, such as by writing syntactically-precise instructions at the command-line. Programming in R will work in a similar manner: you will write instructions using R's special language and syntax, which the computer will **interpret** as instructions for how to work with data.
+So far you've leveraged formal language to give instructions to your
+computers, such as by writing syntactically-precise instructions at
+the command-line. Programming in R will work in a similar manner: you
+will write instructions R language and syntax (not in shell language as in shell), which the computer will **interpret** as instructions for how to work with data.
 
-However, as projects grow in complexity, it will become useful if you can write down all the instructions in a single place, and then order the computer to _execute_ all of those instructions at once. This list of instructions is called a **script**. Executing or "running" a script will cause each instruction (line of code) to be run _in order, one after the other_, just as if you had typed them in one by one. Writing scripts allows you to save, share, and re-use your work. By saving instructions in a file (or set of files), you can easily check, change, and re-execute the list of instructions as you figure out how to use data to answer questions. And, because R is an _interpreted_ language rather than a _compiled_ language like Java, R programming environments will also give you the ability to execute each individual line of code in your script if you desire (though this will become cumbersome as projects become large).
+However, as projects grow in complexity, it will become useful if you
+can write down all the instructions in a single file, and then tell
+the computer to _execute_ all of those instructions at once. This list
+of instructions is called a **script** or **program** (or **code**).  Writing
+scripts is called **programming**.  Executing or "running" a script will cause each instruction (line of code) to be run _in order, one after the other_, just as if you had typed them in one by one. Writing scripts allows you to save, share, and re-use your work. By saving instructions in a file (or set of files), you can easily check, change, and re-execute the list of instructions as you figure out how to use data to answer questions. And, because R is an _interpreted_ language rather than a _compiled_ language like Java, R programming environments will also give you the ability to execute each individual line of code in your script if you desire (though this will become cumbersome as projects become large).
 
 As you begin working with data in R, you will be writing multiple instructions (lines of code) and saving them in files with the **`.R`** extension, representing R scripts. You can write this R code in any text editor (such as Atom), but we recommend you usually use a program called **RStudio** which is specialized for writing and running R scripts.
 
-## Running R Scripts
-R scripts (programs) are just a sequence of instructions, and there are a couple of different ways in which we can tell the computer to execute these instructions.
+
+## How to Run R
+
+The primary way to use R in this course is through _RStudio_ (see
+below).  However, R can be used also without [RStudio](#running-r-rstudio).
+
 
 ### Command-Line {#running-r-cmd}
+
 It is possible to issue R instructions (run lines of code) one-by-one at the command-line by starting an **interactive R session** within your terminal. This will allow you to type R code directly into the terminal, and your computer will interpret and execute each line of code (if you just typed R syntax directly into the terminal, your computer wouldn't understand it).
 
-With R installed, you can start an interactive R session on a Mac by typing `R` into the terminal (to run the `R` program), or on Windows by running the "R" desktop app program. This will start the session and provide you with lots of information about the R language:
+With R installed, you can start an interactive R session on a Mac (or linux) by typing `R` into the terminal (to run the `R` program), or on Windows by running the "R" desktop app program. This will start the session and provide you with lots of information about the R language:
 
 ![An interactive R session running in the terminal.](img/r-intro/r-interactive-session.png "interactive R session")
 
-Notice that this description also include _instructions on what to do next_&mdash;most importantly `"Type 'q()' to quit R."`.
+Notice that this description also includes suggestions on what to do next_&mdash;most importantly `"Type 'q()' to quit R."`.
 
 <p class="alert alert-warning">Always read the output when working on the command-line!</p>
 
 Once you've started running an interactive R session, you can begin entering one line of code at a time at the prompt (`>`). This is a nice way to experiment with the R language or to quickly run some code. For example, try doing some math at the command prompt (i.e., enter `1 + 1` and see the output).
 
-- Note that RStudio also provides an interactive console that provides the exact same functionality.
+- Note that RStudio also includes an interactive console that provides the exact same functionality.
 
 It is also possible to run entire scripts from the command-line by using the `RScript` program, specifying the `.R` file you wish to execute:
 
@@ -37,12 +62,18 @@ It is also possible to run entire scripts from the command-line by using the `RS
 
 Entering this command in the terminal would execute each line of R code written in the `analysis.R` file, performing all of the instructions that you had save there. This is helpful if your data has changed, and you want to reproduce the results of your analysis using the same instructions.
 
-#### Windows Command-Line
-On Windows, you need to tell the computer where to find the `R.exe` and `RScript.exe` programs to execute&mdash;that is, what is the **path** to these programs. You can do this by specifying the _absolute path_ to the R program when you execute it, for example:
+On Windows, you need to tell the computer where to find the `R.exe`
+and `RScript.exe` programs to execute&mdash;that is, what is the
+**path** to these programs.  You can do this by specifying the _absolute path_ to the R program when you execute it, for example:
 
 ![Using RScript from a Windows shell](img/r-intro/rscript-terminal-windows.png "Rscript from windows shell")
 
-If you plan to run R from the command-line regularly (_not_ a requirement for this course), a better solution is to add the folder containing these programs to your computer's [**`PATH` variable**](https://en.wikipedia.org/wiki/PATH_(variable)). This is a _system-level_ variable that contains a list of folders that the computer searches when finding programs to execute execute. The reason the computer knows where to find the `git.exe` program when you type `git` in the command-line is because that program is "on the `PATH`".
+If you plan to run R from the command-line regularly (_not_ a
+requirement for this course), a better solution is to add the folder
+containing these programs to your computer's [**`PATH`
+variable**](https://en.wikipedia.org/wiki/PATH_(variable)). This is a
+_system-level_ variable that contains a list of folders that the
+computer searches when looking for programs. The reason the computer knows where to find the `git.exe` program when you type `git` in the command-line is because that program is "on the `PATH`".
 
 In Windows, You can add the `R.exe` and `RScript.exe` programs to your computer's `PATH` by editing your machine's **Environment Variables** through the _Control Panel_:
 
@@ -54,9 +85,12 @@ In Windows, You can add the `R.exe` and `RScript.exe` programs to your computer'
 
 - You will need to close and re-open your command-line (Git Bash) for the `PATH` changes to take effect.
 
-Overall, using R from the command-line can be tricky; we recommend you just use RStudio instead.
+However, unless you have good reasons, we recommend you to use RStudio
+instead of command line.
+
 
 ### RStudio {#running-r-rstudio}
+
 RStudio is an open-source **integrated development environment (IDE)** that provides an informative user interface for interacting with the R interpreter. IDEs provide a platform for writing _and_ executing code, including viewing the results of the code you have run. If you haven't already, make sure to download and install [the free version of RStudio](https://www.rstudio.com/products/rstudio/download3/#download).
 
 When you open the RStudio program (either by searching for it, or double-clicking on a desktop icon), you'll see the following interface:
@@ -65,40 +99,103 @@ When you open the RStudio program (either by searching for it, or double-clickin
 
 An RStudio session usually involves 4 sections ("panes"), though you can customize this layout if you wish:
 
-- **Script**: The top-left pane is a simple text editor for writing your R code. While it is not as robust as a text editing program like Atom, it will colorize code, "auto-complete" text, and allows you to easily execute your code. Note that this pane is hidden if there are no open scripts; select `File > New File > R Script` from the menu to create a new script file.
+- **Console**: The bottom-left pane is a console, the R command line
+  for entering R commands. This is identical to an inetractive session
+  you'd run on the command-line, in which you can type and execute one
+  line of code at a time. The console will also show the printed
+  results from executing the code you execute from the Script pane.
+  
+  Normally you use console for quick computations and short sequences
+  of 1-2 lines of code.  Longer blocks of code is usually easier to
+  as script.
+
+    - _Protip:_ just like with the command-line, you can **use the up arrow** to easily access previously executed lines of code.
+
+- **Script**: The top-left pane is a simple text editor for writing
+  your R code, markdown, and other files.  While it is not as powerful
+  as dedicated text editors
+  like Atom, it will colorize code (this is called _syntax coloring_), "auto-complete" text, and allows you to easily execute your code. Note that this pane is hidden if there are no open scripts; select `File > New File > R Script` from the menu to create a new script file.
 
     In order to execute (run) the code you write, you have two options:
 
-    1. You can execute a section of your script by selecting (highlighting) the desired code and pressing the "Run" button (keyboard shortcut: `ctrl` and `enter`). If no lines are selected, this will run the line currently containing the cursor. This is the most common way to execute code in R.
+    1. You can execute a section of your script by selecting
+       (highlighting) the desired code and pressing the "Run" button
+       (keyboard shortcut: `Ctrl + Enter`). If no lines are selected,
+       this will run the line currently containing the cursor.  This
+       is a good way to run just a selected section of your code.
 
-        - _Protip:_ use `cmd + a` to select the entire script!
-
-    2. You can execute an entire script by using the `Source` command to treat the current file as the "source" of code. Press the "Source" button (hover the mouse over it for keyboard shortcuts) to do so. If you check the "Source on save" option, your entire script will be executed every time you save the file (this may or may not be appropriate, depending on the complexity of your script and its output).
-
-- **Console**: The bottom-left pane is a console for entering R commands. This is identical to an inetractive session you'd run on the command-line, in which you can type and execute one line of code at a time. The console will also show the printed results from executing the code you execute from the Script pane.
-
-    - _Protip:_ just like with the command-line, you can **use the up arrow** to easily access previously executed lines of code.
+    2. You can execute an entire script by using the `Source` command
+       to treat the current file as the "source" of code. Press the
+       "Source" button (`Ctrl + Shift + Enter`) to do so.  This is a
+       good approach if you want to run your entire script.
+	   
+	   If you check the "Source on save" option, your entire script
+       will be executed every time you save the file (this may or may
+       not be appropriate, depending on the complexity of your script
+       and its output).  There are more options.
 
 - **Environment**: The top-right pane displays information about the current R environment&mdash;specifically, information that you have stored inside of _variables_ (see below). In the above example, the value `201` is stored in a variable called `x`. You'll often create dozens of variables within a script, and the Environment pane helps you keep track of which values you have stored in what variables. _This is incredibly useful for debugging!_
 
 - **Plots, packages, help, etc.**: The bottom right pane contains multiple tabs for accessing various information about your program. When you create visualizations, those plots will render in this quadrant. You can also see what packages you've loaded or look up information about files. _Most importantly_, this is also where you can access the official documentation for the R language. If you ever have a question about how something in R works, this is a good place to start!
 
-Note, you can use the small spaces between the quadrants to adjust the size of each area to your liking. You can also use menu options to reorganize the panes if you wish.
+Note, you can use the small spaces between the quadrants to adjust the
+size of each area to your liking. You can also use menu options to
+reorganize the panes if you wish.  The most useful options to
+alternatives are _focusing_ and _zooming_.  Focusing means moving your
+mouse cursor and input into a particular pane, e.g. `Ctrl + 1` makes
+the script pane active and `Ctrl + 2` makes console pane active.
+Using keyboard shortcuts to move your focus is much faster than
+grabbing mouse.
+
+Zooming is a bit similar to focus, just it also hides the other
+panes.  `Ctrl + Shift + 1` zooms to script, `Ctrl + Shift + 2` zooms
+to console, and `Ctrl + Shift + 0` restores the original 4-pane view.
+See the `View > Panes` menu and options therein.  Zooming to
+individual panes is very useful if you are working on a small screen.
 
 
-## Comments
-Before discussing how to program with R, we need to talk about a piece of syntax that lets you comment your code. In programming, **comments** are bits of text that are _not interpreted as computer instructions_&mdash;they aren't code, they're just notes about the code! Since computer code can be opaque and difficult to understand, we use comments to help write down the meaning and _purpose_ of our code. While a computer is able to understand the code, comments are there to help _people_ understand it. This is particularly imporant when someone else will be looking at your work&mdash;whether that person is a collaborator, or is simply a future version of you (e.g., when you need to come back and fix something and so need to remember what you were even thinking).
+## Basic R
 
-Comments should be clear, concise, and helpful&mdash;they should provide information that is not otherwise present or "obvious" in the code itself.
+Here we introduce the very basics of R through R console.  Although
+the same commands can also be written as a script, 1-2 line long
+commands are typically easier to just be typed on the console (the
+lower-left pane in RStudio).
 
-In R, we mark text as a comment by putting it after the pound/hashtag symbol (**`#`**). Everything from the `#` until the end of the line is a comment. We put descriptive comments _immediately above_ the code it describes, but you can also put very short notes at the end of the line of code (preferably following two spaces):
-
-```r
-# Set how many bottles of beer are on the wall
-bottles <- 99 - 1  # 98 bottles
+R Console is similar to command shell, just it understands R commands
+and not shell commands.  We can start with simple arithmetic.  Write
+`1 + 1` in the R command prompt and hit enter (in a similar fashion as
+in shell).  R replies with `[1] 2`.  Below we write these steps as:
+```{r}
+1 + 1
 ```
+The first block shows the commands you issue in R console, underneath
+is `##` followed by the R's reply (the answer).  The R's reply
+contains the answer, `2`, and a marker `[1]`.  The marker means that
+one command may produce many answers and this is the first answer.
 
-(You may recognize this `#` syntax and commenting behavior from the command-line and git chapters. That's because the same syntax is used in a Bash shell!)
+This is how we can use R as a powerful calculator.  The other
+arithmetic operations are pretty easy and intuitive: `-` for
+subtraction, `*` for multiplication, `/` for division and `^` for
+exponentiation.  Only exponentiation is somewhat non-standard,
+different programming languages have different habits here.  R knows
+that multiplication must be done before addition, if you want the
+opposite then you need parenthesis:
+```{r}
+1 + 2*3
+(1 + 2)*3
+```
+Obviously, we do not want to use a complex statistical language for
+such simple computations.  But let's compute length of light-year in
+kilometers instead--this is much harder to do manually.
+Light-year is the distance light, moving 300,000
+km/s, covers in one year:
+```{r}
+300000*60*60*24*365
+```
+Here we take the speed of light, and multiply it by seconds in minute
+(60), minutes in hour (60), hours in day (24) and days in year (365).
+R prints the answer in _exponential form_, it must be understood as
+$9.46\cdot 10^{12}$, i.e. almost 10 trillion kilometers. 
 
 
 ## Variables
@@ -222,6 +319,21 @@ There six "basic types" (called _atomic data types_) for data in R:
 - **Raw**: is a sequence of "raw" data.  It is good for storing a "raw"
     sequence of bytes, such as image data.  R does not interpret raw data
     in any particular way.  We will not discuss raw data in this book.
+
+
+## Comments
+Before discussing how to program with R, we need to talk about a piece of syntax that lets you comment your code. In programming, **comments** are bits of text that are _not interpreted as computer instructions_&mdash;they aren't code, they're just notes about the code! Since computer code can be opaque and difficult to understand, we use comments to help write down the meaning and _purpose_ of our code. While a computer is able to understand the code, comments are there to help _people_ understand it. This is particularly imporant when someone else will be looking at your work&mdash;whether that person is a collaborator, or is simply a future version of you (e.g., when you need to come back and fix something and so need to remember what you were even thinking).
+
+Comments should be clear, concise, and helpful&mdash;they should provide information that is not otherwise present or "obvious" in the code itself.
+
+In R, we mark text as a comment by putting it after the pound/hashtag symbol (**`#`**). Everything from the `#` until the end of the line is a comment. We put descriptive comments _immediately above_ the code it describes, but you can also put very short notes at the end of the line of code (preferably following two spaces):
+
+```r
+# Set how many bottles of beer are on the wall
+bottles <- 99 - 1  # 98 bottles
+```
+
+(You may recognize this `#` syntax and commenting behavior from the command-line and git chapters. That's because the same syntax is used in a Bash shell!)
 
 
 ## Getting Help {#gettinghelp}
