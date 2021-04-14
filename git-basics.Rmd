@@ -322,14 +322,30 @@ git ls-files
 (Note that `git status` does not mention tracked files that are not changed.)
 
 
-### The `.gitignore` File {#gitignore}
-Sometimes you want git to always ignore particular directories or files in your project. For example, if you use a Mac and you tend to organize your files in the Finder, the operating system will create a hidden file in that folder named `.DS_Store` (the leading dot makes it "hidden") to track the positions of icons, which folders have been "expanded", etc. This file will likely be different from machine to machine. If it is added to your repository and you work from multiple machines (or as part of a team), it could lead to a lot of merge conflicts (not to mention cluttering up the folders for Windows users).
+### The `.gitignore` File: Certain Files Should Not Tracked {#gitignore}
 
-You can tell git to ignore files like these by creating a special _hidden_ file in your project directory called `.gitignore` (note the leading dot). This file contains a _list_ of files or folders that git should "ignore" and pretend don't exist. The file uses a very simple format: each line contains the path to a directory or file to ignore; multiple files are placed on multiple lines. For example:
+When you run `git status`, git always lists all "untracked files", the
+files that are there but not under git control.  This information is
+designed to warn you about the useful files that you want to keep
+under git but have forgotten to add.  However, there are many
+legitimate reasons to have files _not_ under git in your project.
+
+For example, if you use a Mac and you tend to organize your files in
+the Finder, the operating system will create a hidden file in that
+folder named `.DS_Store` (the leading dot makes it "hidden") to track
+the positions of icons, which folders have been "expanded", etc.
+There is no reason to keep track of your window and icon placement as
+a part of a common project!
+Alternatively, many
+text editors create backup files, e.g. the old version of `readme.md`
+may be preserved as `readme.md~`.  Again, as git preserves the old
+version of files anyway, there is no reason to put the text editor's
+backup into the repo.
+
+You can tell git to ignore files like these by creating a special file in your project directory called `.gitignore` (note the leading dot). This file contains a _list_ of files or folders that git should "ignore" and pretend don't exist. The file uses a very simple format: each line contains the path to a directory or file to ignore; multiple files are placed on multiple lines. For example:
 
 ```bash
 # This is an example .gitignore file
-
 # Mac system file; the leading # marks a comment
 .DS_Store
 
@@ -340,7 +356,15 @@ secret/my_password.txt
 movies/my_four_hour_epic.mov
 ```
 
-Note that the easiest way to create the `.gitignore` file is to use your preferred text editor (e.g., Atom); select `File > New` from the menu and choose to make the `.gitignore` file _directly inside_ your repo.  `.gitgnore` should be added and committed to the repo to make the ignore-rules common across the project.  There are also ways to ignore files on a single computer only, see [documentation on github](https://help.github.com/en/articles/ignoring-files) for details.
+If your project does not yet have `.gitignore` file, you can create it
+with any editor (such as RStudio or Atom).  You have to create a new
+file, called `.gitignore` _directly inside_ your repo.  `.gitgnore`
+should be added and committed to the repo to make the ignore-rules
+common across the project.
+`.gitignore` can also be created by selecting the corresponding
+checkbox on GitHub when you create the repo there.  RStudio will
+automatically create `.gitignore` when you create a new R project
+inside of and existing directory that is under git control.
 
 You may want to ignore certain files in _all your repositories_.  For instance, if you are on a Mac, we **strongly suggest** _globally ignoring_ your `.DS_Store` file. There's no need to ever share or track this file. To always ignore this file on your machine, simply run these lines of code:
 
