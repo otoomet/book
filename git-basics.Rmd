@@ -358,7 +358,7 @@ movies/my_four_hour_epic.mov
 
 If your project does not yet have `.gitignore` file, you can create it
 with any editor (such as RStudio or Atom).  You have to create a new
-file, called `.gitignore` _directly inside_ your repo.  `.gitgnore`
+file, called `.gitignore` _directly inside_ your repo.  `.gitignore`
 should be added and committed to the repo to make the ignore-rules
 common across the project.
 `.gitignore` can also be created by selecting the corresponding

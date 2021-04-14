@@ -244,102 +244,120 @@ Although "values" (more precisely _objects_), functions are not [atomic
 objects](#basic-data-strucures).  But they can still be stored and
 manipulated in many ways like other objects.
 </p>
-[Tidyverse style guide](http://style.tidyverse.org/functions.html) we
-follow in this books suggests to use verbs as function names, 
-written in **snake_case** just like other variables.
 
-The best way to understand the syntax for defining a function is to look at an example:
-
+We explain how to write functions using an example.  Let's create a
+function `fullName` that takes first name and last name as strings, and returns
+full name, i.e. a single string made of the these names.
 ```r
-# A function named `make_full_name` that takes two arguments
-# and returns the "full name" made from them
-make_full_name <- function(first_name, last_name) {
-  # Function body: perform tasks in here
-  full_name <- paste(first_name, last_name)
-                           # paste joins first and last name into a
-                           # single string
-  # Return: what you want the function to output
-  return(full_name)
+fullName <- function(first, last) {
+  full <- paste(first, last)
+  return(full)
 }
-
-# Call the `make_full_name` function with the values "Alice" and "Kim"
-my_name <- make_full_name("Alice", "Kim")  # "Alice Kim"
 ```
+This is not particularly interesting function--it just concatenates
+two strings--but it helps us to explain all the major building blocks
+of functions.
 
 Function definition contains several important pieces:
 
-- The value assigned to the function variable uses the
+- The value assigned to the function name (here `fullName`) uses the
     syntax `function(....)` to indicate that you are creating a function
-    (as opposed to a number or character string).  
+    (and not a number or character string).
 	
--  If you want to feed your function with certain
-    inputs, these must be referred somehow inside of your function.
-    You list these names between the parentheses in the `function(....)`
+- We usually want to feed the function with certain
+    inputs, here the first and last name.
+	These inputs must be referred to somehow inside of your function.
+    You list these names in the parentheses in the `function(....)`
     declaration.  These are called **formal arguments**.  Formal arguments _will
     contain_ the values passed in when calling the function (called
     **actual arguments**).  For example, when we
-    call `make_full_name("Alice", "Kim")`, the value of the first
+    call `fullName("Alice", "Kim")`, the value of the first
     actual argument (`"Alice"`) will be assigned to the first formal argument
-    (`first_name`), and the value of the second actual argument (`"Kim"`) will
-    be assigned to the second formal argument (`last_name`).  Inside the
+    (`first`), and the value of the second actual argument (`"Kim"`) will
+    be assigned to the second formal argument (`last`).  Inside the
     function's body, both of these formal arguments behave exactly as
     ordinary variables with values "Alice" and "Kim" respectively.
 
-    Importantly, we could have made the formal argument names anything
+	We could have made the formal argument names anything
     we wanted (`name_first`, `xyz`, etc.), just as long as we then use
     _these formal argument names_ to refer to the argument while inside
     the function. 
 	
-	Moreover, the formal argument names _only apply_ while inside the function. You can think of them like "nicknames" for the values. The variables `first_name`, `last_name`, and `full_name` only exist within this particular function.
+	The formal argument names are only valid within the function's
+    body (inside of the curly braces).
+	Variables `first`, `last`, and `full` only exist within this
+    particular function, if you try to access those outside of the
+    function, you get and error like `Error: object 'first' not found`.
 
-- **Body**: The body of the function is a **block** of code that falls between curly braces **`{}`** (a "block" is represented by curly braces surrounding code statements). Note that cleanest style is to put the opening `{` immediately after the arguments list, and the closing `}` on its own line.
+- **Body**: The body of the function is a **block** of code that falls
+  between curly braces **`{}`** (a "block" is represented by curly
+  braces surrounding code statements).  The opening brace `{` must
+  follow the `function(....)` declaration, the closing `}` will
+  complete the function--whatever follows the closing brace is not
+  part of the function any more.
+  It is a tradition to put the opening `{` immediately after the arguments list, and the closing `}` on its own line.
 
     The function body specifies all the instructions (lines of code)
     that your function will perform. A function can contain as many
     lines of code as you want&mdash;you'll usually want more than 1 to
     make it worth while, but if you have more than 20 you might want to
     break it up into separate functions. You can use the formal
-    arguments here as any other variables, you can create new variables,
+    arguments here exactly as you use any other variables.  You can
+    also
+	create new variables,
     call other functions, you can even declare functions inside
     functions... basically any code that you would write outside of a
     function can be written inside of one as well!
 	
-	All the variables you create in the function body are **local
+	But remember that all the variables you create in the function body are **local
 	variables**.  These are only visible from within the function and
 	"will be forgotten" as soon as you return from the function.  However,
 	variables defined outside of the function are still visible from
 	within. 
 
 - **Return value** is what your function produces.  You can specify this
-    by calling the `return()` function and passing that the value that
+    by calling the `return()` function and passing it the value that
     you wish _your function_ to return.  It is typically the last line
     of the function.  Note that even though we returned a variable
-    called `full_name`, that variable was _local_ to the function and so
+    called `full`, that variable was _local_ to the function and so
     doesn't exist outside of it; thus we have to store the returned
-    value into another variable if we want to use it later (as with
-    `name <- make_full_name("Alice", "Kim")`).
+    value into another variable if we want to use it later (for
+    instance, as
+    `name <- fullName("Alice", "Kim")`).
+
+After we have defined the function, we can _call_ (execute) it.
+We call a function we defined exactly in the same way we
+call built-in functions.
+For instance, we may call it as
+
+```r
+fullName("Alice", "Kim")
+                           # will return "Alice Kim"
+```
+When we do so, R will take the _actual
+arguments_ we passed in (here `"Alice"` and `"Kim"`) and assign these to
+the _formal arguments_ (here `first` and `last`).
+Then it executes each line of code in the
+_function body_ one at a time. When it gets to the `return()` call, it
+will end the function and return the given value, which can then be
+assigned to a different variable outside of the function. 
 
 `return()` statement is usually unnecessary as R implicitly returns
-the last object it evaluated anyway.  So we may shorten the function
+the last value it evaluated anyway.  So we may shorten the function
 definition into
 ```{r, eval=FALSE}
-make_full_name <- function(first_name, last_name) {
-  full_name <- paste(first_name, last_name)
+fullName <- function(first, last) {
+  full <- paste(first, last)
 }
 ```
-or even not store the concatenated names into `full_name`:
+or even not store the concatenated names into `full`:
 ```{r, eval=FALSE}
-make_full_name <- function(first_name, last_name) {
-   paste(first_name, last_name)
+fullName <- function(first, last) {
+   paste(first, last)
 }
 ```
 The last evaluation was concatenating the first and last name, and
 hence the full name will be implicitly returned.
-
-We can call (execute) a function we defined exactly in the same way we
-call built-in functions. When we do so, R will take the _actual
-arguments_ we passed in (e.g., `"Alice"` and `"Kim"`) and assign them to
-the _formal arguments_. Then it executes each line of code in the _function body_ one at a time. When it gets to the `return()` call, it will end the function and return the given value, which can then be assigned to a different variable outside of the function.
 
 
 ## Conditional Statements
