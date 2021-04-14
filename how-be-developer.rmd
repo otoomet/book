@@ -109,6 +109,17 @@ which are not at all related to your problem.  In that case make copy
 of your code and delete everything that is not central to the
 problem.  This is called **minimal reproducible example**.
 
+<div class="clearfix">
+<figure>
+![](img/how-be-developer/rstudio-question-screenshot.png)
+<figcaption>
+A screenshot may be a good way to explain your question, here "_did I
+install stringr correct or was I suppose to type the code in the upper
+left then source it?_"  The image provides clear enough context (How did
+you install it?  What is "upper left"?  What do you mean with
+"source"?) and makes the question easy to answer.
+</figcaption>
+</figure>
 Minimal example may contain something that is outside of the code.
 Maybe you forgot to add a file to your git repo?  Maybe the file you
 intend to use is in a different location?  Maybe you are running your
@@ -122,14 +133,18 @@ those may obscure part of the file name, in particular the
 extension).  If you run selected lines in RStudio, you may show a
 screenshot with the selection highlighted, and tell "I select these
 lines and click _Run_...".
+</div>
 
-So the rules here are
+So the **rules here** are
 
 1. Explain what do you do
 2. Be specific
 3. Use precise language
-4. Show your code (and other relevant data)
+4. Show your code (and other relevant context)
 5. Show _only the relevant part_ of the code
+
+
+
 
 
 #### Explain what goes wrong
@@ -152,10 +167,23 @@ code computes `sqrt(2)` and outputs _1.4142135623730951455_?  It _is
 correct_ after all.  You have to tell **what do you want to achieve**, e.g. you may
 want to see just _1.414_ instead of the long list of digits.
 
-So the rules here are:
+Finally, tell us what did you try.  It is OK to ask for help but do
+your own part first.  Did you google for the error message but nothing
+useful showed up?  Did you read the docs but those were
+incomprehensible (which is unfortunately too often the case)?  Did you
+check if the files you need are where they are supposed to be?  Did
+you try another way to achieve the task but you could not think of
+any?  Try-first-yourself rule is here for two main reasons: you should
+not ask the others to solve problems you can do easily yourself; and
+second you should show the experts that your task is important enough
+that at least _you_ have spend some effort trying to solve it.  It is
+not fair that you just ask for help and only the others put in effort.
+
+So the **rules here** are:
 
 1. Show what happens
 2. Explain what do you want to happen
+3. Tell what did you try
 
 
 ## Coding Style
@@ -166,3 +194,8 @@ TBD
 
 * use appropriate names
 * they should describe/distinguish 
+
+
+### Comments
+
+TBD

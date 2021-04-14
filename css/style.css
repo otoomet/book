@@ -3,6 +3,7 @@
 
 /* Can do custom css here */
 
+/* Text blocks */
 /* example: code examples and such */
 .example {
     background-color: #aed1a7;
@@ -13,6 +14,62 @@
     font-size: 120%;
 }
 
+/* Figures */
+figure {
+  float: right;
+  width: 50%;
+  text-align: center;
+  font-style: italic;
+  font-size: smaller;
+  text-indent: 0;
+  border: thin silver solid;
+  margin: 0.5em;
+  padding: 0.5em;
+}
+p.caption {
+  font-size: 90% !important;
+  color: #777;
+  margin-top: 10px;
+}
+/* keep figure in a div with "clearfix" class */
+.clearfix {
+    overflow: auto;
+}
+
+/* alert: warnings and such text */
+.alert {
+    background-color: #ffaca6;
+}
+
+.alert:before {
+    content: "NB!";
+    font-size: 120%;
+}
+
+/* exercises */
+.exercise {
+    background-color: #F3F3F3;
+}
+
+.exercise:before {
+    content: "Exercise:";
+    font-size: 120%;
+    color: #990000;
+}
+
+/* tips */
+.tip {
+    background-color: #d9fcdb;
+}
+
+.tip:before {
+    content: "Tip:";
+    font-size: 120%;
+    color: #035407;
+}
+
+
+/* Other stuff */
 #header .title {
   font-size:2.25em;
   margin-bottom:.5em;
