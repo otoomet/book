@@ -36,3 +36,4 @@ rmd_files:
   - control_structures.Rmd
   - data-tables.Rmd
   - ssh-to-remote-server.Rmd
+  - how-be-developer.rmd

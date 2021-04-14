@@ -1,0 +1,168 @@
+# How To Be A Developer
+
+Here we discuss a few topics everyone who is developing code should
+know.
+
+
+## How To Solve Coding Problems
+
+Everyone who writes code runs into problems.  Quite often you just
+don't know how certain functions or libraries work, other time you may
+not know if what you came up with is an efficient way to solve the
+problem.  Sometimes you have coded all well but the results come out
+just wrong.  Problems happen to all of us and as a point of departure,
+expect to have one error per line of code (most of them easy to fix though).
+How should you solve the problems?
+
+We discuss here three approaches, and often you need a combination of
+all of these:
+
+* Read documentation and search the web.  Many R packages are well
+  documented (but many
+  are not).  This approach is often known as
+  ["RTFM"](https://en.wikipedia.org/wiki/RTFM) or
+  ["STFW"](https://en.wiktionary.org/wiki/STFW).
+* Debugging.  This is a generic term to find and correct errors in
+  your code and there are many approaches to debugging.  See more in
+  [Debugging](#developer-debugging). 
+* Ask for help.  An experienced person may be able solve to solve your
+  question in seconds so do not hesitate to ask for help.  However,
+  you should follow some rules when doing that.  See more in [How To
+  Ask Questions](#developer-howto-questions).
+
+
+## Read docs
+
+TBD
+
+* search for error message
+
+
+## Debugging {#developer-debugging}
+
+TBD
+
+* Print values
+* Rubber duck
+* `browser()`
+
+
+### How To Ask Good Questions {#developer-howto-questions}
+
+You can always as a question but as it turns out the same question
+asked in one way is much easier to be answered than when asked
+differently.  This is often a big stumbling block for beginners who do
+not possess the vocabulary and the fine touch with style that make the
+professionals willing to reply to the questions.  And these are often
+experienced coders who answer your question in their free time!
+
+There are many sources about asking good questions (see,
+e.g. Stackoverflow [How to ask good
+questions](https://stackoverflow.com/help/how-to-ask)).  These usually
+boil down to 
+
+1. Explain what do you do
+2. Explain what goes wrong
+3. Be polite
+
+However, as each medium and context is somewhat specific, many of the
+requirements that are true on one website may not be relevant for
+another.  For instance, Stackoverflow insists that one should not ask
+the same question again, but when doing coursework, it may be hard to
+search the not-that-easily-searchable media for similar questions.
+
+
+#### Explain what do you do
+
+The first rule for someone to help you is that the person must
+understand your goal.  You should be specific enough so that experts
+are not confused.  For instance "I want to print numbers with a few
+decimal digits only" is a good explanation.  "How to print correctly"
+is too vague goal.
+
+Unfortunately it is not always easy for beginners to describe the
+problem in a language experts understand.  This includes concepts that
+beginners are not quite sure about and use in a misleading way.  For
+instance, if my function returns a wrong value, I may ask about "wrong
+output".  But _output_ normally means what is printed on screen, and
+this is not the same thing as what function returns (although return
+value is sometimes printed).  This may throw off some experts and
+cause some less-than-polite remarks in certain circumstances.  If you
+are asking help in a professional forum such as Stackoverflow, it may
+be a good idea to introduce yourself as beginner (e.g. "This is the
+first time I use functions ... "), but it is obviously not necessary
+when asking help from your course instructor.  You take the course
+_because_ you are beginner!
+
+The third, and extremely important point is to **show what you have
+done**.  If your function's return value is wrong then usually _the
+only way to help is to look at your code_.  So please show your code!
+Either copy-paste the code to chat, or show a screenshot, or maybe you
+want to upload it to a website or share a github link.  But be aware
+that some ways of sharing your code expect more from the expert, and
+they tend to be busy and not interested in spending extra time
+downloading and setting up your code.  So the best way is to **show
+your code right in the chat** or forum.  Second, simplify your code as
+much as you can.  It is OK to post a 3-line function that misbehaves,
+but it is not OK to post 300 lines that do a lot of tasks, most of
+which are not at all related to your problem.  In that case make copy
+of your code and delete everything that is not central to the
+problem.  This is called **minimal reproducible example**.
+
+Minimal example may contain something that is outside of the code.
+Maybe you forgot to add a file to your git repo?  Maybe the file you
+intend to use is in a different location?  Maybe you are running your
+code in a wrong way?  In that case a screenshot accompanied with
+description what do you do may be the best explanation.  For instance,
+if R cannot find a file that you think is there, consider posting an
+image that shows both R code (the part that attempts to load the
+file), and a terminal window that shows content of the relevant
+directory.  (You may also post the file explorer or finder window, but
+those may obscure part of the file name, in particular the
+extension).  If you run selected lines in RStudio, you may show a
+screenshot with the selection highlighted, and tell "I select these
+lines and click _Run_...".
+
+So the rules here are
+
+1. Explain what do you do
+2. Be specific
+3. Use precise language
+4. Show your code (and other relevant data)
+5. Show _only the relevant part_ of the code
+
+
+#### Explain what goes wrong
+
+First you should tell **what actually happens**.  Others may sometimes be able
+to take your code, run it, and see the same output, but even if it is
+the case, it requires much more effort from their side.  And
+remember--experts (and instructors) are usually busy!  So it is your
+task to show what actually happens.
+Does your code
+produce an error message?  Show it in its entirety!  Do not just say
+"I get an error".  _Show the actual error message_!  This is a very
+important clue that may help to find the problem much faster.
+
+But often the problem is not the error message.  Your code runs but
+produces wrong output.
+It may be obvious for you but someone else looking at your code may
+not understand what you are not happy with.  What is wrong if your
+code computes `sqrt(2)` and outputs _1.4142135623730951455_?  It _is
+correct_ after all.  You have to tell **what do you want to achieve**, e.g. you may
+want to see just _1.414_ instead of the long list of digits.
+
+So the rules here are:
+
+1. Show what happens
+2. Explain what do you want to happen
+
+
+## Coding Style
+
+### Variable Names
+
+TBD
+
+* use appropriate names
+* they should describe/distinguish 
