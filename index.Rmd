@@ -34,6 +34,8 @@ target="_blank">SafariBooksOnline</a> or <a
 href="https://www.amazon.com/gp/product/0135133106" target="_blank">in
 print</a>.
 
+This version of the book is currently maintained by Ott Toomet, the
+original is on GitHub, in [otoomet/book](https://github.com/otoomet/book).
 
 ![Creative Commons License](img/index/by-nc-sa.png)
 This book is licensed under a [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-nc-sa/4.0/).

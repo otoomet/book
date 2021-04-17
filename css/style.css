@@ -68,6 +68,17 @@ p.caption {
     color: #035407;
 }
 
+/* TBD: gray text */
+/* use like <p class="tbd"> to be done... </p> */
+.tbd {
+    color: #777;
+    font-size: smaller;
+    font-style: italic;
+}
+.tbd:before {
+    content: "TBD: ";
+}
+
 
 /* Other stuff */
 #header .title {
