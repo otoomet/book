@@ -1,0 +1,46 @@
+# Exercise solutions {#solutions}
+
+## Lists
+
+### Vectors and lists {#solutions-vectors-vs-lists}
+
+The vector will be
+```{r}
+c(1, 2:4, 5)
+```
+and the list
+```{r}
+list(1, 2:4, 5)
+```
+The printout clearly shows that in case of vector we end up with a
+vector of 5 similar elements (just numbers).  But the list contains
+three elements, the first and last are single numbers (well, more
+precisely length-1 vectors), while the middle component is a length-3
+vector.
+
+As this example shows, one cannot easily print all list elements on a
+single row as is the case with vectors.
+
+
+### Print employee list {#solutions-print-employees}
+
+First re-create the same persons:
+
+```{r}
+person <- list(name = "Ada", job = "Programmer", salary = 78000,
+               union = TRUE)
+person2 <- list("Ji", 123000, FALSE)
+employees <- list(person, person2)
+```
+The printout looks like
+```{r}
+employees
+```
+We can see our two employees here, Ada (at first position) and Ji (at
+second position).  All element names for Ada are preceded with `[[1]]`
+and for Ji with `[[1]]`.  These indicate the corresponding positions.
+
+Ada and Ji data itself is printed out slightly differently, reflecting
+the fact that Ada's components have names while Ji's components do
+not.  So Ada's components use `$name` tag and Ji's components use a
+similar `[[1]]` positional tag.

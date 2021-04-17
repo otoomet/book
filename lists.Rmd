@@ -61,11 +61,19 @@ list(1, 2, 3)
 ## named list 
 list(a=1, b=2, c=3)
 ```
-As one can see, the vector printout is rather easy to understand,
+As one can see, the vector printout is rather easy to understand, but
 lists require a more careful look.  R prints lists in such a somewhat
 unintuitive way because each element may be a different object,
 including a vector or function.  Such object cannot be printed in a
 single line as it is the case with a vector.
+
+<div class="exercise">
+Create a vector of three arguments `1`, `2:4` and `5` using the combine
+function `c()`.  Create a list using the same three arguments using
+`list()` function.  Print both and explain the difference.
+
+See [the solution](#solutions-vectors-vs-lists)
+</div>
 
 
 ## Creating Lists
@@ -132,7 +140,12 @@ employees <- list(person, person2)
 Here it is little need to keep track of the names as all elements are
 employees and contain their personal data.
 
-> TBD: Exercise--print this, how does it look like?
+<div class="exercise">
+Create and print out the resulting list _employees_.  How does the
+output look like?  Can you explain why does it look like what you see?
+
+See [the solution](#solutions-print-employees)
+</div>
 
 If needed, one can assign names to an existing list using `names(list)
 <-` construct:

@@ -37,3 +37,6 @@ rmd_files:
   - data-tables.Rmd
   - ssh-to-remote-server.Rmd
   - how-be-developer.rmd
+
+  # solutions
+  - solutions.rmd
