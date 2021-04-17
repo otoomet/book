@@ -1,62 +1,74 @@
 # Vectors
 
-This chapter covers the foundational concepts for working with vectors in R. Vectors are _the_ fundamental data type in R: in order to use R, you need to become comfortable with vectors. This chapter will discuss how R stores information in vectors, the way in which operations are executed in _vectorized_ form, and how to extract subsets of vectors. These concepts are **key to effectively programming** in R.
+This chapter covers the foundational concepts for working with vectors
+in R. Vectors are _the_ fundamental data type in R: in order to use R,
+you need to become comfortable with vectors. This chapter will discuss
+how R stores information in vectors, the way in which operations are
+executed in _vectorized_ form, and how to extract subsets of vectors.
+These concepts are **key to effectively programming** in R.
+
+While keeping _all data_ in vectors is specific to R, many programming
+languages support similar vectors in one form or another.  Vectors and
+vectorized operations are also fundamental tools for _data programming_.
 
 ## What is a Vector?
 
-**Vectors** are _one-dimensional ordered collections of values_ that are all
-  stored in a single variable. For example, you can make a vector
-  `people` that contains the character strings "Sarah", "Amit", and
-  "Zhang". Alternatively, you could make a vector `numbers` that stores
-  the numbers from 1 to 100. Each value in a vector is refered to as an
-  **element** of that vector; thus the `people` vector would have 3
-  elements, `"Sarah"`, `"Amit"`, and `"Zhang"`, and `numbers` vector
-  will have 100 elements.  _Ordered_ means that once in the vector, the
-  elements will remain there in the original order.  If "Amit" was put
-  on the second place, it will remain on the second place unless explicitly moved.
+**Vectors** are simply a number of similar values stored next to each
+other.  For example, you can make a vector `people` that contains the
+character strings "Sarah", "Amit", and "Zhang". Alternatively, you
+could make a vector `numbers` that stores the numbers from 1 to 100.
+
+Technically, vectors are _one-dimensional ordered collections of
+values_ that are all stored in a single variable. Each value in a
+vector is refered to as an **element** of that vector; thus the
+`people` vector would have 3 elements, `"Sarah"`, `"Amit"`, and
+`"Zhang"`, and `numbers` vector will have 100 elements.  _Ordered_
+means that once in the vector, the elements will remain there in the
+original order.  If "Amit" was put on the second place, it will remain
+on the second place unless explicitly moved.
   
-Unfortunately, there are at least five different sometimes contradicting
+Unfortunately, there are at least five different and sometimes contradicting
 definitions of what is "vector" in R.  Here we focus on **atomic
 vectors**, vectors that contain the
 [atomic data types](#basic-data-types).  Another different class of
 vectors is
 **generalized vectors** or **lists**, the topic of [chapter Lists](#lists).
 
-Atomic vector can only contain elements of an atomic data
+Atomic vector can only contain elements of a single atomic data
 type&mdash;numeric, integer, character or logical.  Importantly, all the
 elements in a vector need to have the same.  You can't have an atomic vector whose elements include both numbers and character strings.
 
 
 ## Creating Vectors
 
-The easiest and most universal syntax for creating vectors is to use the built in `c()` function, which is used to ***c***_ombine_ values into a vector. The `c()` function takes in any number of **arguments** of the same type (separated by commas as usual), and **returns** a vector that contains those elements:
+Perhaps the most straightforward and universal way to create
+vectors is to use the built in `c()` function, which ***c***_ombines_
+values into a vector. The `c()` function takes in any number of
+**arguments** of the same type (separated by commas as usual), and **returns** a vector that contains those elements:
 
-```r
+```{r}
 # Use the combine (`c`) function to create a vector.
 people <- c("Sarah", "Amit", "Zhang")
-print(people) # [1] "Sarah" "Amit"  "Zhang"
+people
 
 numbers <- c(1, 2, 3, 4, 5)
-print(numbers) # [1] 1 2 3 4 5
+numbers
 ```
 
 You can use the `length()` function to determine how many **elements** are in a vector:
 
-```r
-people <- c("Sarah", "Amit", "Zhang")
-length(people)  # [1] 3
-
-numbers <- c(1, 2, 3, 4, 5)
-length(numbers)  # [1] 5
+```{r}
+length(people)
+length(numbers)
 ```
 
 As atomic vectors can only contain same type of elements, `c()`
 automatically **casts** (converts) one type to the other if necessary
 (and if possible).  For instance, when attempting to create a vector
 containing number 1 and character "a"
-```{r, eval=FALSE}
+```{r, eval=TRUE}
 mix <- c(1, "a")
-mix  # [1] "1" "a"
+mix
 ```
 we get a _character vector_ where the number 1 was converted to a
 character "1".  This is a frequent problem when reading data where some
@@ -103,9 +115,17 @@ print(more_people)  # [1] "Sarah" "Amit"  "Zhang" "Josh"
 Note that `c()` retains the order of elements&mdash;"Josh" will be the
 last element in the extended vector.
 
-All the vector creation functions we introduced here, `c()`, `seq()` and
-`rep()` are noticeably more powerful and complex than the brief
-discussion above.  You are encouraged to read the help pages!
+`c()` can also combine several vectors:
+```{r}
+c(1:3, 3:1, 1:3)
+```
+produces a sequence of three sequences.  In fact the previous example
+did the same&ndash;remember that `"Josh"` is just a character vector
+of length 1.
+
+All functions for creating vectors we introduced here, `c()`, `seq()` and
+`rep()`, are noticeably more powerful and complex than the brief
+discussion above.  Check out the documentation!
 
 
 ## Vector Indices
