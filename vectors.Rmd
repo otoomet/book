@@ -1,4 +1,4 @@
-# Vectors
+# Vectors {#vectors}
 
 This chapter covers the foundational concepts for working with vectors
 in R. Vectors are _the_ fundamental data type in R: in order to use R,

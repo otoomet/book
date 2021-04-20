@@ -322,18 +322,81 @@ There six "basic types" (called _atomic data types_) for data in R:
 
 
 ## Comments
+
 Before discussing how to program with R, we need to talk about a piece of syntax that lets you comment your code. In programming, **comments** are bits of text that are _not interpreted as computer instructions_&mdash;they aren't code, they're just notes about the code! Since computer code can be opaque and difficult to understand, we use comments to help write down the meaning and _purpose_ of our code. While a computer is able to understand the code, comments are there to help _people_ understand it. This is particularly imporant when someone else will be looking at your work&mdash;whether that person is a collaborator, or is simply a future version of you (e.g., when you need to come back and fix something and so need to remember what you were even thinking).
 
 Comments should be clear, concise, and helpful&mdash;they should provide information that is not otherwise present or "obvious" in the code itself.
 
-In R, we mark text as a comment by putting it after the pound/hashtag symbol (**`#`**). Everything from the `#` until the end of the line is a comment. We put descriptive comments _immediately above_ the code it describes, but you can also put very short notes at the end of the line of code (preferably following two spaces):
+In R, we mark text as a comment by putting it after the pound/hashtag
+symbol (**`#`**). Everything from the `#` until the end of the line is
+a comment.  It is common to put descriptive comments immediately above
+the code it describes, and sometimes immediately aftewards.  One can also put very short notes at the end of the line of code (preferably following two spaces):
 
 ```r
 # Set how many bottles of beer are on the wall
 bottles <- 99 - 1  # 98 bottles
 ```
 
-(You may recognize this `#` syntax and commenting behavior from the command-line and git chapters. That's because the same syntax is used in a Bash shell!)
+(You may have seen this `#` syntax and commenting behavior from the command-line and git chapters. That's because the same syntax is used in a Bash shell!)
+
+
+## Producing output: `cat` and `print`
+
+When you just compute on R console, or even when you write small
+scripts, it is not necessary to dedicate any effort to _output_.  The
+results are automatically printed.  This is a common behavior in R
+console: the last result will be printed.  However, when writing
+longer programs, one may want to see more results than the last one,
+and maybe also add some explanatory notes.  This is where printing
+comes in.
+
+R has two main printing commands: `cat` and `print`.  `cat` is useful
+if you want to print simple objects, but potentially more than one,
+such as strings, numbers, and
+explanatory text.  `print` can output complex objects but only one at
+time.
+
+Next, we illustrate the usage of `cat`:
+```{r}
+## Compute length of light-year
+ly <- 300000*60*60*24*365
+cat("Length of light-year is", ly, "km\n")
+```
+This short script computes the length of light-year and prints it with
+a small informative message.  Alternatively, we can just compute this
+number and let R console to automatically print it:
+```{r}
+300000*60*60*24*365
+```
+Why should we use `cat` then?  The automatic printing is good enough
+if you work interactively on console, or just run very short code
+snippets.  But if the code is not run on R console the number may not
+even be printed.  Alternatively, if the script computes and prints
+many results, the user gets easily confused what do these numbers
+mean.  So it is a good habit to output your results together with a
+brief explanation.
+
+The syntax of `cat` is pretty simple: it takes a list of arguments,
+texts, variables and numbers you want to print.  One very useful
+symbol you may want to add is _newline_ character "\n".  This forces
+printing to jump to the next line:
+```{r}
+## output on single line:
+cat("hi there\n")
+## output on multiple lines
+cat("hi\n there\n")  # jump to new line
+```
+
+`print` is somewhat similar to `cat` but designed to output more
+complex objects, such as [vectors](#vectors), [lists](#lists), and
+[data frames](#data-frames).  Print may produce multi-line output but
+it does not allow to add explanatory messages.  You have to _cat_ the
+message and _print_ your complex object thereafter.
+
+Obviously, output does not have to be printed on console, it may also
+be sent to a file, or uploaded to internet, or played as audio
+instead.  But whatever the exact format, it is important to ensure the
+user has enough information to understand what the output is.
 
 
 ## Getting Help {#gettinghelp}
