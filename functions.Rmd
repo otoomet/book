@@ -1,4 +1,4 @@
-# Functions
+# Functions {#functions}
 
 This chapter will explore how to use **functions** in R to perform advanced capabilities and actually ask questions about data. After considering a function in an abstract sense, it will discuss using built-in R functions, accessing additional functions by loading R packages, and writing your own functions.
 
@@ -358,6 +358,73 @@ fullName <- function(first, last) {
 ```
 The last evaluation was concatenating the first and last name, and
 hence the full name will be implicitly returned.
+
+
+## Returning values versus producing output
+
+Beginners have often difficulties seeing difference between functions
+that _produce output_ (i.e. print on screen, see more in 
+[Producing output](#producing-output-cat-print)) and that _return a value_
+(that will be automatically printed on screen).  For instance,
+consider two functions that compute minutes in day:
+```{r}
+minutesDay1 <- function() {
+   mid <- 24*60
+   cat(mid, "\n")  # output the numbers
+}
+minutesDay2 <- function() {
+   mid <- 24*60
+   return(mid)  # return the number
+                # 'return' is optional in R
+}
+```
+When we call the former function on console, we get
+```{r}
+minutesDay1()
+```
+and when we call the latter, we get
+```{r}
+minutesDay2()
+```
+The outputs appear almost the same.  However, behind the
+scenes (well, behind the printed output) there are important
+differences:
+
+* The first function produces output, i.e. it always prints the
+  number 1440.  The second function does not produce any output.  The
+  line `[1] 1440` we see when we call it is created by R console that
+  automatically prints the last result.  We can see the difference
+  when we, for instance, assign the result to a variable:
+```{r}
+mid1 <- minutesDay1()
+mid2 <- minutesDay2()
+```
+  `minutesDay1()` still produces the output but `minutesDay1()` is now
+  silent.  If the result is assigned to a variable, it will not be
+  automatically printed.
+  
+* The second function _returns_ the value that can be assigned to a
+  variable (`mid2` in this example).  The first function returns
+  whatever its last statement, `cat` returns.  This appears to be a
+  special empty symbol `NULL`:
+```{r}
+mid1
+mid2
+```
+  We can see `mid1` variable is empty while `mid2` contains the
+  expected value.
+
+So the first example outputs the result but does not return it, and
+the second function does not output it but returns the value.
+One can also create a function that does both (or
+neither).  But which approach is better?
+
+Obviously, it depends on on what you are doing.  In practice it is
+common to have two types of functions--one type only outputs and does
+not compute anything, and the other type only computes and returns,
+but leaves output for the dedicated output functions.
+
+<p class="tbd">An exercise</p>
 
 
 ## Conditional Statements

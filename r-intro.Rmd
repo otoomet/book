@@ -340,7 +340,7 @@ bottles <- 99 - 1  # 98 bottles
 (You may have seen this `#` syntax and commenting behavior from the command-line and git chapters. That's because the same syntax is used in a Bash shell!)
 
 
-## Producing output: `cat` and `print`
+## Producing output: `cat` and `print` {#producing-output-cat-print}
 
 When you just compute on R console, or even when you write small
 scripts, it is not necessary to dedicate any effort to _output_.  The
