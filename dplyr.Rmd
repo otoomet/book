@@ -1,5 +1,10 @@
 # `dplyr`: Messing with Data the Easy Way {#dplyr}
 
+```{r, echo=FALSE, message=FALSE}
+library(dplyr)
+```
+
+
 The **`dplyr`** ("dee-ply-er") package is an extremely popular tool
 for data manipulation in R (and perhaps, in data science more
 generally).  It provides programmers with an intuitive vocabulary for
@@ -101,66 +106,87 @@ keeping track of the parenthesis is more than even experienced coders
 can easily do.  There is no easy way to solve the readability issue
 with traditional functions.
 
+
 ### The Pipe Operator
 
-Luckily, `dplyr` provides a cleaner and more effective way of achieving the same task (that is, using the result of one function as an argument to the next). The **pipe operator** (**`%>%`**) indicates that the result from the first function operand should be passed in as **the first argument** to the next function operand!
-
-
-\begin{frame}[fragile]
-  \frametitle{What about writing it like this:}
-<<eval=FALSE>>=
-add(2*egg, sugar) %>%
+This is where the _pipe operator_ comes to play.  It is an operator
+that takes the value returned from the previous function, and forwards
+it as input to the next function.  Using pipe operator, we can
+re-write the pancake code as
+```{r, eval=FALSE}
+2*egg %>%
+   add(sugar) %>%
    whisk() %>%
    add(milk) %>%
    whisk() %>%
    add(flour) %>%
    whisk() %>%
    ...
-@   
-\end{frame}
+```
+This is an amazing simplification, the code reads almost like the
+recipe.  Another important advantage is that the code also follows the
+logical order of thinking about pancake making, so it is also much
+easier to write.
 
-\begin{frame}
-  \frametitle{Pipe operator `\%>\%`}
-    \begin{itemize}
-    \item Takes output of previous function (expression)
-    \item Feeds it as the first argument of the following function
-      \begin{itemize}
-      \item Use `.` placeholder if you want it not as first but
-        another argument
-      \end{itemize}
-    \end{itemize}
-\end{frame}
-
-
-
-
-
-As a simple example:
-
-```r
+Let's explain the mechanics of the pipe operator wit a simple example:
+find and print the largest number in a vector.  Using traditional
+approach (nested functions) we can do it as
+```{r}
 # nested version: evaluate c(), then max(), then print()
-print(max(c(2, 0, 1)))
-
-# pipe version
-c(1,2,3) %>%   # do first function
-  max() %>%   # which becomes the _first_ argument to the next function
-  print()  # which becomes the _first_ argument to the next function
+print(max(c(1, 2, 3)))
 ```
-
-Or as another version of the above data wrangling:
-
-```r
-# Preparation: add a column that is the car name
-mtcars_named <- mutate(mtcars, car_name = row.names(mtcars))
-
-best_car_name <- filter(mtcars_named, cyl == 4) %>% # Step 1
-  filter(mpg == max(mpg)) %>% # Step 2
-  select(car_name) # Step 3
+This works beautifully, and as the task is simple, it is not hard to
+understand either.  But let's re-write this using the pipe operator:
+```{r}
+c(1,2,3) %>%   # create vector
+   max() %>%   # find max of the previous vector
+   print()  # print the previous value
 ```
+The first line creates the vector of three numbers.  The pipe operator
+at the end of it _feeds the previous value_ (here the vector `c(1, 2,
+3)`) as the _first argument of the following function_.  So `c(1,2,3)
+%>% max()` is equivalent to `max(c(1,2,3))`.  These two pieces of code
+are computationally equivalent but the piped version follows logical
+order of operations and is easier to read.  Finally, the pipe after
+`max()` feeds the maximum value (here 3) to the `print` function as
+the first argument.
 
-- Yes, the `%>%` operator is awkward to type and takes some getting use to (especially compared to the command-line's use of `|` to pipe). However, you can ease the typing by using the [RStudio keyboard shortcut](https://support.rstudio.com/hc/en-us/articles/200711853-Keyboard-Shortcuts) `cmd + shift + m`.
+Pipes do not work well with every sort of operation but they tend to
+be and excellent tool when working with data.  In particular, your
+central task tends to be to manipulate a dataset, so you end up
+passing dataset from function-to-function, in a similar fashion like
+you manipulate batter in case of pancakes.
 
-The pipe operator is part of the `dplyr` package (it is only available if you load that package), but it will work with _any_ function, not just `dplyr` ones! This syntax, while slightly odd, can completely change and simplify the way you write code to ask questions about your data!
+<div class="tip"> 
+The `%>%` operator is awkward to type and takes some
+time to get used to (especially compared to the shell pipe `|`).
+However, you can ease the typing by using the [RStudio
+keyboard
+shortcut](https://support.rstudio.com/hc/en-us/articles/200711853-Keyboard-Shortcuts)
+`Ctrl - Shift - m` (PC) / `Cmd - Shift + m` (Mac).
+</div>
+
+The pipe operator is part of the `dplyr` package (it is only available
+if you load that package), but it will work with _any_ function, not
+just `dplyr` ones.  In fact, it is not even "dplyr pipe", it
+originates from _magrittr_ package, but it is and essential part of
+the modern dplyr-related workflow.
+This syntax, while slightly odd, can completely change and simplify
+the way you write code to ask questions about your data!
+
+Pipes are not without their downsides.  There are two problems with
+pipes you should be aware of:
+
+* Piped code is harder to debug.  If your pancakes come out wrong, you
+  cannot just easily insert printing statements inside the pipeline,
+  you have to break the pipeline, change the code somewhat, and then
+  you can print and debug.
+* Not all tasks are well suited for piping.  Piping is perfect if
+  there is a single central piece of data that flows from
+  function-to-function.  But sometimes such pipelines are too short to
+  be worthwhile.  Another time you may have not a single but
+  e.g. three equally central variable, for instance when you merge
+  three datasets.
 
 
 
