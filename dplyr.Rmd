@@ -195,11 +195,12 @@ pipes you should be aware of:
 
 - **select** specific features (columns) of interest from the data set
 - **filter** out irrelevant data and only keep observations (rows) of interest
-- **mutate** a data set by adding more features (columns)
+- **mutate** a data set by adding more features (columns) and
+  modifying the existing ones.
 - **arrange** the observations (rows) in a particular order
-- **summarize** the data in terms of aspects such as the mean, median, or maximum
+- **summarize** the data in terms of aspects such as the mean, median,
+  or maximum value.
 - **join** multiple data sets together into a single data frame
-<!-- - find **distinct** observations (rows) in the data set -->
 
 You can use these words when describing the _algorithm_ or process for interrogating data, and then use `dplyr` to write code that will closely follow your "plain language" description because it uses functions and procedures that share the same language. Indeed, many real-world questions about a dataset come down to isolating specific rows/columns of the data set as the "elements of interest", and then performing a simple comparison or computation (mean, count, max, etc.). While it is possible to perform this computation with basic R functions&mdash;the `dplyr` library makes it much easier to write and read such code.
 
@@ -209,20 +210,18 @@ The `dplyr` package provides functions that mirror the above verbs. Using this p
 Since `dplyr` is an external package, you will need to install it (once per machine) and load it to make the functions available:
 
 ```r
-install.packages("dplyr")  # once per machine
-library("dplyr")
+library("dplyr")  # you may need to install it first by `install.packages("dplyr")`
 ```
 
 After loading the library, you can call any of the functions just as if they were the built-in functions you've come to know and love.
 
 For each `dplyr` function discussed here, the **first argument** to the function is a data frame to manipulate, with the rest of the arguments providing more details about the manipulation.
 
-<p class="alert alert-warning">___IMPORTANT NOTE:___ inside the function argument list (inside the parentheses), we refer to data frame columns **without quotation marks**&mdash;that is, we just give the column names as _variable names_, rather than as _character strings_. This is refered to as [non-standard evaluation](#Non-standard Evaluation), and is described in more detail below; while it makes code easier to write and read, it can occasionally create challenges.</p>
-
-<p class="alert alert">The images in this section come from the [RStudio's STRATA NYC R-Day workshop](http://bit.ly/rday-nyc-strata15), which was presented by [Nathan Stephens](http://conferences.oreilly.com/strata/big-data-conference-ny-2015/public/schedule/speaker/217840).</p>
 
 ### Select
 The **`select()`** operation allows you to choose and extract **columns** of interest from your data frame.
+
+<p class="alert alert">The images in this section come from the [RStudio's STRATA NYC R-Day workshop](http://bit.ly/rday-nyc-strata15), which was presented by [Nathan Stephens](http://conferences.oreilly.com/strata/big-data-conference-ny-2015/public/schedule/speaker/217840).</p>
 
 ```r
 # Select `storm` and `pressure` columns from `storms` data frame
@@ -232,6 +231,9 @@ storm_info <- select(storms, storm, pressure)
 ![Diagram of the `select()` function (by Nathan Stephens).](img/dplyr/select.png "Diagram of the select() function")
 
 The `select()` function takes in the data frame to select from, followed by the names of the columns you wish to select (quotation marks are optional!)
+
+<p class="alert alert-warning">___IMPORTANT NOTE:___ inside the function argument list (inside the parentheses), we refer to data frame columns **without quotation marks**&mdash;that is, we just give the column names as _variable names_, rather than as _character strings_. This is refered to as [non-standard evaluation](#Non-standard Evaluation), and is described in more detail below; while it makes code easier to write and read, it can occasionally create challenges.</p>
+
 
 This function is equivalent to simply extracting the columns:
 
