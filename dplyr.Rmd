@@ -1,6 +1,168 @@
-# The `dplyr` Library {#dplyr}
+# `dplyr`: Messing with Data the Easy Way {#dplyr}
 
-The **`dplyr`** ("dee-ply-er") package is the preeminent tool for data wrangling in R (and perhaps, in data science more generally). It provides programmers with an intuitive vocabulary for executing data management and analysis tasks. Learning and utilizing this package will make your data preparation and management process faster and easier to understand. This chapter introduces the philosophy behind the library and an overview of how to use the library to work with dataframes using its expressive and efficient syntax.
+The **`dplyr`** ("dee-ply-er") package is an extremely popular tool
+for data manipulation in R (and perhaps, in data science more
+generally).  It provides programmers with an intuitive vocabulary for
+executing data management and analysis tasks.  _dplyr_ makes data
+preparation and management process much faster and much intuitive, and
+hence much easier to code and debug.  The basic _dplyr_ operations are
+designed to play well with the pipe operator
+`%>%`, and in this way make data manipulation code readable in the
+logical order.  It is surprisingly easy to write code down in the same
+way you think about the operations, and read it later almost like a
+recipe. 
+
+This chapter introduces the philosophy behind the library and an
+overview of how to use the library to work with dataframes using its
+expressive and efficient syntax.  For more details see
+
+* R for Data Science [Ch 5: Data
+  transformation](https://r4ds.had.co.nz/transform.html)
+* R for Data Science [Ch 13: Relational
+  Data](https://r4ds.had.co.nz/relational-data.html) 
+
+While _dplyr_ tremendously simplifies certain type of data analysis, it
+is not the best tool for every problem.  It is less intuitive when one
+needs indirect variable names, and it may not work perfectly well with
+base R.
+
+
+## Reading the Code: What Is Wrong With Function?
+
+### What Is Wrong with Functions?
+
+_dplyr_ functionality is normally glued together using _pipe operator_
+`%>%`.  Before we describe the pipe, we'll give a motivational
+examples about the downsides of the ordinary function.
+
+Consider a task: you want to compute $\sqrt{2}$ and print the result
+rounded to three digits.  Using basic R functionality, you can achieve
+this as
+```{r}
+print(sqrt(2), digits=3)
+```
+This seems an easy and intuitive piece of code.  But unfortunately
+when the task gets more complex, then it cannot be easy and intuitive
+any more.  The problem is in the execution order of the functions:
+
+1. First, you have to find the argument "2" from inside of the first
+   argument of the outer function _print_.
+2. Next, you have to move left and read the inner function _sqrt_
+3. There after you may jump left again and read the outer function
+   _print_
+4. And finally you have to jump right over the inner function and its
+   arguments and read _digits_.
+   
+This single line of code is easy enough for humans to be quickly
+grasped in its entirety and such back-and-forth movement does not
+cause problems.  But more complex tasks are not so forgiving.
+
+### How to Make Pancakes?
+
+Let's move to a totally different world.  Say we want to make
+pancakes.  How can we bake those?  Here is a (simplified) recipe:
+
+1. Take 2 eggs
+2. Add sugar, whisk together
+3. Add milk, whisk
+4. Add flour, whisk
+5. Spread 3 tablespoons of batter on skillet
+6. Cook
+
+This recipe is fairly easy to understand.  The individual tasks are
+simple and they are listed in logical order (the order you should
+perform those).  But let's write R code that bakes pancakes:
+```{r, eval=FALSE}
+batter <- add(2*egg, sugar)
+batter <- whisk(batter)
+batter <- add(batter, milk)
+batter <- whisk(batter)
+...
+```
+The code is overloaded with "batter".  Everywhere, except in the first
+line the variable name "batter" takes quite a bit space and more
+importantly&ndash;our attention.  Compare this with the
+recipe&ndash;the word batter does hardly occur there, it is clear
+anyway that we are manipulating batter.  From technical point, it is
+also unfortunate that we repeatedly overwrite the same variable, this
+makes it harder to debug the code, and run the code in a notebook
+environment. 
+
+In order to avoid overwriting the variable, we may try nested function
+approach: 
+```{r, eval=FALSE}
+batter <- whisk(add(whisk(add(2*egg, sugar)), milk))
+batter <- whisk(add(batter, flour))
+cake <- cook(pour(batter, 3*tablespoon))
+```
+While we got rid of most of "batters", the result is even harder to
+read.  Jumping left and right between functions and arguments and
+keeping track of the parenthesis is more than even experienced coders
+can easily do.  There is no easy way to solve the readability issue
+with traditional functions.
+
+### The Pipe Operator
+
+Luckily, `dplyr` provides a cleaner and more effective way of achieving the same task (that is, using the result of one function as an argument to the next). The **pipe operator** (**`%>%`**) indicates that the result from the first function operand should be passed in as **the first argument** to the next function operand!
+
+
+\begin{frame}[fragile]
+  \frametitle{What about writing it like this:}
+<<eval=FALSE>>=
+add(2*egg, sugar) %>%
+   whisk() %>%
+   add(milk) %>%
+   whisk() %>%
+   add(flour) %>%
+   whisk() %>%
+   ...
+@   
+\end{frame}
+
+\begin{frame}
+  \frametitle{Pipe operator `\%>\%`}
+    \begin{itemize}
+    \item Takes output of previous function (expression)
+    \item Feeds it as the first argument of the following function
+      \begin{itemize}
+      \item Use `.` placeholder if you want it not as first but
+        another argument
+      \end{itemize}
+    \end{itemize}
+\end{frame}
+
+
+
+
+
+As a simple example:
+
+```r
+# nested version: evaluate c(), then max(), then print()
+print(max(c(2, 0, 1)))
+
+# pipe version
+c(1,2,3) %>%   # do first function
+  max() %>%   # which becomes the _first_ argument to the next function
+  print()  # which becomes the _first_ argument to the next function
+```
+
+Or as another version of the above data wrangling:
+
+```r
+# Preparation: add a column that is the car name
+mtcars_named <- mutate(mtcars, car_name = row.names(mtcars))
+
+best_car_name <- filter(mtcars_named, cyl == 4) %>% # Step 1
+  filter(mpg == max(mpg)) %>% # Step 2
+  select(car_name) # Step 3
+```
+
+- Yes, the `%>%` operator is awkward to type and takes some getting use to (especially compared to the command-line's use of `|` to pipe). However, you can ease the typing by using the [RStudio keyboard shortcut](https://support.rstudio.com/hc/en-us/articles/200711853-Keyboard-Shortcuts) `cmd + shift + m`.
+
+The pipe operator is part of the `dplyr` package (it is only available if you load that package), but it will work with _any_ function, not just `dplyr` ones! This syntax, while slightly odd, can completely change and simplify the way you write code to ask questions about your data!
+
+
 
 ## A Grammar of Data Manipulation
 [Hadley Wickham](http://hadley.nz/), the creator of the [`dplyr`](https://github.com/hadley/dplyr) package, fittingly refers to it as a ___Grammar of Data Manipulation___. This is because the package provides a set of **verbs** (functions) to describe and perform common data preparation tasks. One of the core challenge in programming is mapping from questions about a dataset to specific programming operations. The presence of a data manipulation grammar makes this process smoother, as it enables you to use the same vocabulary to both _ask_ questions and _write_ your program. Specifically, the `dplyr` grammar lets you easily talk about and perform tasks such as:
@@ -222,36 +384,6 @@ best_car_name <- select( # 3. Select car name of the car
 This version uses _anonymous variables_&mdash;result values which are not assigned to names (so are anonymous), but instead are immediately used as the arguments to another function. You've used these frequently with the `print()` function and with filters (those vectors of `TRUE` and `FALSE` values)&mdash;and even the `max(mpg)` in the Step 2 filter is an anonymous variable!
 
 This _nested_ version performs the same results as the _temporary variable_ version without creating the extra variables, but even with only 3 steps it can get quite complicated to read&mdash;in a large part because you have to think about it "inside out", with the stuff in the middle evaluating first. This will obviously become undecipherable for more involved operations.
-
-### The Pipe Operator
-Luckily, `dplyr` provides a cleaner and more effective way of achieving the same task (that is, using the result of one function as an argument to the next). The **pipe operator** (**`%>%`**) indicates that the result from the first function operand should be passed in as **the first argument** to the next function operand!
-
-As a simple example:
-
-```r
-# nested version: evaluate c(), then max(), then print()
-print(max(c(2, 0, 1)))
-
-# pipe version
-c(1,2,3) %>%   # do first function
-  max() %>%   # which becomes the _first_ argument to the next function
-  print()  # which becomes the _first_ argument to the next function
-```
-
-Or as another version of the above data wrangling:
-
-```r
-# Preparation: add a column that is the car name
-mtcars_named <- mutate(mtcars, car_name = row.names(mtcars))
-
-best_car_name <- filter(mtcars_named, cyl == 4) %>% # Step 1
-  filter(mpg == max(mpg)) %>% # Step 2
-  select(car_name) # Step 3
-```
-
-- Yes, the `%>%` operator is awkward to type and takes some getting use to (especially compared to the command-line's use of `|` to pipe). However, you can ease the typing by using the [RStudio keyboard shortcut](https://support.rstudio.com/hc/en-us/articles/200711853-Keyboard-Shortcuts) `cmd + shift + m`.
-
-The pipe operator is part of the `dplyr` package (it is only available if you load that package), but it will work with _any_ function, not just `dplyr` ones! This syntax, while slightly odd, can completely change and simplify the way you write code to ask questions about your data!
 
 
 ## Grouped Operations
