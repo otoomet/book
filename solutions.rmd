@@ -1,5 +1,30 @@
 # Exercise solutions {#solutions}
 
+## Functions
+
+### Output versus return {#functions-output-vs-return}
+
+We can create such a function by just using `paste0`:
+```{r}
+hi <- function(name) {
+   paste0("Hi ", name, ", isn't it a nice day today?")
+                           # remember: paste0 does not leave spaces b/w arguments
+}
+```
+This function _returns_ the result of `paste0`, the character string
+that combines the greeting and the name.  It does not _output_
+anything--there is no `print` nor `cat` command.  We can show it works
+as expected: when called on R console, its returned value, the
+greeting, is automatically printed:
+```{r}
+hi("Arthur")  # remember: name (it is text) must be quoted
+```
+and if the result is assigned to a variable then nothing is printed:
+```{r}
+greeting <- hi("Arthur")
+```
+
+
 ## Lists
 
 ### Vectors and lists {#solutions-vectors-vs-lists}

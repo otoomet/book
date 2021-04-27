@@ -392,19 +392,20 @@ differences:
 
 * The first function produces output, i.e. it always prints the
   number 1440.  The second function does not produce any output.  The
-  line `[1] 1440` we see when we call it is created by R console that
+  line `[1] 1440` we see when we call `minutesDay2()`
+  is created by R console that
   automatically prints the last result.  We can see the difference
-  when we, for instance, assign the result to a variable:
+  when we assign the result to a variable:
 ```{r}
 mid1 <- minutesDay1()
 mid2 <- minutesDay2()
 ```
-  `minutesDay1()` still produces the output but `minutesDay1()` is now
+  `minutesDay1()` still produces the output but `minutesDay2()` is now
   silent.  If the result is assigned to a variable, it will not be
   automatically printed.
   
 * The second function _returns_ the value that can be assigned to a
-  variable (`mid2` in this example).  The first function returns
+  variable (`mid2` in this example).  The first function automatically returns
   whatever its last statement, `cat` returns.  This appears to be a
   special empty symbol `NULL`:
 ```{r}
@@ -419,12 +420,24 @@ the second function does not output it but returns the value.
 One can also create a function that does both (or
 neither).  But which approach is better?
 
-Obviously, it depends on on what you are doing.  In practice it is
+Obviously, it depends on what you are doing.  In practice it is
 common to have two types of functions--one type only outputs and does
-not compute anything, and the other type only computes and returns,
+not compute anything, and the other type only computes and returns a value,
 but leaves output for the dedicated output functions.
 
-<p class="tbd">An exercise</p>
+<div class="exercise">
+Create a function that takes a single argument, _name_, and _returns_
+a string: "Hi \<name\>, isn't it a nice day today?" where \<name\> should
+be replaced by the argument _name_.
+
+Demonstrate that the function prints the message when called on R
+console, but does not print anything if its result is assigned to a
+variable. 
+
+Hint: check out `paste()` and `paste0()` functions to concatenate strings.
+
+See [the solution](#functions-output-vs-return)
+</div>
 
 
 ## Conditional Statements
