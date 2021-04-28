@@ -1,0 +1,29 @@
+---
+title: "R Markdown Example"
+author: "Ott Toomet"
+date: "April 28, 2021"
+output: html_document
+---
+
+# What is rmarkdown?
+
+It is a way to mix _ordinary text_ and _R code_ into a single
+document.  Thereafter the document will be processed by **knitting**:
+first the code is executed and replaced with output, and thereafter
+the markdown rendered.
+
+Below we describe the _iris_ dataset, collected by Fisher and Anderson
+in 1930-s.  The dataset contains `r ncol(iris)` bits of information
+about `r nrow(iris)` flowers of `r length(unique(iris$Species))`
+different species, `r paste(unique(iris$Species), collapse=", ")`.
+The relationship between length and width of the
+leaves is displayed in the figure below:
+
+```{r, echo=FALSE}
+plot(Sepal.Width ~ Sepal.Length, col=Species, data=iris,
+     main = "Relationship between width and length of iris sepals",
+     pch=16, cex=1.5,
+     xlab = "Sepal width, cm", ylab = "Sepal length, cm")
+legend("topright", legend = unique(iris$Species),
+       col=1:3, pch=16)
+```

@@ -1,5 +1,41 @@
 # R Markdown {#r-markdown}
 
+So far we have learned both markdown and R programming.  Both of these
+methods have their strong and weak sides.  Markdown is good for
+creating simple webpages with some design features like titles, images
+and block quotes.  R however does nothing like that.  R can just
+compute and create plots.  But what if we want to do both?
+This is where rmarkdown comes to play.  The idea of rmarkdown is to
+mix markdown (this is good for writing) and R (good for computing).
+So as a result we can write text that contains all the bells and
+whistles markdown offers, but also mix it with R code, and more
+importantly, results of this code.  The figure below shows and example
+rmarkdown document being written (left), and the resulting html in
+browser (right).  Note how R code has been replaced by the
+corresponding output, in particular the plot.  One can also see the
+familiar elements from rendered markdown, for instance bold and italic text.
+
+<figure class="wide">
+
+![](img/r-markdown/rmarkdown-example.png)
+
+<p class="caption">
+Rmarkdown at work.  The left side shows an rmarkdown text being edited
+with a text editor.  Note how the it is using fixed-width fonts,
+similar line spacing, and also syntax coloring (e.g. string constants
+are marked red).  The right side shows the same document knitted and
+rendered in a browser: the R code has been replaced by its output, in case of the
+text paragraph these are the numbers and a list of iris species, in
+case of the plotting code chunk it is the figure.
+</p>
+</figure>
+
+But before we go any further--why might you _want_ to mix writing and
+code?
+
+
+
+
 R Markdown is a package that supports using `R` to dynamically create _documents_, such as websites (`.html` files), reports (`.pdf` files), slideshows (using `ioslides` or `slidy`), and even interactive web apps (using `shiny`).
 
 As you may have guessed, R Markdown does this by providing the ability to blend Markdown syntax and `R` code so that, when executed, scripts will automatically inject your code results into a formatted document. The ability to automatically generate reports and documents from a computer script eliminates the need to manually update the _results_ of a data analysis project, enabling you to more effectively share the _information_ that you've produced from your data. In this chapter, you'll learn the fundamentals of the RMarkdown library to create well-formatted documents that combine analysis and reporting.
