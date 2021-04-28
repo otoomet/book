@@ -9,6 +9,7 @@ build/
 *.log
 *.fdb
 *.fdb_latexmk
+_bookdown_files
 
 # eBook build output
 #*.epub

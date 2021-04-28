@@ -1,5 +1,7 @@
 # R Markdown {#r-markdown}
 
+## What is rmarkdown?
+
 So far we have learned both markdown and R programming.  Both of these
 methods have their strong and weak sides.  Markdown is good for
 creating simple webpages with some design features like titles, images
@@ -21,8 +23,8 @@ familiar elements from rendered markdown, for instance bold and italic text.
 
 <p class="caption">
 Rmarkdown at work.  The left side shows an rmarkdown text being edited
-with a text editor.  Note how the it is using fixed-width fonts,
-similar line spacing, and also syntax coloring (e.g. string constants
+with a text editor.  Note how the fixed-width fonts,
+equal line spacing, and also syntax coloring (e.g. string constants
 are marked red).  The right side shows the same document knitted and
 rendered in a browser: the R code has been replaced by its output, in case of the
 text paragraph these are the numbers and a list of iris species, in
@@ -31,55 +33,118 @@ case of the plotting code chunk it is the figure.
 </figure>
 
 But before we go any further--why might you _want_ to mix writing and
-code?
+code?  There are two main intertwined reasons.
 
+* You are interested in the _results_ and you want to write text about
+  the results.  While you can always add comments to your code, the
+  comments are normally about _the code_, not about _the results_.
+  And for a good reason: code is code, the results are not visible!
+* Second, you may want to re-do the results.  If you write only once,
+  it is not hard to copy-paste the results (e.g. from the R output) to
+  your document.  However, if you repeat your computations for some
+  reason, you have to repeat all the copy-paste again.  This is
+  tedious and error prone, imagine a document that contains hundreds
+  of numbers and figures computed from data!
 
+Rmarkdown offers solution to both of these problems.  You can write
+text about your results and both will be in the final rendered
+version.  And when you re-process it, it will automatically 
+redo all the results with no manual work needed.
+As an additional bonus, you also have now your code in the same
+document (although not necessarily in the rendered version), so one
+can go and check _how exactly_ did you compute the figures.
 
+Technically, rmarkdown is a markdown document that contains normal
+markdown text mixed with _code chunks_, chunks of R code that will can
+be run by R like any other code.  Processing rmarkdown takes two
+steps.  The first one is _knitting_, i.e. running the R code and inserting its
+output into the document, this results in a plain markdown document.
+Knitting is done by R using _knitr_ package.
+Thereafter one has to render the markdown in a similar way as ordinary
+markdown.  The final result can be _html_ or _pdf_ document, different
+types of
+slides, or even MSWord file.  This is again done by R using
+_rmarkdown_ package and _pandoc_ app.
 
-R Markdown is a package that supports using `R` to dynamically create _documents_, such as websites (`.html` files), reports (`.pdf` files), slideshows (using `ioslides` or `slidy`), and even interactive web apps (using `shiny`).
-
-As you may have guessed, R Markdown does this by providing the ability to blend Markdown syntax and `R` code so that, when executed, scripts will automatically inject your code results into a formatted document. The ability to automatically generate reports and documents from a computer script eliminates the need to manually update the _results_ of a data analysis project, enabling you to more effectively share the _information_ that you've produced from your data. In this chapter, you'll learn the fundamentals of the RMarkdown library to create well-formatted documents that combine analysis and reporting.
 
 ## R Markdown and RStudio
-R Markdown documents are created from a combination of two libraries: `rmarkdown` (which process the markdown and generates the output) and `knitr` (which runs R code and produces Markdown-like output). These packages are already included in RStudio, which provides built-in support for creating and viewing R Markdown documents.
 
-### Creating `.Rmd` Files
-The easiest way to begin a new R-Markdown document in RStudio is to use the **File > New File > R Markdown** menu option:
+The most convenient way to create and process rmarkdown files is by
+using RStudio.  It includes all the necessary packages and software,
+and provides easy shortcuts to convert the whole document into
+the final document.
 
-![Create a new R Markdown document in RStudio.](img/r-markdown/new-file.png "new R-Markdown document menu")
 
-RStudio will then prompt you to provide some additional details abour what kind of R Markdown document you want. In particular, you will need to choose a default _document type_ and _output format_. You can also provide a title and author information which will be included in the document. This chapter will focus on creating HTML documents (websites; the default format)&mdash;other formats require the installation of additional software.
+### Creating Rmarkdown Files
 
-![Specify document type.](img/r-markdown/document-type.png "specify document type prompt")
+<div class="clearfix">
+<figure>
+![](img/r-markdown/new-file.png "new R-Markdown document menu")
+<figcaption>
+Using the RStudio menu to create a new R Markdown document
+</figcaption>
+</figure>
+The easiest way to start a new R-Markdown document in RStudio is to use the **File > New File > R Markdown** menu option:
+</div>
 
-Once you've chosen _R Markdown_ as your desired file type, you'll be prompted to choose a default _document type_ and _output format_ that you would like to create. In this module, we'll discuss creating HTML documents (websites).
+</div class="clearfix">
+<figure>
+![](img/r-markdown/document-type.png "specify document type prompt")
+<figcaption>
+RStudio's rmarkdown document type dialog
+</figcaption>
+</figure>
+RStudio will then prompt you to provide some additional details about
+what kind of R Markdown document you want. In particular, you will
+need to choose a default _document type_ and _output format_. You can
+also provide a title and author information which will be included in
+the document (no worries if you don't know how to call your document--
+you can easily change it later).
+This chapter will focus on creating HTML documents
+(websites; the default format)&mdash;other formats may require additional software.
+</div>
 
-Once you've chosen your desired document type and output format, RStudio will open up a new script file for you. The file contains some example code for you.
+Once you've chosen your desired document type and output format,
+RStudio will open up a new document file for you.  The file contains
+some example code (a template) to remind you the basic rmarkdown
+syntax.  Rmarkdown files typically have extension `.Rmd`
 
-### `.Rmd` Content
-At the top of the file is some text that has the format:
+
+### Rmarkdown Structure
+
+Rmarkdown files normally begin with _header_ information like
 
 ```yaml
 ---
-title: "Example"
-author: "YOUR NAME HERE"
-date: "1/30/2017"
+title: "My Night at Three Pints Inn"
+author: "Ji Gong"
+date: "April 28, 2021"
 output: html_document
 ---
 ```
-
-This is the document "header" information, which tells R Markdown details about the file and how the file should be processed. For example, the `title`, `author`, and `date` will automatically be added to the top of your document. You can include additional information as well, such as [whether there should be a table of contents](http://rmarkdown.rstudio.com/html_document_format.html) or even [variable defaults](http://rmarkdown.rstudio.com/developer_parameterized_reports.html).
+This tells R Markdown details about the file and how the file should be processed. For example, the `title`, `author`, and `date` will automatically be added to the top of your document. You can include additional information as well, such as [whether there should be a table of contents](http://rmarkdown.rstudio.com/html_document_format.html) or even [variable defaults](http://rmarkdown.rstudio.com/developer_parameterized_reports.html).
 
 - The header is written in [YAML](https://en.wikipedia.org/wiki/YAML) format, which is yet another way of formatting structured data similar to `.csv` or JSON (in fact, YAML is a superset of JSON and can represent the same data structure, just using indentation and dashes instead of braces and commas).
 
 Below the header, you will find two types of content:
 
 - **Markdown**: normal Markdown text like you learned in [Chapter 3](#markdown). For example, you can use two pound symbols (`##`) for a second-level heading.
-- **Code Chunks**: These are segments (chunks) of R code that look like normal code block elements (using <code>\`\`\`</code>), but with an extra `{r}` immediately after the opening backticks.
+- **Code Chunks**: These are segments (chunks) of R code that look
+  like normal code block elements (using <code>\`\`\`</code>), but
+  with an extra `{r}` immediately after the opening backticks.  The
+  `{r}` is a crucial marker and tells RStudio that code in these
+  blocks must be executed, not just displayed.
+  
+- **Inline code chunks**: it is also possible to write short code
+  snippets that output a single word or number _on the same line_ as
+  text.  For instance, you may write text like 
+  `"we have `<code>&grave;r nrow(data)&grave;</code>` observations..."`.
+  This results in a line _"we
+  have 150 observations..."_ (or whatever many observations does your
+  data contain).
 
-R Markdown will be able to execute the R code you include in code chunks, and render that output _in your Markdown_. More on this [below](#r-markdown-syntax).
-
-<p class="alert alert-warning">**Important** This file should be saved with the extension **`.Rmd`** (for "R Markdown"), which tells the computer and RStudio that the document contains Markdown content with embedded `R` code.</p>
+RStudio provides a convenient keyboard shortcut, `Ctrl-Alt-i`, for
+creating new code chunks.
 
 
 ### Knitting Documents
@@ -282,6 +347,13 @@ kable(df)
 - And of courrse, if the values in the dataframe are strings that contain Markdown syntax (e.g., bold, itaic, or hyperlinks), they will be rendered as such in the table!
 
 So while you may need to do a little bit of work to manually generate the Markdown syntax, it is possible to dynamically produce complex documents based on dynamic data sources
+
+
+## R Notebooks
+
+<p class="tbd">
+Write about notebooks
+</p>
 
 
 ## Resources {-}
