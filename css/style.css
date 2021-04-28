@@ -15,6 +15,8 @@
 }
 
 /* Figures */
+/* figure: a narrow figure at right with text */
+/* flowing around it */
 figure {
   float: right;
   width: 50%;
@@ -26,14 +28,29 @@ figure {
   margin: 0.5em;
   padding: 0.5em;
 }
+/* keep figure in a div with "clearfix" class */
+.clearfix {
+    overflow: auto;
+}
+
+/* widefigure: a wide figure filling the whole text width */
+figure.wide {
+    float: none;
+  width: 90%;
+  text-align: left;
+  font-style: italic;
+  font-size: smaller;
+  text-indent: 0;
+  border: thin silver solid;
+  margin: 0.5em;
+  padding: 0.5em;
+}
+
+/* caption for all kind of figures */
 p.caption {
   font-size: 90% !important;
   color: #777;
   margin-top: 10px;
-}
-/* keep figure in a div with "clearfix" class */
-.clearfix {
-    overflow: auto;
 }
 
 /* alert: warnings and such text */
