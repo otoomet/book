@@ -31,20 +31,105 @@ all of these:
   Ask Questions](#developer-howto-questions).
 
 
-## Read docs
+### Read docs
 
 TBD
 
-* search for error message
 
 
-## Debugging {#developer-debugging}
+### Debugging {#developer-debugging}
 
-TBD
+Debugging is a generic term that describes finding and correcting
+errors in code.  The term originates from early days of computers
+where errors were often coused by insects (bugs) crawling into the
+machinery and interfering with its operations.  The insects are not a
+problem any more but errors in code are as common as ever.
+Programmers _do_ mistakes.  Newbies do mistakes.  Experienced
+programmers do mistakes.  Everyone does and you will do too.  We have
+to live with coding errors and to learn to fix them.
 
+There are various kinds of coding errors.  
+
+One of the first types of mistakes you do lead to **syntax errors**.
+These mean that computer does not know what to do with the code, just
+stops and outputs an error message.  For instance, when you try to add
+a number and string, you get
+```{r, error=TRUE}
+1 + "2"
+```
+Syntax errors are typically easy to fix, but for beginners the
+messages may look too cryptic and incomprehensible.  The message is
+not very helpful if you don't know that "2" (quoted two) is a string
+and hence not a number, and you have no idea what is "binary
+operator".  To put it in a simpler language, `+` is a binary operator
+because it expects to numbers to be
+added.  And here it complaints that one of these was not a number but
+a character string.
+
+The good news with syntax errors is that you will learn to understand
+these rather quickly.  These are also easy for experienced programmers
+to clarify if you show the line of your code and the message.
+
+It is often harder to spot **errors in program logic**--after all, you
+code works!  But even if it works, the output may not be what you
+want.  Or in a more tricky case you don't even know what the output
+should look like.  Say, you want to compute the rural-urban migration
+rate based on population registry data.  You find it is 1000 persons
+per year.  Is this number correct?  We don't know unless we thoroughly
+test the methods and data.
+
+Below we describe a few common debugging techniques, some of those are
+universal and some R-specific.  We focus on spotting and isolating
+errors in logic but some of the methods are also suitable for syntax
+errors. 
+
+
+#### Understand your code
+
+Before you even begin to debug, you should understand the code.  You
+should understand every variable, every function, every logical
+operation in the relevant code block.  You cannot isolate errors if
+you don't know what the `if` statement or a variable
+is supposed to do.
+
+This is less of a problem when you are debugging your own code but may
+be quite laborious if it has been written by someone else.  The issue
+can often be isolated to a small part of code (for instance, to a
+function), and in that case you do not have to learn the rest of the
+code.
+
+
+#### Print values
+
+This is perhaps one of the most powerful and universal method of
+debugging.  You just insert printing command into your code that
+output the variables and data as the program runs.  If you examine
+their values you should see where they deviate from what they ought to
+be.  Needless to say, in order to see where the values get wrong you
+need to know what the correct values ought to be!
+
+Although nowadays there exist powerful debuggers that can stop your
+code at pre-determined points or at pre-determined variable values,
+the printing-values method is still alive and well.  It is simple (you
+don't have to learn debuggers), it is universal as every programming
+language can print, and it can be extended into environments where you
+cannot easily otherwise debug.  For instance, if your code has to run
+in a docker container on a restricted-access server, then it is
+extremely laborious to replicate the (restricted) working environment
+on your own pc.  It may be much easier just to print the variable
+values in the suspicious part of code (you may have to send output to
+a log file though).
+
+<div class="tbd">
 * Print values
 * Rubber duck
 * `browser()`
+* unit tests
+* do research:
+    * search for error message
+	* some advice may be dangerous
+* mockup, simple test
+</div>
 
 
 ### How To Ask Good Questions {#developer-howto-questions}
