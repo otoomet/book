@@ -46,10 +46,9 @@ machinery and interfering with its operations.  The insects are not a
 problem any more but errors in code are as common as ever.
 Programmers _do_ mistakes.  Newbies do mistakes.  Experienced
 programmers do mistakes.  Everyone does and you will do too.  We have
-to live with coding errors and to learn to fix them.
+to live with coding errors and to we have to learn to fix those.
 
-There are various kinds of coding errors.  
-
+There are various kinds of coding errors.
 One of the first types of mistakes you do lead to **syntax errors**.
 These mean that computer does not know what to do with the code, just
 stops and outputs an error message.  For instance, when you try to add
@@ -89,20 +88,21 @@ errors.
 Before you even begin to debug, you should understand the code.  You
 should understand every variable, every function, every logical
 operation in the relevant code block.  You cannot isolate errors if
-you don't know what the `if` statement or a variable
-is supposed to do.
+you don't know what exactly is that `if` statement doing there,
+or what is the variable's value is supposed to be.
 
 This is less of a problem when you are debugging your own code but may
-be quite laborious if it has been written by someone else.  The issue
+be quite laborious if it has been written by someone else.  But even
+in the latter case the issue
 can often be isolated to a small part of code (for instance, to a
 function), and in that case you do not have to learn the rest of the
 code.
 
 
-#### Print values
+#### Print the values
 
 This is perhaps one of the most powerful and universal method of
-debugging.  You just insert printing command into your code that
+debugging.  You just insert printing commands into your code that
 output the variables and data as the program runs.  If you examine
 their values you should see where they deviate from what they ought to
 be.  Needless to say, in order to see where the values get wrong you
@@ -113,15 +113,106 @@ code at pre-determined points or at pre-determined variable values,
 the printing-values method is still alive and well.  It is simple (you
 don't have to learn debuggers), it is universal as every programming
 language can print, and it can be extended into environments where you
-cannot easily otherwise debug.  For instance, if your code has to run
-in a docker container on a restricted-access server, then it is
-extremely laborious to replicate the (restricted) working environment
+cannot easily use more powerful debuggers.  For instance, if are
+developing a web backend and your code has to run
+in a docker container on a restricted-access server, then it may be
+very laborious to replicate the (restricted) working environment
 on your own pc.  It may be much easier just to print the variable
 values in the suspicious part of code (you may have to send output to
 a log file though).
 
+Let's demonstrate this with an example.  Suppose you are writing a
+function that uses _iris_ data, and returns the average sepal length
+for a species submitted in the argument.  The iris data, collected in
+1930-s contains four flower measures of 150 iris flowers of three
+different species.  An sample of the data looks like
+```{r}
+iris %>%
+   sample_n(5)
+```
+The function might look like
+```{r}
+sepalLength <- function(species) {
+   subset <- iris[iris$species == species]
+   mean(subset$Sepal.Length)
+}
+```
+And we may run the code as
+```{r}
+sepalLength("versicolor")
+```
+Obviously, the function does not work as expected.  But what went
+wrong?  We can start debugging from beginning (probably correct
+values) to end to spot where it goes wrong, or alternatively we begin
+debugging from the
+end (where we know the results are wrong) toward beginning to spot
+where they are still correct.  Let's take the second approach and
+print sepal length of the subset _inside of the function_.  So the
+amended function will look like:
+```{r}
+sepalLength <- function(species) {
+   subset <- iris[iris$species == species]
+   cat("Sepal length:", subset$Sepal.Length, "\n")
+   mean(subset$Sepal.Length)
+}
+```
+and we call the function again:
+```{r}
+sepalLength("versicolor")
+```
+The line that was supposed to print sepal length printed nothing.
+Hence our sepal length is empty for some reason (technically, it is
+the special empty value `NULL`, you can see this if you use `print`
+instead of `cat`).  But why is sepal length empty?  Let's print the
+subset instead:
+```{r}
+sepalLength <- function(species) {
+   subset <- iris[iris$species == species]
+   cat(" -- subset:\n")
+   print(subset)
+   mean(subset$Sepal.Length)
+}
+sepalLength("versicolor")
+```
+We add both `cat(" --..` statement to indicate where the output should
+be, and use `print` to print the actual data frame.  And the problem
+is there we have a "data frame with 0 columns ...".  So the data frame
+itself is empty.  But why is it empty?  Does the selection filter
+`iris$species == species` work?  Let's try this:
+```{r}
+sepalLength <- function(species) {
+   subset <- iris[iris$species == species]
+   cat(" -- filter:\n")
+   print(iris$species == species)
+   mean(subset$Sepal.Length)
+}
+sepalLength("versicolor")
+```
+But why is the filter `logical(0)`, i.e. there are no values there?
+Let's check the `iris$species`:
+```{r}
+sepalLength <- function(species) {
+   subset <- iris[iris$species == species]
+   cat(" -- species:\n")
+   print(iris$species)
+   mean(subset$Sepal.Length)
+}
+sepalLength("versicolor")
+```
+Woww!  `iris$species` comes back `NULL`.  Does iris data contain
+species in the first place?
+```{r}
+names(iris)
+```
+And here we got it--the variable name is capitalized `Species`, not
+lower-case `species`!
+
+This example code was very simple and even little experienced
+programmers might easily spot the problem without much effort.  But
+the same approach applies to much more complex coding problems.
+
+
 <div class="tbd">
-* Print values
 * Rubber duck
 * `browser()`
 * unit tests
