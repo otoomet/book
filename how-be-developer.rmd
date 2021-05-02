@@ -125,7 +125,8 @@ Let's demonstrate this with an example.  Suppose you are writing a
 function that uses _iris_ data, and returns the average sepal length
 for a species submitted in the argument.  The iris data, collected in
 1930-s contains four flower measures of 150 iris flowers of three
-different species.  An sample of the data looks like
+different species.  It is built-in into R so no need to load anything
+from disk.  An sample of the data looks like
 ```{r}
 iris %>%
    sample_n(5)
@@ -212,15 +213,39 @@ programmers might easily spot the problem without much effort.  But
 the same approach applies to much more complex coding problems.
 
 
+
+#### R built-in debugger
+
+R has a built-in debugger that lets you to execute code a single line
+at time and inspect variable values while you go.  There are two ways
+to invoke the debugger:
+
+* The command `debug(sepalLength)` (issued on R console) switches the
+  function `sepalLength` into debugging mode.  Now instead of running
+  through the whole function, R executes it line-by-line.
+* One can switch into debugger by adding command `browser()` into your
+  code at the desired location.
+  
+When running in debugger, R waits your input (at console) between
+executing the lines.  The most important inputs are
+
+* `n` for run next line
+* `Q` to quit debugger
+* printing commands to print variable names.  One can also run other
+  kind of R requests, e.g. `names(iris)` to inspect the variable
+  names. 
+
+
+
 <div class="tbd">
 * Rubber duck
-* `browser()`
 * unit tests
 * do research:
     * search for error message
 	* some advice may be dangerous
 * mockup, simple test
 </div>
+
 
 
 ### How To Ask Good Questions {#developer-howto-questions}
