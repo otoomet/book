@@ -1,8 +1,22 @@
 # The `gglot2` Library {#ggplot2}
 
-Being able to create **visualizations** (graphical representations) of data is a key step in being able to _communicate_ information and findings to others. In this chapter you will learn to use the **`ggplot2`** library to declaratively make beautiful plots or charts of your data.
-Although R does provide built-in plotting functions, the `ggplot2` library implements the **Grammar of Graphics** (similar to how `dplyr` implements a _Grammar of Data Manipulation_; indeed, both packages were developed by the same person). This makes the library particularly effective for describing how visualizations should represent data, and has turned it into the preeminent plotting library in R.
-Learning this library will allow you to easily make nearly any kind of (static) data visualization, customized to your exact specifications.
+Data **visualizations** (plotting) is one of the most powerful ways to
+communicate information and findings.
+R provides
+multiple visualization packages, in particular the base-R plotting
+tools (the _graphics_ library) which is flexible and powerful.
+However, in this chapter we introduce **`ggplot2`** library that is
+oriented to visualizing datasets.  It has intuitive and powerful
+interface and simplifies many tasks that are tedious to achieve with
+base-R graphics.  But be aware that as other tools, so also _ggplot2_
+has its limits, and sometimes it is better to use other visualization
+packages. 
+
+_ggplot2_ is called _ggplot**2**_ because once upon a time there was a
+package called _ggplot_.  However, as the authors found its API
+somewhat limiting, the wanted to break compatibility and start from
+blank sheet.  To distinguish the new package from the old one, the
+called it _ggplot2_.
 
 <p class="alert">Examples in this chapter adapted from [_R for Data Science_](http://r4ds.had.co.nz/) by Garrett Grolemund and Hadley Wickham.</p>
 
