@@ -14,7 +14,7 @@ packages.
 
 _ggplot2_ is called _ggplot**2**_ because once upon a time there was a
 package called _ggplot_.  However, as the authors found its API
-somewhat limiting, the wanted to break compatibility and start from
+somewhat limiting, they wanted to break compatibility and start from
 blank sheet.  To distinguish the new package from the old one, the
 called it _ggplot2_.
 
@@ -46,10 +46,6 @@ Wickham further organizes these components into **layers**, where each layer has
 All together, this grammar enables you to discuss what plots look like using a standard set of vocabulary. And like with `dplyr` and the _Grammar of Data Manipulation_, `ggplot2` uses this grammar directly to declare plots, allowing you to more easily create specific visual images.
 
 
-## Basic Plotting with `ggplot2`
-
-### _ggplot2_ library
-
 The [**`ggplot2`**](http://ggplot2.tidyverse.org/) library provides a set of _declarative functions_ that mirror the above grammar, enabling you to easily specify what you want a plot to look like (e.g., what data, geometric objects, aesthetics, scales, etc. you want it to have).
 
 `ggplot2` is yet another external package (like `dplyr` and `httr` and `jsonlite`), so you will need to install and load it in order to use it:
@@ -60,8 +56,8 @@ library("ggplot2")
 ```
 This will make all of the plotting functions you'll need available.
 
-<p class="alert">_ggplot2_ is called _ggplot**2**_ because once upon a time there was just a library _ggplot_.  However, the developer noticed that it used an inefficient set of functions.  In order for not to break the API, the authors introduced a successor package _ggplot2_.  However, the central function in this package is still called `ggplot()`, not `ggplot2()`!
-</p>
+
+## Basic Plotting with `ggplot2`
 
 
 ### _mpg_ data
@@ -135,11 +131,6 @@ ggplot(data = mpg) +                         # note where parentheses are closed
   geom_point(mapping = aes(x = displ, y = hwy), color = "blue")  # blue points!
 ```
 
-
-## Complex Plots
-Building on these basics, `ggplot2` can be used to build almost any kind of plot you may want. These plots are declared using functions that follow from the _Grammar of Graphics_.
-
-
 ### Specifying Geometry
 The most obvious distinction between plots is what **geometric objects** (`geoms`) they include. `ggplot2` supports a number of different types of [`geoms`](http://ggplot2.tidyverse.org/reference/index.html#section-layer-geoms), including:
 
@@ -177,7 +168,51 @@ Of course the aesthetics for each `geom` can be different, so you could show mul
 
 - If you want multiple `geoms` to utilize the same data or aesthetics, you can pass those values as arguments to the `ggplot()` function itself; any `geoms` added to that plot will use the values declared for the whole plot _unless overridden by individual specifications_.
 
-#### Statistical Transformations
+
+
+### Plotting in Scripts
+
+From the first encounter with _ggplot_ one typically gets the impression that it is the _ggplot_ function that creates the plot.  This **is not true!**  A call to _ggplot_ just creates a _ggplot_-object, a data structure that contains data and all other necessary details for creating the plot.  But the image itself is not created.  It is created instead by the _print_-method.  If you type an expression on R console, R evaluates and prints this expression.  This is why we can use it as a manual calculator for simple math, such as `2 + 2`.  The same is true for _ggplot_: it returns a _ggplot_-object, and given you don't store it into a variable, it is printed, and the print method of _ggplot_-object actually makes the image.  This is why we can immediately see the images when we work with _ggplot_ on console.
+
+Things may be different, however, if we do this in a script.  When you
+execute a script, the returned objects are not printed, even if you do
+not save those in a variable.  For instance, the script
+```{r ggplotNoPlot, eval=FALSE}
+diamonds %>%
+   sample_n(1000) %>%
+ggplot() +
+   geom_point(aes(carat, price))  # note: not printed
+```
+will not produce any output when sourced as a single script (and not run line-by-line).  You have to print the returned objects explicitly, for instance as
+```{r ggplotPrintPlot, eval=FALSE}
+data <- diamonds %>%
+   sample_n(1000)
+p <- ggplot(data) +
+   geom_point(aes(carat, price))  # store here
+print(p)  # print here
+```
+
+In scripts we often want the code not to produce image on screen, but store it in a file instead.  This can be achieved in a variety of ways, for instance through redirecting graphical output to a pdf device with the command `pdf()`:
+
+```{r ggplotPdf, eval=FALSE}
+data <- diamonds %>%
+   sample_n(1000)
+p <- ggplot(data) +
+   geom_point(aes(carat, price))  # store here
+pdf(file="diamonds.pdf", width=10, height=8)
+                           # redirect to a pdf file
+print(p)  # print here
+dev.off()  # remember to close the file
+```
+After redirecting the output, all plots will be written to the pdf file (as separate pages if you create more than one plot).  Note you have to close the file with `dev.off()`, otherwise it will be broken.  There are other output options besides pdf, you may want to check `jpeg` and `png` image outputs.  Finally, _ggplot_ also has a dedicated way to save individual plots to file using `ggsave`.
+
+
+
+## Tuning Your Plots
+Building on these basics, `ggplot2` can be used to build almost any kind of plot you may want. These plots are declared using functions that follow from the _Grammar of Graphics_.
+
+
+### Statistical Transformations
 If you look at the above `bar` chart, you'll notice that the the `y` axis was defined for you as the `count` of elements that have the particular type. This `count` isn't part of the data set (it's not a column in `mpg`), but is instead a **statistical transformation** that the `geom_bar` automatically applies to the data. In particular, it applies the `stat_count` transformation, simply summing the number of rows each `class` appeared in the dataset.
 
 `ggplot2` supports many different statistical transformations. For example, the "identity" transformation will leave the data "as is". You can specify which statistical transformation a `geom` uses by passing it as the **`stat`** argument:
@@ -216,7 +251,7 @@ ggplot(data = mpg) +
   stat_count(mapping = aes(x = class))
 ```
 
-#### Position Adjustments
+### Position Adjustments
 In addition to a default statistical transformation, each `geom` also has a default **position adjustment** which specifies a set of "rules" as to how different components should be positioned relative to each other. This position is noticeable in a `geom_bar` if you map a different variable to the color visual channel:
 
 ```{r, stacked_bar}
@@ -378,39 +413,103 @@ ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) +  # same mapping for all 
 _R for Data Science_ (linked in the resources below) recommends using the [`ggrepel`](https://github.com/slowkow/ggrepel) package to help position labels.
 
 
-## Plotting in Scripts
+## Creating Maps
 
-From the first encounter with _ggplot_ one typically gets the impression that it is the _ggplot_ function that creates the plot.  This **is not true!**.  A call to _ggplot_ just creates a _ggplot_-object, a data structure that contains data and all other necessary details for creating the plot.  But the image itself is not created.  It is created instead by the _print_-method.  If you type an expression on R console, R evaluates and prints this expression.  This is why we can use it as a manual calculator for simple math, such as `2 + 2`.  The same is true for _ggplot_: it returns a _ggplot_-object, and given you don't store it into a variable, it is printed, and the print method of _ggplot_-object actually makes the image.  This is why we can immediately see the images when we work with _ggplot_ on console.
+_ggplot_'s functionality can be easily applied to create maps.  Maps
+are largely polygons filled with certain colors (e.g. administrative
+units or lakes), and amended with
+various line segments (e.g. rivers), dots (e.g. cities) and text.
+_ggplot_ possesses all these tools.
 
-Things may be different, however, if we do this in a script.  When you execute a script, the returned non-stored expressions are not printed.  For instance, the script
-```{r ggplotNoPlot, eval=FALSE}
-diamonds %>%
-   sample_n(1000) %>%
-ggplot() +
-   geom_point(aes(carat, price))  # note: not printed
+
+### How maps are made: a hand carved example
+
+<div class="clearfix">
+The maps we consider here are made of polygons--connected lines.
+Consider the schematic map of New Zealand.
+<figure>
+![](img/ggplot2/nz-schematic-map.png)
+<figcaption>
+Schematic map of New Zealand, made of vertices (black dots), connected
+with lines.
+</figcaption>
+</figure>
+The map is made of lines that connect vertices.  We have put the lines
+on a 2-D plane and marked the coordinate pairs for each vertex,
+e.g. in the lower-left corner there is a line that connects point
+(0,1) to (2,0).  The two islands (South Island and North Island) are
+filled with gray.
+
+If we want to plot this data as a map we should just draw the black lines
+that connect the vertices.  There are a few details we have to ensure
+we get right:
+
+* We must be careful to only connect the
+  lines that correspond to the coastline of each island, we should not
+  draw a line across the sea from one coastline to the other.  
+* We must
+  connect the points in the correct order, not in a criss-cross
+  manner.
+* And finally, we have to ensure that the polygons are closed,
+  i.e. the last vertex is connected to the first one.
+</div>
+
+Next, let's create this map.  We start with creating a data frame of
+the vertices.  This is a little tedious process as data frames expect
+_x_ and _y_ to be given separately while for us it is easier to thing
+of those as pairs.  So you may consider doing such data entry in a
+spreadsheet instead.
+```{r}
+nz <- data.frame(x = c(0, 2, 5, 5,  # south island
+                       6, 10, 8, 7, 7, 6),  # north island
+                 y = c(1, 0, 3, 6,  # south island
+                       4, 8, 8, 12, 8, 7))  # north island
 ```
-will not produce any output when sourced as a single script (and not run line-by-line).  You have to print the returned objects explicitly, for instance as
-```{r ggplotPrintPlot, eval=FALSE}
-data <- diamonds %>%
-   sample_n(1000)
-p <- ggplot(data) +
-   geom_point(aes(carat, price))  # store here
-print(p)  # print here
+To demonstrate the polygon plotting, let's make a plot of the map
+vertices we entered:
+```{r}
+ggplot(nz, aes(x, y)) +
+   geom_polygon(col="black", fill=NA)
 ```
 
-In scripts we often want the code not to produce image on screen, but store it in a file instead.  This can be achieved in a variety of ways, for instance through redirecting graphical output to a pdf device with the command `pdf()`:
+We ask the outline to be drawn in black, and the polygons not to be
+filled (`fill = NA`).
 
-```{r ggplotPdf, eval=FALSE}
-data <- diamonds %>%
-   sample_n(1000)
-p <- ggplot(data) +
-   geom_point(aes(carat, price))  # store here
-pdf(file="diamonds.pdf", width=10, height=8)
-                           # redirect to a pdf file
-print(p)  # print here
-dev.off()  # remember to close the file
+The result has a number of problems, in particular it connects both
+the islands.  This is not surprising as we did not tell _ggplot_ in
+any way which points form separate islands.  Note that `geom_polygon`
+connects the last and first vertex automatically, and as we entered
+the vertices in a correct order, we got a nice coastline plot.
+
+As the next step,
+let's add a group id, and id for each separate polygon.  This is
+typically called _group_ and consists of a numeric id.  However, we
+can give it also a more descriptive id, e.g. "south" and "north" for
+south and north island respectively.  Thereafter we tell ggplot that
+each group is a separate polygon by using `group` aesthetic:
+```{r}
+nz$group <- c("south", "south", "south", "south",
+              "north", "north", "north", "north", "north", "north")
+ggplot(nz, aes(x, y, group=group)) +
+   geom_polygon(col="black", fill=NA)
 ```
-After redirecting the output, all plots will be written to the pdf file (as separate pages if you create more than one plot).  Note you have to close the file with `def.off()`, otherwise it will be broken.  There are other output options besides pdf, you may want to check `jpeg` and `png` image outputs.  Finally, _ggplot_ also has a dedicated way to save individual plots to file using `ggsave`.
+
+Indeed, we got the two islands separated.
+
+Finally, in order to avoid distorted coordinates, we use
+`coord_quickmap` to ensure that the lengths correspond to the real map
+lengths.  We also fill the islands green:
+```{r}
+nz$group <- c("south", "south", "south", "south",
+              "north", "north", "north", "north", "north", "north")
+ggplot(nz, aes(x, y, group=group)) +
+   geom_polygon(col="black", fill="seagreen3") +
+   coord_quickmap()
+```
+
+The result is fairly similar to real maps, except that our manually
+designed coastline is far too simplistic.  But now we have all the
+tools we need to plot real maps given we get the suitable data.
 
 
 
