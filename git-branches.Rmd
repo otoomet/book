@@ -1,6 +1,10 @@
 # Git Branches {#git-branches}
 
-While `git` is great for uploading and downloading code, its true benefits are its ability to support _reversability_ (e.g., undo) and _collaboration_ (working with other people). In order to effectively utilize these capabilities, you need to understand git's **branching model**, which is central to how the program manages different versions of code.
+While `git` is great for uploading and downloading code, its true
+benefits are its ability to support _reversability_ (e.g., undo) and
+_collaboration_ (working with other people).  We already discussed how
+to get back to the past using git in Chapter [Git and
+Github](#git-commit-history-git-time-machine).  But in order to effectively utilize these capabilities, you need to understand git's **branching model**, which is central to how the program manages different versions of code.
 
 This chapter will cover how to work with **branches** with git and GitHub, including using them to work on different features simultaneously and to undo previous changes.
 <!-- It will also discuss how to use branches to support different _collaborative workflows_, allowing multiple people to work on code in the same repository. -->
@@ -13,25 +17,110 @@ So far, you've been using git to create a _linear sequence_ of commits: they are
 cat('![A linear sequence of commits, each with an SHA1 identifier.](img/git-branches/commit-sequence.gif "a commit sequence")')
 ```
 
-Each commit has a message associated with it (that you can see with `git log --oneline`), as well as a unique [SHA-1](https://en.wikipedia.org/wiki/SHA-1) hash (the random numbers and letters), which can be used to identify that commit as an "id number".
+Each commit has a message associated with it (that you can see with `git log`), as well as a unique [SHA-1](https://en.wikipedia.org/wiki/SHA-1) hash (the random numbers and letters), which can be used to identify that commit as an "id number".
 
-But you can also save commits in a _non-linear_ sequence. Perhaps you want to try something new and crazy without breaking code that you've already written. Or you want to work on two different features simultaneously (having separate commits for each). Or you want multiple people to work on the same code without stepping on each other's toes.
+But you can also save commits in a _non-linear_ sequence. Perhaps you
+want to try something new and crazy without breaking code that you've
+already written. Or you want to work on two different features
+simultaneously (having separate commits for each). Or you want
+multiple people to work on the same code without stepping on each
+other's toes.  In the world without version control you would make
+another copy of your code and perform the edits there.  If your
+experiment turns out not to lead anywhere then you can just delete the
+copy.  But what if it works well?  If no-one has worked with the
+"main" copy of the code then it is not a big deal either--you can just
+replace the main copy with your experiment.  But in case of a large
+software project it is hardly the case--your collaborators continue
+writing text and adding code to the main copy.  Your experiment is now
+outdated because _it does not contain those edits_!  You have to re-do
+your experiment in the fresh copy of your project over the weekend
+again and hope that no-one will change anything meanwhile.
 
-To do this, you use a feature of git called **branching** (because you can have commits that "branch off" from a line of development):
+### What are branches
 
-```{r results='asis', echo=FALSE, include=identical(knitr:::pandoc_to(), 'html')}
-cat('![An example of branching commits.](img/git-branches/branching.gif "branching example")')
-```
+This is where  **git branches** (because you can have commits that
+"branch off" from a line of development) come in super useful.  The
+idea with branches is as follows.  Instead of just creating a copy,
+you create a new _branch_ for your experiment.  Branches are in many
+ways like copies, but there are some important differences, in
+particular they are tracked by git, and git also facilitates
+information exchange (_merging_) between the branches.
 
-In this example, you have a primary branch (called the `master` branch), and decide you want to try an experiment. You _split off_ a new branch (called for example `experiment`), which saves some funky changes to your code. But then you decide to make further changes to your main development line, adding more commits to `master` that ignore the changes stored in the `experiment` branch. You can develop `master` and `experiment` simultaneously, making changes to each version of the code. You can even branch off further versions (e.g., a `bugfix` to fix a problem) if you wish. And once you decide you're happy with the code added to both versions, you can **merge** them back together, so that the `master` branch now contains all the changes that were made on the `experiment` branch. If you decided that the `experiment` didn't work out, you can simply delete those set of changes without ever having messed with your "core" `master` branch.
+<div class="clearfix">
+<figure>
+![](figs/git-branches/git-branches.png)
+<caption>
+</caption>
+Branches
+</figure>
+Consider the figure.  Imagine you and Tian are working together on a
+report.  You get a great idea that you want to experiment with but you
+know that Tian will continue working on the analysis too.
+
+1. Initially the project only has _main_ branch that contains two
+   files: _code.R_ and _analysis.md_.  The _main_ branch is colored
+   black. 
+2. After you got the idea, you create a new branch called _experiment_
+  (denoted red on the figure).
+  You use `git checkout -b experiment` to create it.  It will be
+  essentially a copy of the original main branch.  _experiment_-branch
+  and operations there are colored red.
+3. Meanwhile, Tian writes introduction to the report and commits the
+  changes to the main branch.  Tian's edits are marked in green.
+4. Now you create your experimental code and find it works very well.
+  You commit your new code.
+  At this stage there are two branches in the repo, each of which
+  contains information that the other branch does not have.  This is
+  exactly the dreaded situation we described above.
+5. Fortunately git has tools to "merge" changes from the other branch
+  into your branch.  You can get all new things (more precisely, _new
+  commits_) from the main branch into your branch with `git merge
+  main`.  Now your red experimental branch also contains the new
+  introduction that Tian wrote at 3.
+6. Finally, when you are happy with your experiment, you can merge the
+  results back to main with `git merge experiment`.  All your
+  experiment's code is now in the main, and you may delete your
+  experiment branch if you wish.
+  
+Note how `git merge` propagates the green "Introduction" to the red
+experiment-branch, and the following git merge propagates the red
+"experiment()" code to the main branch.
+<div>
+
+While the general idea of branches is not hard, there are many details
+your should be aware of.
+
+First, while the repo can have a large number of branches, there is
+currently just **one branch that is "active"** in your working copy.
+This means when you switch from one branch to another, git will change
+the files, potentially adding and deleting those that are present only
+in one branch!
+
+Second, merging works in a way that your merge **another branch into
+the current branch**.  Hence merging the main branch into experiment
+with `git merge main` must be issued while _experiment_ branch is
+active (this is why it is written in red), and merging the
+_experiment_ branch into _main_ branch with `git merge experiment`
+must be issued while the _main_ branch is active (this is why it is
+written black).
+
+Third, as switching branches involves changing files, you **cannot
+switch branches if you have un-committed changes**.  You have to
+commit your edits before you switch, otherwise git cannot keep track
+on those.  (But you don't have to push.)
+
+
+### Creating branches and switching between branches
+
+
 
 You can view a list of current branches in the repo with the command
-
 ```bash
 git branch
 ```
-
-(The item with the asterisk (`*`) is the "current branch" you're on. The latest commit of the branch you're on is referred to as the **`HEAD`**.
+(The highlighted item with the asterisk (`*`) is the "current branch"
+you're on. The latest commit of the branch you're on is referred to as
+the **`HEAD`**.) 
 
 You can use the same command to create a _new_ branch:
 

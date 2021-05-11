@@ -10,11 +10,11 @@ build/
 *.fdb
 *.fdb_latexmk
 _bookdown_files
+figs-src/*.pdf
 
 # eBook build output
 #*.epub
 #*.mobi
-#*.pdf
 # System files
 .DS_Store
 .Rproj.user

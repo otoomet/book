@@ -196,7 +196,7 @@ After you've committed your changes, be sure and check `git status`, which shoul
 <p class="alert alert-danger">**WARNING**: If you forget the `-m` option, git will put you into a command-line _text editor_ so that you can compose a message (then save and exit to finish the commit). If you haven't done any other configuration, you might be dropped into the ___vim___ editor. Type **`:q`** (**colon** then **q**) and hit enter to flee from this horrid place and try again, remembering the `-m` option! Don't panic: getting stuck in _vim_ [happens to everyone](https://stackoverflow.blog/2017/05/23/stack-overflow-helping-one-million-developers-exit-vim/).</p>
 
 
-### Commit History: git as Time Machine
+### Commit History: git as Time Machine {#git-commit-history-git-time-machine}
 
 You can view the history of commits you've made:
 
