@@ -235,15 +235,135 @@ executing the lines.  The most important inputs are
   kind of R requests, e.g. `names(iris)` to inspect the variable
   names. 
 
+Let us demonstrate how to find the same error using the built-in
+debugger.  We want to activate the debugger as soon as we enter the
+function, so we add `browser()` at the top of the function:
+```{r, eval=FALSE}
+sepalLength <- function(species) {
+  browser()
+  subset <- iris[iris$species == species]
+  mean(subset$Sepal.Length)
+}
+```
+This causes R to enter in the debugging mode as soon as the function
+is called.  We source the function, and now, when we call `sepalLength("virginica")`,
+R stops immediately
+with debugger prompt instead of running through the function:
+```r
+> sepalLength("virginica")
+Called from: sepalLength("virginica")
+Browse[1]>
+```
+This means that R now expects your commands like in the ordinary R
+console, just this is now debugger console and you can enter the
+debugger commands.  Note that while we can run R code line-by-line
+using the RStudio _run_ methods, debugger stops the running program in
+a pre-determined place with all the environments set up correctly.
+For instance, we can see what is the value of argument _species_:
+```r
+Browse[1]> species
+[1] "virginica"
+```
+This tells us that the species we ask--_virginica_--is passed to the
+function in a correct manner.
 
+As the function has not performed any operations, there is little we
+can test here.  So we enter `n`, step to next line:
+
+```r
+Browse[1]> n
+debug at ~/.active-rstudio-document#3: subset <- iris[iris$species == species]
+```
+The first `n` forced R to do some setup tasks and we were stuck in the
+same line, so we enter `n` again:
+```r
+Browse[2]> n
+debug at ~/.active-rstudio-document#4: mean(subset$Sepal.Length)
+```
+This forces the active line to move from `subset <- ...` to the next
+line `mean(...`.  This means that everything on the previous line was
+executed, and we can go and check how does the variable `subset` look
+like:
+```r
+Browse[2]> subset
+data frame with 0 columns and 150 rows
+```
+We discover that subset contains 0 rows.
+
+We can also quickly check if the logical expression is right:
+```r
+Browse[2]> iris$species == species
+logical(0)
+```
+It apparently is not--it should not give 0-length logical value.  As
+we tested above that `species` argument looks fine, we now check
+`iris$species`:
+```r
+Browse[2]> iris$species
+NULL
+```
+Apparently iris data does not contain `species`.  But what does it contain?
+```r
+Browse[2]> names(iris)
+[1] "Sepal.Length" "Sepal.Width"  "Petal.Length" "Petal.Width"  "Species"     
+```
+And we see that it contains `Species`, not `species`.
+
+As you can see, the built-in debugger is much faster to use, you can
+just issue the commands as soon as you see what is wrong with the
+previous variable.  The difference is even larger if your code needs
+to do some slow data churning tasks before getting this far.  
+This makes the debugger often the preferred way to
+debug the code.  It is fast, simple, and effective.
+
+The downside of the debugger is that it does not work in many
+environments.  For instance, you cannot insert debugger in an
+rmarkdown document to see why does knitting fail.  You have to resort
+to printing.  In a similar fashion, in the interactive shiny apps the
+usage of debugger is very limited.  Printing is much more universal.
+
+
+#### Other ways to debug your code
+
+Maybe you have experienced the following situation: your code fails.
+You cannot figure out what is going on.  So you go to an expert (or to
+someone you think is more experienced than you) and ask for help.
+Obviously, the expert has little idea what you are doing, so you have
+to explain what the code does.  But surprisingly, when explaining your
+code you suddenly understand what is wrong there.
+
+This is called **rubber duck debugging**.  As the example above shows,
+the experts' knowledge did not play any role.  What helped you to
+solve the problem was the opposite--the fact that the expert _did not
+know_ how your code worked.  So instead of bugging an expert could you
+have explained it to a random person?  Or maybe you don't need even a
+human being, perhaps your cat or even just a rubber duck is enough?
+
+So thinking through the problem helps.  I often find it useful to
+write the central logic of the code down on a piece of paper using
+some sort of pseudocode.
+
+A different strategy is to use **mock-ups**.  This comes handy when
+your complex code runs slow on a large dataset and returns with
+results that do not make sense.  But what went wrong?  The analysis is
+complicated and you cannot tell what should be the exact results on
+hundreds of thousands of lines of data.
+
+Mock-ups includes replacing complex code with something fast and
+simple that produces broadly similar results, and replacing complex
+data with something small and simple, so you are actually able to
+figure out what is the correct solution.
+
+<p class="tbd">
+mockup example
+</p>
 
 <div class="tbd">
-* Rubber duck
 * unit tests
 * do research:
     * search for error message
 	* some advice may be dangerous
-* mockup, simple test
+* simple test
 </div>
 
 
