@@ -29,7 +29,7 @@ on checkboxes or selecting menu items) and tells your code about what
 the user did.
 
 
-## Creating Shiny Apps
+## Writing Shiny Applications
 
 Shiny is a **web application framework for R**. As opposed to a simple
 (static) web page like you've created with R Markdown, a _web
@@ -51,12 +51,43 @@ library("shiny")
 
 This will make all of the framework functions and variables you will need to work with available.
 
-### Writing Shiny Applications
-
 Fortunately, shiny does most of the hard work related to setting up a
 web server and providing communication between your code and the user
 interactions.  You only have to write your data analysis code, and
 define the server-side and the user-interface (UI) side of the app.
+
+
+### Creating Shiny Apps in RStudio {#creating-shiny-apps-rstudio}
+
+Rstudio offers good templates for getting started with shiny apps.
+The main menu offer option _File_ / _New File_ / _Shiny Web App_.
+This opens a small dialog window asking for the name of the app, and
+whether it is a single- or a multi-file app (more about the latter
+below).
+If you choose the single-file option, RStudio creates a folder with
+the given app name, and calls the code inside _app.R_.  If you choose
+the multi-file option, it creates two files inside the folder, one
+called _ui.R_ and the other called _server.R_.
+
+Very conveniently for beginners, it also fills the files with a
+functioning app (that explores Old Faithful geyser eruptions) so you
+have a fully-functional template to start modifying for your own
+needs. 
+
+<div class="clearfix">
+<figure>
+![](figs/shiny/run-app.png)
+<caption>
+The "Run App" and "Publish" buttons in RStudio code window.
+</caption>
+</figure>
+Finally, when editing shiny apps, RStudio code window will include
+buttons _Run App_ and _publish_.  The former just runs to app in your
+computer, the other can be used to publish it at _shinyapps.io_.
+</div>
+
+
+### UI and Server
 
 1. The **User Interface (UI)** defines how the application will be
    _displayed_ in the browser. The UI can render R content such as
@@ -105,7 +136,7 @@ define the server-side and the user-interface (UI) side of the app.
 <figure>
 ![](figs/shiny/hello-app.png)
 <caption>
-The "hello" app.  The text entry box lets you enter the name, and
+The "hello" app running in a web browser.  The text entry box lets you enter the name, and
 below the computer uses the name in the displayed message.
 </caption>
 </figure>
@@ -126,26 +157,37 @@ and calls server again as soon as the user adds another character to
 the name.
 </div>
 
-#### Combining UI and Server
+
+### Combining UI and Server
 
 There are two ways of combining the UI and server:
 
-The first (newer) way is to define a file called **`app.R`**. This file should call the [**`shinyApp()`**](http://shiny.rstudio.com/reference/shiny/latest/shinyApp.html) function, which takes a UI value and Server function as arguments. For example:
+The first (newer) way is to define a file called **`app.R`**.  This
+file should define the server and UI as above, and afterwards call the [**`shinyApp()`**](http://shiny.rstudio.com/reference/shiny/latest/shinyApp.html) function, which takes a UI value and Server function as arguments. For example:
 
 ```r
-# pass in the variables defined above
-shinyApp(ui = my_ui, server = my_server)
+## pass the 'ui' and 'server' defined above 
+shinyApp(ui = ui, server = server)
 ```
 
 Executing the `shinyApp()` function will start the App (you can also click the **"Run App"** button at the top of RStudio).
 
-- Note: if you change the UI or the Server, you do **not** need to stop and start the app; you can simply refresh the browser or viewer window and it will reload with the new UI and server.
+- Note: if you change the UI or the Server, you do not need to stop
+  and start the app; you can simply refresh the browser or RStudio
+  viewer window and it will reload the updated version.
 
-- If you need to stop the App, you can hit the "Stop Sign" icon on the RStudio console.
+- If you need to stop the App, you can hit the "Stop Sign" icon on the
+  RStudio console, or just close the viewer.
 
-Using this function allows you to define your entire application (UI and Server) in a single file (which **must** be named `app.R`). This approach is good for simple applications that you wish to be able to share with others, since the entire application code can be listed in a single file.
+Using this function allows you to define your entire application (UI
+and Server) in a single file.  This approach is good for simple
+applications that you wish to be able to share with others, since the
+entire application code can be listed in a single file.
 
-However, it is also possible to define the UI and server as _separate_ files. This allows you to keep the presentation (UI) separated from the logic (server) of your application, making it easier to maintain and change in the future. To do this, you define two separate files: **`ui.R`** for the UI and **`server.R`** for the Server (the files **must** be named `ui.R` and `server.R`). In these files, you must call the functions `shinyUI()` and `shinyServer()` respectively to create the UI and server, and then RStudio will automatically combine these files together into an application:
+Alternatively, you can also define the UI and server as _separate_
+files.  This allows you to keep the presentation (UI) separated from
+the logic (server) of your application, making it easier to maintain
+and develop it in the future.  To do this, you define two separate files: **`ui.R`** for the UI and **`server.R`** for the Server (the files **must** be named `ui.R` and `server.R`). In these files, you must call the functions `shinyUI()` and `shinyServer()` respectively to create the UI and server, and then RStudio will automatically combine these files together into an application:
 
 ```r
 # In ui.R file
@@ -165,15 +207,19 @@ my_server <- function(input, output) {
 shinyServer(my_server)
 ```
 
-You can then run the app by using the **"Run App"** button at the top of RStudio:
+Whichever way you choose, RStudio will create you a suitable template
+as [explained above](#creating-shiny-apps-rstudio).
 
-![Use RStudio to run a shiny app defined in separate UI and Server files.](img/shiny/run-app.png "Run App button")
+Finally, for larger projects you may have more than two code files.
+In particular the server tasks tend to grow large as the data
+processing may be complex.  In such case you may create several files
+then use `source()` to load them into the `app.R` or `server.R` file.
+
 
 This chapter will primarily use the "single file" approach for compactness and readability, but you are encouraged to break up the UI and server into separate files for your own, larger applications.
 
-- Note that it is also possible to simply define the (e.g.) `my_ui` and `my_server` variables in separate files, and then use `source()` to load them into the `app.R` file and pass them into `shinyApp()`.
 
-### The UI
+## The UI
 The UI defines how the app will be displayed in the browser. You create a UI by calling a **layout function** such as `fluidPage()`, which will return a UI definition that can be used by the `shinyUI()` or `shinyApp()` functions.
 
 You specify the "content" that you want the layout to contain (and hence the app to show) by passing each **content element** (piece of content) as an _argument_ to that function:
@@ -228,7 +274,7 @@ There are many other methods as well, see [this tutorial lesson](http://shiny.rs
 
 <!-- TODO: Add HTML tutorial! -->
 
-#### Control Widgets and Reactive Outputs
+### Control Widgets and Reactive Outputs
 It is more common to include **control widgets** as content elements in your UI layout. Widgets are _dynamic_ (changing) control elements that the user can interact with. Each stores a **value** that the user has entered, whether by typing into a box, moving a slider, or checking a button. When the user changes their input, the stored _value_ automatically changes as well.
 
 ![Examples of control widgets (image from shiny.rstudio.com).](img/shiny/basic-widgets.png "control widgets")
@@ -274,7 +320,7 @@ As with other content elements, reactive outputs are creating by calling an appr
 Each of these functions takes as an argument the **name** (as a string) of the value that will be displayed. This is the **"key"** that allows it to access the value the Server is outputting. Note that the functions may take additional arguments as well (e.g., to specify the size of a plot); see [the documentation](http://shiny.rstudio.com/reference/shiny/latest/) for details.
 
 
-### The Server
+## The Server
 The Server defines how the data input by the user will be used to create the output displayed by the app&mdash;that is, how the _control widgets_ and _reactive outputs_ will be connected. You create a Server by _defining a new function_ (not calling a provided one):
 
 ```r
@@ -314,7 +360,7 @@ The only difference between writing a _reactive expression_ and a function is th
 
 These _reactive expressions_ will be "re-run" **every time** one of the `input` values that it references changes. So if the user interacts with the `username` control widget (and thereby changes the value of the `input` list), the expression in the above `renderText()` will be executed again, returning a new value that will be assigned to `output$msg`. And since `output$msg` has now changed, any _reactive output_ in the UI (e.g., a `textOutput()`) will update to show the latest value. This makes the app interactive!
 
-#### Multiple Views
+### Multiple Views
 It is quite common in a Shiny app to produce _lots_ of output variables, and thus to have multiple reactive expressions. For example:
 
 ```r
