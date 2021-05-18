@@ -220,40 +220,82 @@ This chapter will primarily use the "single file" approach for compactness and r
 
 
 ## The UI
-The UI defines how the app will be displayed in the browser. You create a UI by calling a **layout function** such as `fluidPage()`, which will return a UI definition that can be used by the `shinyUI()` or `shinyApp()` functions.
 
-You specify the "content" that you want the layout to contain (and hence the app to show) by passing each **content element** (piece of content) as an _argument_ to that function:
+The UI defines how the app will be displayed in the browser, and what
+will be displayed on different locations on the page. 
+You create a UI by calling a **layout function**, normmaly
+`fluidPage()`, which returns a UI definition that can be used by the
+`shinyUI()` or `shinyApp()` functions.  `fluidPage()` creates a
+"fluid" page, a webpage that adjusts its content location when you
+resize it, or change the zoom level or font size.  This is what we
+normally want.
 
+
+### UI Content Elements
+
+`fluidPage()` takes arguments that specify the **content elements**
+that should be displayed on the page:
 ```r
-# a "pseudocode" example, calling a function with arguments
+## a pseudocode example, calling 'fluidPage' with three elements
 ui <- fluidPage(element1, element2, element3)
 ```
+This will create a page of three elements, and put these elements
+underneath each other.
 
-Content elements are defined by calling specific _functions_ that create them: for example `h1()` will create an element that has a first-level heading, `textInput()` will create an element where the user can enter text, and `textOutput` will create an element that can have dynamic (changing) content. Usually these content elements are defined as _nested_ (anonymous) variables, each on its own line:
-
+Content elements are defined by calling specific functions that create
+them:
 ```r
-# still just calling a function with arguments!
+## ui is a value what fluidPage returns!
 ui <- fluidPage(
-  h1("My App"),  # first argument
-  textInput('username', label = "What is your name?"),  # second argument
-  textOutput('message')  # third argument
+   titlePanel("My App"),
+   textInput('username', label = "What is your name?"),
+   textOutput('message')
 )
 ```
+<div class="clearfix">
+In the example above `titlePanel()` will create a page title,
+`textInput()` will create an element where the user can enter text,
+and `textOutput` will create an element that can have dynamic
+(changing) text content.  See the figure for an illustration how the
+page layout looks like.
+<figure>
+![](figs/shiny/3-element-page.png)
+<caption>
+The example page in browser.  The three layout elements are made
+visible.
+The content of the last, `textOutput` element, is created
+by the server, and only displayed by the UI.
+</caption>
+</figure>
+</div>
 
-Note that layout functions _themselves return content elements_, meaning it is possible to include a layout inside another layout. This allows you to create complex layouts by combining multiple layout elements together. For example:
-
+Content elements are often defined in a
+nested fashion, e.g. we have one element `sidebarLayout`, that
+contains two further elements `sidebarPanel` and `mainPanel`.  (More
+precisely: `sidebarLayout` is not a content element but a function
+that creates such an element.) 
+Sidebar
+layout is often used in simple apps where you have a narrow panels
+with control widgets on the left-hand side and a large panel with the
+main content (such as plot) on the right hand side.
+Note that many layout functions take arguments that are other layout
+elements and arrange those into their layout.  E.g. `sidebarLayout`
+takes two layout elements as arguments, and arranges those in a way
+that the first one is placed on the left side and given little space, the
+other is placed on the right hand side and given more space.  In this
+way it is possible to include a layout inside another layout. This allows you to create complex layouts by combining multiple layout elements together. For example:
 ```r
-ui <- fluidPage(   # UI is a fluid page
-  titlePanel("My Title"),  # include panel with the title (also sets browser title)
-
-  sidebarLayout(   # layout the page in two columns
-    sidebarPanel(  # specify content for the "sidebar" column
-      p("sidebar panel content goes here")
-    ),
-    mainPanel(     # specify content for the "main" column
-      p("main panel content goes here")
-    )
-  )
+ui <- fluidPage(
+   titlePanel("My Title"),  # include panel with the title (also sets browser title)
+  
+   sidebarLayout(   # underneath the title, use sidebar layout
+      sidebarPanel(  # specify content for the narrow sidebar
+         p("See plot at right") 
+      ),
+      mainPanel(     # specify content for the wide "main" panel
+         plotOutput("plot") 
+      )
+   )
 )
 ```
 
